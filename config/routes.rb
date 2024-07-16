@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tests
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -10,7 +11,16 @@ Rails.application.routes.draw do
   # root "posts#index"
   namespace :api do
     namespace :v1 do
-      get "tasks", to: "tasks#index"
+      resources :users
+        resources :category
+          get "tasks", to: "tasks#index"
+          get "task/:id", to: "tasks#show"
+          get "task/new" to: "tasks#new"
+          post "tasks" to: "tasks#create"
+          get "task/:id/edit" to: "tasks#edit"
+          patch "task/:id" to: "tasks#update"
+          delete "task/:id" to: "tasks#destroy"
+      end
     end
   end
 end

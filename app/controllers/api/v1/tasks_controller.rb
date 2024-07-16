@@ -5,7 +5,7 @@ class Api::V1::TasksController < ApplicationController
     end
 
     def show
-        @task = Task.find()
+        @task = Task.find(params[:id])
         render json: @task
     end
 
