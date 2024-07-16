@@ -20,5 +20,7 @@ class Api::V1::TasksController < ApplicationController
 
     def put
     end
-    
+
+    def get
+    end
 end
