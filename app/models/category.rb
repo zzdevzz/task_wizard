@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
     belongs_to :user
-    has_many :tasks, dependent: :destroy
+    has_many :tasks
   
     SELECTION = ["Fitness", "Finance", "Education", "Personal", "Shopping", "Working", "Other"]
   

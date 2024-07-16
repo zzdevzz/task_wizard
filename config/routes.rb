@@ -11,16 +11,20 @@ Rails.application.routes.draw do
   # root "posts#index"
   namespace :api do
     namespace :v1 do
-      resources :users
-        resources :category
-          get "tasks", to: "tasks#index"
-          get "task/:id", to: "tasks#show"
-          get "task/new" to: "tasks#new"
-          post "tasks" to: "tasks#create"
-          get "task/:id/edit" to: "tasks#edit"
-          patch "task/:id" to: "tasks#update"
-          delete "task/:id" to: "tasks#destroy"
+      resources :users do
+        resources :tasks
+        resources :categories 
       end
     end
   end
 end
+
+# For own learning purpose and constant reference.
+
+# get "tasks", to: "tasks#index"
+# get "task/:id", to: "tasks#show"
+# get "task/new", to: "tasks#new"
+# post "tasks", to: "tasks#create"
+# get "task/:id/edit", to: "tasks#edit"
+# patch "task/:id", to: "tasks#update"
+# delete "task/:id", to: "tasks#destroy"

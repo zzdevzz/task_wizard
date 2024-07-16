@@ -7,7 +7,8 @@ class Task < ApplicationRecord
   enum priority: { low: 0, medium: 1, high: 2 }
   enum status: { to_be_done: 0, in_progress: 1, to_be_reviewed: 2 }
 
-  belongs_to :category
+  belongs_to :user
+  belongs_to :category, optional: true
   validates :name, presence: true
   validates :completed, inclusion: { in: [true, false] }
   validates :category_id, presence: true
@@ -22,4 +23,6 @@ class Task < ApplicationRecord
     # The if statement is if our form does not have a checkbox or the attribute is forgotten. It means the value can be nil.
     self.completed = false if self.completed.nil?
   end
+
 end
+
