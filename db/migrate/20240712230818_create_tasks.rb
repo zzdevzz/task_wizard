@@ -8,7 +8,7 @@ class CreateTasks < ActiveRecord::Migration[7.1]
       t.boolean :completed
       t.datetime :date_created
       t.datetime :date_completed_by
-      t.references :category, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end

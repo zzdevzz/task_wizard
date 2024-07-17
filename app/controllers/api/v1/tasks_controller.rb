@@ -1,11 +1,15 @@
 class Api::V1::TasksController < ApplicationController
+
+
     def index
         @tasks = Task.all
+        logger.info "Tasks succesfully displayed"
         render json: @tasks
     end
 
     def show
-        @task = Task.find()
+        @task = Task.find(params[:id])
+        logger.info "#{@task.name} displayed succesfully"
         render json: @task
     end
 
@@ -23,4 +27,11 @@ class Api::V1::TasksController < ApplicationController
 
     def get
     end
+    
+    private
+
+    def task_params
+        params.require(:task).permit(:name, :completed, :priority, :status, :category, :date_completed_by)
+    end
+    
 end
