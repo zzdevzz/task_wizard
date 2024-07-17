@@ -20,7 +20,7 @@ export default function PostsList() {
             {tasks.map((task) => (
                 <div key={task.id}
                 className="post-container">
-                    <Link to={`/task/${task.id}`}>                 
+                    <Link to={`${task.id}`}>                 
                         <h2>{task.name}</h2>
                         <p>{task.description}</p>
                     </Link>

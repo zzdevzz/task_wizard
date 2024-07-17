@@ -19,7 +19,7 @@ function App() {
           <Route index element={<Home/>}/>
           <Route path="tasks" element={<TasksLists/>} />
           <Route path="tasks/new" />
-          <Route path="task/:id" element={<TaskInfo/>}/>
+          <Route path="tasks/:id" element={<TaskInfo/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
