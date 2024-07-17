@@ -1,6 +1,4 @@
 class Api::V1::TasksController < ApplicationController
-
-
     def index
         @tasks = Task.all
         logger.info "Tasks succesfully displayed"
@@ -11,6 +9,21 @@ class Api::V1::TasksController < ApplicationController
         @task = Task.find(params[:id])
         logger.info "#{@task.name} displayed succesfully"
         render json: @task
+    end
+
+    def create
+        @user = User.find(params[:user_id].to_i)
+        @task = Task.new(task_params)
+        # @task.user = @user
+        byebug
+
+        if @task.save
+            render json: @task, status: :created
+        else
+            render json: @task.errors, status: :unprocessable_entity
+        end
+
+
     end
 
     def post
@@ -31,7 +44,7 @@ class Api::V1::TasksController < ApplicationController
     private
 
     def task_params
-        params.require(:task).permit(:name, :completed, :priority, :status, :category, :date_completed_by)
+        params.require(:task).permit(:name, :description, :completed, :priority, :status, :category, :date_completed_by)
     end
     
 end
