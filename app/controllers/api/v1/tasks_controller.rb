@@ -14,7 +14,7 @@ class Api::V1::TasksController < ApplicationController
     def create
         @user = User.find(params[:user_id].to_i)
         @task = Task.new(task_params)
-        # @task.user = @user
+        @task.user = @user
         byebug
 
         if @task.save

@@ -11,7 +11,6 @@ class Task < ApplicationRecord
   belongs_to :category, optional: true
   validates :name, presence: true
   validates :completed, inclusion: { in: [true, false] }
-  validates :category_id, presence: true
   validates :date_created, presence: true
 
   before_validation :set_default_values
