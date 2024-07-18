@@ -9,6 +9,7 @@ import Layout from "./components/Layout"
 import Home from "./pages/Home"
 import TasksLists from "./components/TasksList"
 import TaskInfo from './components/TaskInfo'
+import FormTest from './components/FormTest'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="tasks" element={<TasksLists/>} />
           <Route path="tasks/new" />
           <Route path="tasks/:id" element={<TaskInfo/>}/>
+          <Route path="formtest" element={<FormTest/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

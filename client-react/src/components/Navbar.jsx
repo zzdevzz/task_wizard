@@ -12,6 +12,7 @@ export default function Navbar() {
             <Link to="/tasks">My tasks</Link>
             <Link to="/categories">My Categories</Link>
             <Link to="/categories">New Task</Link>
+            <Link to="/formtest">Form Test</Link>
         </nav>
     )
 }
