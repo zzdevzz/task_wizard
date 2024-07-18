@@ -15,7 +15,6 @@ class Api::V1::TasksController < ApplicationController
         @user = User.find(params[:user_id].to_i)
         @task = Task.new(task_params)
         @task.user = @user
-        byebug
 
         if @task.save
             render json: @task, status: :created
@@ -33,6 +32,8 @@ class Api::V1::TasksController < ApplicationController
     end
 
     def destroy
+        @task = Task.find(params[:id])
+        @task.destroy
     end
 
     def put
@@ -48,3 +49,5 @@ class Api::V1::TasksController < ApplicationController
     end
     
 end
+
+

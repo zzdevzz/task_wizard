@@ -1,5 +1,5 @@
 import React from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Navigate } from "react-router-dom"
 import { API_URL } from "../constants"
 
 export default function TaskInfo(props){
@@ -7,6 +7,7 @@ export default function TaskInfo(props){
     const taskURL = API_URL + "/" + params.id
 
     const [task, setTask] = React.useState("")
+    const [redirect, setRedirect] = React.useState(false)
 
     const fetchTask = async () => {
         try {
@@ -18,20 +19,35 @@ export default function TaskInfo(props){
         }
     }
 
-    // React.useEffect(() => {
-    //     setTask(fetchTask)
-    // }, [])
+    const deleteTask = async () => {
+        console.log(params)
+        const id = params.id
+        const url = `http://localhost:3000/api/v1/users/1/tasks/${id}`
+        console.log(url)
+        try {
+            const response = await fetch(url, {method: 'DELETE'})
+            if (response.ok) {
+                setRedirect(true)
+            }
+        } catch (error) {
+            console.error("Error:  ",  error) 
+        }
+    }
+
 
     React.useEffect(()=>{
         fetchTask()
-        console.log(task)
+        // console.log(task)
     },[])
 
+    if (redirect) {
+        return <Navigate to="/tasks" />
+    }
 
     return (
         <>
-            <h1></h1>
-            <p>{task.name}</p>
+            <h1>{task.name}</h1>
+            <button onClick={deleteTask}>Delete Task</button>
         </>
     )
 }
