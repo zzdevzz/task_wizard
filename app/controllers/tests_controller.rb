@@ -16,7 +16,7 @@ class TestsController < ApplicationController
   # POST /tests
   def create
     @test = Test.new(test_params)
-
+    byebug
     if @test.save
       render json: @test, status: :created, location: @test
     else

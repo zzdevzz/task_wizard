@@ -15,6 +15,7 @@ class Api::V1::TasksController < ApplicationController
         @user = User.find(params[:user_id].to_i)
         @task = Task.new(task_params)
         @task.user = @user
+        byebug
 
         if @task.save
             render json: @task, status: :created
@@ -25,10 +26,14 @@ class Api::V1::TasksController < ApplicationController
 
     end
 
-    def post
-    end
-
-    def patch
+    def update
+        @task = Task.find(params[:id])
+        if @task.update(task_params)
+            render json: @task
+        else
+            render json: @task.errors, status: :unprocessable_entity
+        end
+        byebug
     end
 
     def destroy

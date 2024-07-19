@@ -11,8 +11,6 @@ export default function PostsList() {
         .then(data => {
             setTasks(data)
         })
-        .then(()=> console.log(tasks))
-        // .then(() => console.log(tasks))
     },[])
 
     return (
