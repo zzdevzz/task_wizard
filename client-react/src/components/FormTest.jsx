@@ -4,7 +4,7 @@ import { appendErrors, useForm } from "react-hook-form"
 export default function FormTest(){
     const {register, handleSubmit, formState: { errors }} = useForm()
 
-    const onSubmit = async (data) => {
+    const onSubmitPost = async (data) => {
         console.log(data)
     
         try {
@@ -31,7 +31,7 @@ export default function FormTest(){
 
     return (
         <>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmitPost)}>
                 <div>
                     <label htmlFor="name">Task Name</label>
                     <input id="name" {...register("name", { required: "Task name is required" })} placeholder="Task Name" />

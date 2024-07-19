@@ -26,13 +26,19 @@ class Api::V1::TasksController < ApplicationController
 
     end
 
-    def post
-    end
-
-    def patch
+    def update
+        @task = Task.find(params[:id])
+        if @task.update(task_params)
+            render json: @task
+        else
+            render json: @task.errors, status: :unprocessable_entity
+        end
+        byebug
     end
 
     def destroy
+        @task = Task.find(params[:id])
+        @task.destroy
     end
 
     def put
@@ -48,3 +54,5 @@ class Api::V1::TasksController < ApplicationController
     end
     
 end
+
+

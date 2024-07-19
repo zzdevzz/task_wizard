@@ -11,6 +11,7 @@
 require "date"
 
 user1 = User.create(email:"d3@test.com", password: "123456")
+user2 = User.create(email: "g1@test.com", password: "123456")
 category_finance = Category.create(name: "finance", user: user1)
 category_housework = Category.create(name: "housework", user: user1)
 
@@ -21,3 +22,4 @@ task1 = Task.create(name: "Finish the application",
                     user: user1)
 
 task2 = Task.create(name: "Mop the house", category: category_housework, user: user1)
+task3 = Task.create(name: "make the Crud work", user: user2)
