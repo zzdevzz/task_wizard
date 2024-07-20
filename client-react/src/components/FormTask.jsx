@@ -1,28 +1,32 @@
 import React from "react"
 import FormTaskTemplate from "./FormTaskTemplate"
-import { useParams, Navigate } from "react-router-dom"
+import { useParams, Navigate, useLocation } from "react-router-dom"
 import { API_URL } from "../constants"
 
 
 export default function FormTask({request = "post"}){
 
+    const location = useLocation()
+    const task = location.state.taskData
+
     const params = useParams()
     const taskURL = API_URL + "/" + params.id
-    const [task, setTask] = React.useState({})
+    // const [task, setTask] = React.useState({})
     const {id : taskId, user_id } = task 
     const [redirect, setRedirect] = React.useState(false)
 
     // Fetch data from database.
 
-    const fetchTask = async () => {
-      try {
-          const task = await fetch(taskURL)
-          const data = await task.json()
-          setTask(data)
-      } catch (error) {
-          console.error("Error fetching data:", error)
-      }
-    }
+    // const fetchTask = async () => {
+    //   try {
+    //       const task = await fetch(taskURL)
+    //       const data = await task.json()
+    //       setTask(data)
+    //   } catch (error) {
+    //       console.error("Error fetching data:", error)
+    //   }
+    // }
+
 
     // Post data to database.
 
@@ -85,14 +89,13 @@ export default function FormTask({request = "post"}){
     // Actions
 
     
-    React.useEffect(()=>{
-      if (request === "patch") {
-        fetchTask()
-      }  
-    },[])
+    // React.useEffect(()=>{
+    //   if (request === "patch") {
+    //     fetchTask()
+    //   }  
+    // },[])
 
     const actions = {
-      "get" : fetchTask,
       "post" : createTask,
       "patch" : updateTask,
       "delete" : deleteTask
