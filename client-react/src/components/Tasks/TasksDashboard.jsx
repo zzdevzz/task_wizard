@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom"
 import TaskList from "./TaskList"
 
 import { API_URL } from "../../constants"
-const taskContext = React.createContext()
+const TaskContext = React.createContext()
 
 export default function TasksDashboardHost(){
 
@@ -20,13 +20,17 @@ export default function TasksDashboardHost(){
     },[])
 
     return(
-        <div className="dashboard">
-            <div className="dashboard-list col-lg-4">
-                <TaskList/>
+        <TaskContext.Provider value={[tasks, retrieveTasks]}>
+            <div className="dashboard">
+                <div className="dashboard-list col-lg-4">
+                    <TaskList/>
+                </div>
+                <div className="dashboard-detail col-lg-8">
+                    <Outlet/>
+                </div>
             </div>
-            <div className="dashboard-detail col-lg-8">
-                <Outlet/>
-            </div>
-        </div>
+        </TaskContext.Provider>
     )
 }
+
+export { TaskContext }

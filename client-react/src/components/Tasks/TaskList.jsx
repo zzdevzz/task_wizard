@@ -5,18 +5,25 @@ import TaskPreview from "./TaskPreview"
 import FormTask from "../FormTask"
 import { API_URL } from "../../constants"
 
-export default function TaskList() {
-    const [tasks, setTasks ] = React.useState([])
+import { TaskContext } from "./TasksDashboard"
 
-    const retrieveTasks = async () => {
-        const response = await fetch(API_URL)
-        const data = await response.json()
-        setTasks(data)
-    }
+export default function TaskList() {
+    // const [tasks, setTasks ] = React.useState([])
+
+    // const retrieveTasks = async () => {
+    //     const response = await fetch(API_URL)
+    //     const data = await response.json()
+    //     setTasks(data)
+    // }
+
+    const {0: tasks, 1: retrieveTasks} = React.useContext(TaskContext)
 
     React.useEffect(()=>{
         retrieveTasks()
     },[])
+
+
+
 
 
     return (
@@ -33,7 +40,6 @@ export default function TaskList() {
                     ))}
                 </ul>
             </div>
-            {/* <FormTask/> */}
         </div>
     )
 }

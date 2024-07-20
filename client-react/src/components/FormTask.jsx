@@ -4,30 +4,23 @@ import { useParams, Navigate, useLocation } from "react-router-dom"
 import { API_URL } from "../constants"
 
 
+import { TaskContext } from "./Tasks/TasksDashboard"
+
+
 export default function FormTask({request = "post"}){
 
     const location = useLocation()
     const task = location.state.taskData
-    
+
+    // Destructing and renaming object of multiple values
+    const {1: retrieveTasks} = React.useContext(TaskContext)
+    console.log(retrieveTasks)
 
     const params = useParams()
     const taskURL = API_URL + "/" + params.id
     // const [task, setTask] = React.useState({})
     const {id : taskId, user_id } = task 
     const [redirect, setRedirect] = React.useState(false)
-
-    // Fetch data from database.
-
-    // const fetchTask = async () => {
-    //   try {
-    //       const task = await fetch(taskURL)
-    //       const data = await task.json()
-    //       setTask(data)
-    //   } catch (error) {
-    //       console.error("Error fetching data:", error)
-    //   }
-    // }
-
 
     // Post data to database.
 
@@ -64,9 +57,12 @@ export default function FormTask({request = "post"}){
             },
             body: JSON.stringify(data)
           })
+
+          console.log(response.ok)
           
           if (response.ok) {
               setRedirect(true)
+              retrieveTasks()
           }
       } catch (error) {
           console.error("Error:  ",  error) 

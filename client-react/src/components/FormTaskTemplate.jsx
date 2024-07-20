@@ -13,7 +13,7 @@ export default function FormTest({method,data}){
     // const {id : taskId, user_id } = data
     // const [redirect, setRedirect] = React.useState(false)
     // const [newTask, setNewTask] = React.useState(true)
-    const [buttonText, setButtonText] = React.useState("Submit")
+    const [buttonText, setButtonText] = React.useState("Create")
 
     // Base form used  to both create and edit a task. We take the post / patch request as a prop as well as default values if they exist. 
 
