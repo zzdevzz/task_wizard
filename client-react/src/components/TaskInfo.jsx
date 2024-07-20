@@ -12,7 +12,7 @@ export default function TaskInfo(props){
     const {id : taskId, user_id } = task 
     const [redirect, setRedirect] = React.useState(false)
     
-    const {register, handleSubmit, reset, formState: { errors }} = useForm({defaultValues: task})
+    const {register, handleSubmit, reset, formState: { errors }} = useForm({values: task})
     
     // Look at method incase this request fails
     const fetchTask = async () => {

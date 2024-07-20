@@ -3,9 +3,15 @@ import { appendErrors, useForm } from "react-hook-form"
 
 export default function FormTest({method,data}){
 
-    const [task, setTask] = React.useState({})
-    const {id : taskId, user_id } = data
-    const [redirect, setRedirect] = React.useState(false)
+    // Even though component re-renders, data wont change unless form is reset with default values.
+
+    React.useEffect(() => {
+        reset(data)
+    },[data])
+
+    // const [task, setTask] = React.useState({})
+    // const {id : taskId, user_id } = data
+    // const [redirect, setRedirect] = React.useState(false)
     // const [newTask, setNewTask] = React.useState(true)
     const [buttonText, setButtonText] = React.useState("Submit")
 

@@ -1,11 +1,12 @@
 import React from "react"
-import { API_URL } from "../../constants"
-import { Link } from "react-router-dom"
-import TaskInfo from "../TaskInfo"
-import TaskPreview from "./TaskPreview"
-import FormTask from "../FormTask"
+import { Outlet } from "react-router-dom"
+import TaskList from "./TaskList"
 
-export default function PostsList() {
+import { API_URL } from "../../constants"
+const taskContext = React.createContext()
+
+export default function TasksDashboardHost(){
+
     const [tasks, setTasks ] = React.useState([])
 
     const retrieveTasks = async () => {
@@ -18,25 +19,14 @@ export default function PostsList() {
         retrieveTasks()
     },[])
 
-    const selectedTask = (id) => {
-        console.log(task.id)
-    }
-
-    return (
+    return(
         <div className="dashboard">
             <div className="dashboard-list col-lg-4">
-                <ul className="list-group list-group-numbered">
-                    {tasks.map((task) => (
-                        <div key={task.id}
-                        className="post-container">
-                            <Link to={`${task.id}`} state={{taskData: task}}>                 
-                                <TaskPreview taskData={task}/>
-                            </Link>
-                        </div>
-                    ))}
-                </ul>
+                <TaskList/>
             </div>
-            {/* <FormTask/> */}
+            <div className="dashboard-detail col-lg-8">
+                <Outlet/>
+            </div>
         </div>
     )
 }
