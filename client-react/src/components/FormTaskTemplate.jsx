@@ -12,7 +12,12 @@ export default function FormTest({method,data}){
     console.log(data)
 
     
-    const {register, handleSubmit, formState: { errors }} = useForm({values: data})
+    
+    const {register, handleSubmit, reset, formState: { errors }} = useForm({defaultValues: data})
+    
+    React.useEffect(() => {
+        reset(data)
+    }, [])
 
     return (
         <>
