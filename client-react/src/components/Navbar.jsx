@@ -7,7 +7,7 @@ export default function Navbar() {
         //     <h1>Test</h1>
         //     <Link>Test</Link>
         // </nav>
-        <nav>
+        <nav className='mt-5'>
             <Link to="/">TaskWizard</Link>
             <Link to="/tasks">My tasks</Link>
             <Link to="/categories">My Categories</Link>
