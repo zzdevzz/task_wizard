@@ -1,16 +1,17 @@
-import { useState } from 'react'
 import './App.css'
-import './components/Navbar'
+import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 
 // Components
-import Layout from "./components/Layout"
+import Layout from "./components/Layout/Layout"
 import Home from "./pages/Home"
-import TasksLists from "./components/TasksList"
+import TasksDashboard from './components/Tasks/TasksDashboard.jsx'
+// import TasksDashboard from "./components/Tasks/TaskList.jsx"
 import TaskInfo from './components/TaskInfo'
 import FormTest from './components/FormTest'
 import FormTask from './components/FormTask'
+
 
 function App() {
 
@@ -19,11 +20,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout/>}>
           <Route index element={<Home/>}/>
-          <Route path="tasks" element={<TasksLists/>} />
-          <Route path="tasks/new" element={<FormTask/>}/>
-          <Route path="tasks/:id" element={<FormTask request="patch"/>}/>
+          <Route path="tasks" element={<TasksDashboard/>}>
+            <Route path="new" element={<FormTask request='post'/>}/>
+            <Route path=":id" element={<FormTask request="patch"/>}/>
+            <Route index element={<FormTest/>}/>
+          </Route>
           {/* <Route path="tasks/:id" element={<TaskInfo/>}/> */}
-          <Route path="formtest" element={<FormTest/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

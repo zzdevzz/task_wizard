@@ -3,20 +3,28 @@ import { appendErrors, useForm } from "react-hook-form"
 
 export default function FormTest({method,data}){
 
-    const [task, setTask] = React.useState({})
-    const {id : taskId, user_id } = data
-    const [redirect, setRedirect] = React.useState(false)
+    // Even though component re-renders, data wont change unless form is reset with default values.
+
+    React.useEffect(() => {
+        reset(data)
+    },[data])
+
+    // const [task, setTask] = React.useState({})
+    // const {id : taskId, user_id } = data
+    // const [redirect, setRedirect] = React.useState(false)
+    // const [newTask, setNewTask] = React.useState(true)
+    const [buttonText, setButtonText] = React.useState("Create")
 
     // Base form used  to both create and edit a task. We take the post / patch request as a prop as well as default values if they exist. 
 
-    console.log(data)
-
-    
     
     const {register, handleSubmit, reset, formState: { errors }} = useForm({defaultValues: data})
     
     React.useEffect(() => {
-        reset(data)
+        if (method.name === "updateTask"){
+            setButtonText("Update")
+            reset(data)
+        }
     }, [])
 
     return (
@@ -59,7 +67,8 @@ export default function FormTest({method,data}){
                     <label htmlFor="completed">Completed</label>
                     <input id="completed" type="checkbox" {...register("completed")} />
                 </div>
-                {method? <input type="submit"/> : <input type="submit"/>}
+                <input type="submit" value={buttonText}/>
+                
             </form>
         </>
     )
