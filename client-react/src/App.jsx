@@ -21,7 +21,7 @@ function App() {
         <Route path="/" element={<Layout/>}>
           <Route index element={<Home/>}/>
           <Route path="tasks" element={<TasksDashboard/>}>
-            <Route path="new" element={<FormTask/>}/>
+            <Route path="new" element={<FormTask request='post'/>}/>
             <Route path=":id" element={<FormTask request="patch"/>}/>
             <Route index element={<FormTest/>}/>
           </Route>

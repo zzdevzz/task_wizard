@@ -1,5 +1,5 @@
 import React from "react"
-import { Outlet } from "react-router-dom"
+import { Outlet, useParams } from "react-router-dom"
 import TaskList from "./TaskList"
 
 import { API_URL } from "../../constants"
@@ -8,6 +8,8 @@ const TaskContext = React.createContext()
 export default function TasksDashboardHost(){
 
     const [tasks, setTasks ] = React.useState([])
+    const params = useParams()
+    console.log(params)
 
     const retrieveTasks = async () => {
         const response = await fetch(API_URL)

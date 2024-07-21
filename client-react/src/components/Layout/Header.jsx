@@ -10,6 +10,7 @@ export default function Header() {
             <Link to="/">TaskWizard</Link>
             <Link to="/tasks">My tasks</Link>
             <Link to="/categories">My Categories</Link>
+            <Link to="tasks/new">New Task</Link>
         </nav>
         </>
     )
