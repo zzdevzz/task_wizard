@@ -1,6 +1,6 @@
 import React from "react"
 import FormTaskTemplate from "./FormTaskTemplate"
-import { useParams, Navigate, useLocation } from "react-router-dom"
+import { useParams, useNavigate, useLocation, Navigate } from "react-router-dom"
 import { API_URL } from "../constants"
 
 
@@ -8,7 +8,8 @@ import { TaskContext } from "./Tasks/TasksDashboard"
 
 
 export default function FormTask({request = "post"}){
-
+  
+  const navigate = useNavigate()
   const location = useLocation()
 
   // State is being passed if task is existing. If new task and state isn't passed we need to pass empty objects.
@@ -85,6 +86,7 @@ export default function FormTask({request = "post"}){
           if (response.ok) {
               setRedirect(true)
               retrieveTasks()
+              navigate("..")
           }
       } catch (error) {
           console.error("Error:  ",  error) 
@@ -100,7 +102,6 @@ export default function FormTask({request = "post"}){
   return (
     <>    
       <FormTaskTemplate method={actions[request]} data={task} deleteMethod={actions["delete"]}/>
-      {redirect && <Navigate to="../"/>}
     </>
   )
 }
