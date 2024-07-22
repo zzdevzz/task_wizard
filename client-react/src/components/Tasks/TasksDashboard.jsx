@@ -15,12 +15,12 @@ export default function TasksDashboardHost(){
         const data = await response.json()
         setTasks(data)
         console.log("dashboard component loaded async")
-        console.log(data)
+        // console.log(data)
     }
 
     
     React.useEffect(()=>{
-        // retrieveTasks()
+        retrieveTasks()
         console.log("dashboard component loaded useEffect")
     },[])
     

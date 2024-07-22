@@ -3,17 +3,27 @@ import { appendErrors, useForm } from "react-hook-form"
 
 export default function FormTask({method,data, deleteMethod}){
 
+    
     // Even though component re-renders, data wont change unless form is reset with default values.
-
+    
     
     const [buttonText, setButtonText] = React.useState("Create")
     // console.log("rendered")
     // console.log(buttonText)
+
+    console.log("FormTemplate rendered")
     React.useEffect(() => {
+        
+        console.log("FormTemplate Mounted")
         if (method.name === "updateTask"){
             setButtonText("Update")
+            reset(data)
+            console.log("formtemplate reset")
         }
-        reset(data)
+        
+        return () => console.log("FormTemplate unmounted")
+
+
     },[data])
     
     // Base form used  to both create and edit a task. We take the post / patch request as a prop as well as default values if they exist. 

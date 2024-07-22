@@ -16,15 +16,7 @@ export default function TaskList() {
     //     setTasks(data)
     // }
 
-    const {0: tasks, 1: retrieveTasks} = React.useContext(TaskContext)
-
-    React.useEffect(()=>{
-        retrieveTasks()
-    },[])
-
-
-
-
+    const {0: tasks} = React.useContext(TaskContext)
 
     return (
         <div className="dashboard">

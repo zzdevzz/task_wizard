@@ -9,8 +9,15 @@ import { TaskContext } from "./Tasks/TasksDashboard"
 
 export default function FormTask({request = "post"}){
   
+  React.useEffect(() => {
+    console.log("FormTask Mounted")
+    return () => console.log("unmounted")
+  }, [])
   const navigate = useNavigate()
   const location = useLocation()
+
+  
+  console.log("FormTask Render")
 
   // State is being passed if task is existing. If new task and state isn't passed we need to pass empty objects.
 
@@ -51,7 +58,7 @@ export default function FormTask({request = "post"}){
       }
       
       const result = await response.json();
-        // .then(() => retrieveTasks())
+      retrieveTasks()
       console.log('Task created successfully:', result);
     } catch (error) {
       console.error('Error creating task:', error);
@@ -85,7 +92,7 @@ export default function FormTask({request = "post"}){
           const response = await fetch(url, {method: 'DELETE'})
           if (response.ok) {
               setRedirect(true)
-              console.log("this ran")
+              retrieveTasks()
               navigate("..")
           }
       } catch (error) {
@@ -101,7 +108,7 @@ export default function FormTask({request = "post"}){
 
   return (
     <>    
-      <FormTaskTemplate key ={task.id | "new"} method={actions[request]} data={task} deleteMethod={actions["delete"]}/>
+      <FormTaskTemplate method={actions[request]} data={task} deleteMethod={actions["delete"]}/>
     </>
   )
 }
