@@ -1,6 +1,6 @@
 import React from "react"
 import FormTaskTemplate from "./FormTaskTemplate"
-import { useParams, useNavigate, useLocation, Navigate } from "react-router-dom"
+import { useParams, useNavigate, useLocation, Navigate, redirect } from "react-router-dom"
 import { API_URL } from "../constants"
 
 
@@ -51,7 +51,7 @@ export default function FormTask({request = "post"}){
       }
       
       const result = await response.json();
-      retrieveTasks()
+        // .then(() => retrieveTasks())
       console.log('Task created successfully:', result);
     } catch (error) {
       console.error('Error creating task:', error);
@@ -85,7 +85,7 @@ export default function FormTask({request = "post"}){
           const response = await fetch(url, {method: 'DELETE'})
           if (response.ok) {
               setRedirect(true)
-              retrieveTasks()
+              console.log("this ran")
               navigate("..")
           }
       } catch (error) {
@@ -101,7 +101,7 @@ export default function FormTask({request = "post"}){
 
   return (
     <>    
-      <FormTaskTemplate method={actions[request]} data={task} deleteMethod={actions["delete"]}/>
+      <FormTaskTemplate key ={task.id | "new"} method={actions[request]} data={task} deleteMethod={actions["delete"]}/>
     </>
   )
 }

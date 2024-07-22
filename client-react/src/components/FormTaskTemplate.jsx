@@ -7,8 +7,8 @@ export default function FormTask({method,data, deleteMethod}){
 
     
     const [buttonText, setButtonText] = React.useState("Create")
-    console.log("rendered")
-    console.log(buttonText)
+    // console.log("rendered")
+    // console.log(buttonText)
     React.useEffect(() => {
         if (method.name === "updateTask"){
             setButtonText("Update")
