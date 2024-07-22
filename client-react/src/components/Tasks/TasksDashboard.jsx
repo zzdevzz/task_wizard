@@ -9,7 +9,7 @@ export default function TasksDashboardHost(){
 
     const [tasks, setTasks ] = React.useState([])
     const params = useParams()
-    console.log(params)
+    // console.log(params)
 
     const retrieveTasks = async () => {
         const response = await fetch(API_URL)

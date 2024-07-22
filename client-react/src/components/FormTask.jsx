@@ -10,24 +10,24 @@ import { TaskContext } from "./Tasks/TasksDashboard"
 export default function FormTask({request = "post"}){
 
   const location = useLocation()
-  console.log(location)
-  
-  // PROBLEM IS HERE FROM TASKLIST.
-  // TASKLIST feeds us state to render a form.
-  // If we have no state, we need to render a create form.
-  // Create form somehow needs to get user ID passed from task menu.
 
+  // State is being passed if task is existing. If new task and state isn't passed we need to pass empty objects.
 
-  const task = location.state.taskData
-  // console.log(task)
+  let task = {} 
+  let taskId, userId
+
+  if (location.state !== null) {
+    task = location.state.taskData
+    taskId = task.id
+    userId = task.user_id
+    
+  }
 
   // Destructing and renaming object of multiple values
   const {1: retrieveTasks} = React.useContext(TaskContext)
 
   const params = useParams()
   const taskURL = API_URL + "/" + params.id
-  // const [task, setTask] = React.useState({})
-  const {id : taskId, user_id } = task 
   const [redirect, setRedirect] = React.useState(false)
 
   // Post data to database.
@@ -42,14 +42,15 @@ export default function FormTask({request = "post"}){
         },
         body: JSON.stringify(data),
       })
-
-    //   Even though we have a try catch block. Not all incomplete requests throw appendErrors. They still fulfil thier promise with an error message so we have to check if its okay and chuck an error.
-
+      
+      //   Even though we have a try catch block. Not all incomplete requests throw appendErrors. They still fulfil thier promise with an error message so we have to check if its okay and chuck an error.
+      
       if (!response.ok) {
         throw new Error('Network response was not ok')
       }
-
+      
       const result = await response.json();
+      retrieveTasks()
       console.log('Task created successfully:', result);
     } catch (error) {
       console.error('Error creating task:', error);
@@ -57,7 +58,7 @@ export default function FormTask({request = "post"}){
   }
 
   const updateTask = async (data) => {
-    const url = `http://localhost:3000/api/v1/users/${user_id}/tasks/${taskId}`
+    const url = `http://localhost:3000/api/v1/users/${userId}/tasks/${taskId}`
     try {
         const response = await fetch(url, {method: 'PATCH', 
             headers: {
@@ -65,8 +66,6 @@ export default function FormTask({request = "post"}){
           },
           body: JSON.stringify(data)
         })
-
-        console.log(response.ok)
         
         if (response.ok) {
             setRedirect(true)
@@ -77,10 +76,10 @@ export default function FormTask({request = "post"}){
     }
   }
 
-  
+
   // Delete task from database.
   const deleteTask = async () => {
-      const url = `http://localhost:3000/api/v1/users/${user_id}/tasks/${taskId}`
+      const url = `http://localhost:3000/api/v1/users/${userId}/tasks/${taskId}`
       try {
           const response = await fetch(url, {method: 'DELETE'})
           if (response.ok) {
@@ -91,23 +90,15 @@ export default function FormTask({request = "post"}){
       }
   }
 
-  // Actions
-
-  
-  // React.useEffect(()=>{
-  //   if (request === "patch") {
-  //     fetchTask()
-  //   }  
-  // },[])
-
   const actions = {
     "post" : createTask,
     "patch" : updateTask,
     "delete" : deleteTask
   }
 
-  // If nothing is provided
   return (
-      <FormTaskTemplate method={actions[request]} data={task}/>
+    <>    
+      <FormTaskTemplate method={actions[request]} data={task} deleteMethod={actions["delete"]}/>
+    </>
   )
 }
