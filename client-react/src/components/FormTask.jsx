@@ -84,6 +84,7 @@ export default function FormTask({request = "post"}){
           const response = await fetch(url, {method: 'DELETE'})
           if (response.ok) {
               setRedirect(true)
+              retrieveTasks()
           }
       } catch (error) {
           console.error("Error:  ",  error) 
@@ -99,6 +100,7 @@ export default function FormTask({request = "post"}){
   return (
     <>    
       <FormTaskTemplate method={actions[request]} data={task} deleteMethod={actions["delete"]}/>
+      {redirect && <Navigate to="../"/>}
     </>
   )
 }

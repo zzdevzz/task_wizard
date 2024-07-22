@@ -14,7 +14,6 @@ export default function FormTask({method,data, deleteMethod}){
             setButtonText("Update")
         }
         reset(data)
-        setButtonText("Update")
     },[data])
     
     // Base form used  to both create and edit a task. We take the post / patch request as a prop as well as default values if they exist. 
