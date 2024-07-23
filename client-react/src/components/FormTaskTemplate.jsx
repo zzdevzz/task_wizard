@@ -1,31 +1,47 @@
 import React from "react"
 import { appendErrors, useForm } from "react-hook-form"
 
-export default function FormTest({method,data}){
+export default function FormTask({method,data, deleteMethod}){
 
+    
     // Even though component re-renders, data wont change unless form is reset with default values.
-
-    React.useEffect(() => {
-        reset(data)
-    },[data])
-
-    // const [task, setTask] = React.useState({})
-    // const {id : taskId, user_id } = data
-    // const [redirect, setRedirect] = React.useState(false)
-    // const [newTask, setNewTask] = React.useState(true)
+    
+    
     const [buttonText, setButtonText] = React.useState("Create")
+    // console.log("rendered")
+    // console.log(buttonText)
 
+    // TO DO
+    // When we go from task:id to task the form will go to else block.
+    // If we give it props it re-mounts, but it does t his anyway too.
+
+    console.log("FormTemplate rendered")
+    React.useEffect(() => {
+        
+        console.log("FormTemplate Mounted")
+        if (method.name === "updateTask"){
+            setButtonText("Update")
+            reset(data)
+            console.log("formtemplate reset")
+        } else{
+            reset(data)
+        }
+        
+        return () => console.log("FormTemplate unmounted")
+
+
+    },[data])
+    
     // Base form used  to both create and edit a task. We take the post / patch request as a prop as well as default values if they exist. 
 
     
     const {register, handleSubmit, reset, formState: { errors }} = useForm({defaultValues: data})
     
-    React.useEffect(() => {
-        if (method.name === "updateTask"){
-            setButtonText("Update")
-            reset(data)
-        }
-    }, [])
+    // React.useEffect(() => {
+    //     if (method.name === "updateTask"){
+    //         setButtonText("Update")
+    //     }
+    // }, [])
 
     return (
         <>
@@ -68,7 +84,7 @@ export default function FormTest({method,data}){
                     <input id="completed" type="checkbox" {...register("completed")} />
                 </div>
                 <input type="submit" value={buttonText}/>
-                
+                { buttonText === "Update" && <button onClick={deleteMethod}>Delete</button>}
             </form>
         </>
     )

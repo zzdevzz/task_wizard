@@ -9,8 +9,8 @@ export default function Header() {
         <nav className='d-flex justify-content-around'>
             <Link to="/">TaskWizard</Link>
             <Link to="/tasks">My tasks</Link>
-            <Link to="/categories">My Categories</Link>
-            <Link to="tasks/new">New Task</Link>
+            {/* <Link to="/categories">My Categories</Link> */}
+            <Link to="tasks">New Task</Link>
         </nav>
         </>
     )
