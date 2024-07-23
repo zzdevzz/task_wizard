@@ -11,6 +11,10 @@ export default function FormTask({method,data, deleteMethod}){
     // console.log("rendered")
     // console.log(buttonText)
 
+    // TO DO
+    // When we go from task:id to task the form will go to else block.
+    // If we give it props it re-mounts, but it does t his anyway too.
+
     console.log("FormTemplate rendered")
     React.useEffect(() => {
         
@@ -19,6 +23,8 @@ export default function FormTask({method,data, deleteMethod}){
             setButtonText("Update")
             reset(data)
             console.log("formtemplate reset")
+        } else{
+            reset(data)
         }
         
         return () => console.log("FormTemplate unmounted")
