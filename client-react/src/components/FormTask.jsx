@@ -108,7 +108,7 @@ export default function FormTask({request = "post"}){
 
   return (
     <>    
-      <FormTaskTemplate method={actions[request]} data={task} deleteMethod={actions["delete"]}/>
+      <FormTaskTemplate key={task.id || "new" } method={actions[request]} data={task} deleteMethod={actions["delete"]}/>
     </>
   )
 }
