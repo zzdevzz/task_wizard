@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
-  resources :tests
-  devise_for :users
+
+  # Here we are setting up our own custom controllers for devise for custom JSON response when something is sent.
+  devise_for :users, path: '', path_names: {
+    sign_in: 'login',
+    sign_out: 'logout',
+    registration: 'signup'
+  },
+  controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
