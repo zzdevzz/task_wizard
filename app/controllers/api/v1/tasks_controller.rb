@@ -1,6 +1,8 @@
 class Api::V1::TasksController < ApplicationController
+    before_action :authenticate_user!
+
     def index
-        @tasks = Task.all
+        @tasks = current_user.tasks
         logger.info "Tasks succesfully displayed"
         render json: @tasks
     end
@@ -12,7 +14,7 @@ class Api::V1::TasksController < ApplicationController
     end
 
     def create
-        @user = User.find(params[:user_id].to_i)
+        @user = current_user
         @task = Task.new(task_params)
         @task.user = @user
 
