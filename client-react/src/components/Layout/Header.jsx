@@ -11,6 +11,8 @@ export default function Header() {
             <Link to="/tasks">My tasks</Link>
             {/* <Link to="/categories">My Categories</Link> */}
             <Link to="tasks">New Task</Link>
+            <Link to="signup">Sign Up</Link>
+            <Link to="">Login</Link>
         </nav>
         </>
     )
