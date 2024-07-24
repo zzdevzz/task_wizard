@@ -1,4 +1,5 @@
 import React from "react"
+import { useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { API_URL } from "../../constants"
 
@@ -6,6 +7,7 @@ export default function SignUpForm(){
     
     const {register, handleSubmit, formState: {errors}} = useForm()
     const [message, setMessage ] = React.useState("")
+    const navigate = useNavigate()
 
     const onSubmit = async (data) => {
         try {
@@ -21,6 +23,8 @@ export default function SignUpForm(){
 
             if(response.ok){
                 setMessage("User registered successfully!")
+                navigate("/")
+                
             } else {
                 setMessage(`Error: ${result.error || 'Registration failed'}`)
             }     
