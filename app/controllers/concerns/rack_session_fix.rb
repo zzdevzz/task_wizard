@@ -1,5 +1,6 @@
 # We need this as a fix to by pass Rails using session cookies by default as a bug.
 
+
 module RackSessionFix
     extend ActiveSupport::Concern
     class FakeRackSession < Hash

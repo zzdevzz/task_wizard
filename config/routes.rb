@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'current_user', to: 'current_user#index'
+  get 'current_user', to: 'current_user#show'
 
   # Here we are setting up our own custom controllers for devise for custom JSON response when something is sent.
   devise_for :users, path: '', path_names: {
@@ -21,11 +21,11 @@ Rails.application.routes.draw do
   # root "posts#index"
   namespace :api do
     namespace :v1 do
-      resources :users do
+      # resources :users do
         resources :tasks
         resources :categories 
       end
-    end
+    # end
   end
 end
 

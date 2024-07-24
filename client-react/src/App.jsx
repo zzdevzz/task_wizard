@@ -9,6 +9,8 @@ import Home from "./pages/Home"
 import TasksDashboard from './components/Tasks/TasksDashboard.jsx'
 import FormTask from './components/FormTask'
 
+// Authentication Components
+import SignUpForm from './components/Authorisation/SignUpForm.jsx'
 
 function App() {
 
@@ -16,6 +18,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout/>}>
+          <Route path="signup" element={<SignUpForm/>}></Route>
           <Route index element={<Home/>}/>
           <Route path="tasks" element={<TasksDashboard/>}>
             <Route index element={<FormTask/>}/>
