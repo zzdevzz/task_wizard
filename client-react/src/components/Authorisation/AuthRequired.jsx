@@ -4,11 +4,8 @@ import { Navigate, Outlet } from "react-router-dom"
 import { AuthContext } from "./AuthProvider"
 
 export default function AuthRequired(){
-    const {0: authenticated } = React.useContext(AuthContext)
-
-
-
-    return authenticated? <Outlet/> : <Navigate to="login"/>
+    const {isAuthenticated } = React.useContext(AuthContext)
+    return isAuthenticated ? <Outlet/> : <Navigate to="login"/>
 
 }
 
