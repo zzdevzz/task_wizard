@@ -9,9 +9,15 @@ export default function TasksDashboardHost(){
 
     console.log("dashboard component mounted")
     const [tasks, setTasks ] = React.useState([])
+    const token = localStorage.getItem('token')
 
     const retrieveTasks = async () => {
-        const response = await fetch(API_URL)
+        const response = await fetch(`${API_URL}/tasks`, {
+            method: 'GET',
+            headers: {
+              'Authorization': `${token}`
+            }
+          })
         const data = await response.json()
         setTasks(data)
         console.log("dashboard component loaded async")
