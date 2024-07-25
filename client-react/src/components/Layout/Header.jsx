@@ -1,9 +1,11 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import IMAGES from '../../assets/images/Image'
+import { AuthContext } from '../Authorisation/AuthProvider'
 
 export default function Header() {
     const navigate = useNavigate()
+    const {0: authenticated } = React.useContext(AuthContext)
     const logout = async () => {
         const token = localStorage.getItem('token')
 
@@ -36,7 +38,6 @@ export default function Header() {
         <nav className='d-flex justify-content-around'>
             <Link to="/">TaskWizard</Link>
             <Link to="/tasks">My tasks</Link>
-            {/* <Link to="/categories">My Categories</Link> */}
             <Link to="tasks">New Task</Link>
             <Link to="signup">Sign Up</Link>
             <Link to="login">Login</Link>
