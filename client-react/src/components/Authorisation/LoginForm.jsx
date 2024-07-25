@@ -18,7 +18,9 @@ export default function LoginForm() {
   
         if (response.ok) {
           localStorage.setItem('token', result.jwt) // Store the JWT token
+          console.log(result)
           navigate('/tasks'); // Redirect to tasks
+          
         } else {
           setError(result.error || 'Login failed')
         }

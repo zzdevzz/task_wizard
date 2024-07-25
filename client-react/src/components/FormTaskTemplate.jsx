@@ -32,16 +32,13 @@ export default function FormTask({method,data, deleteMethod}){
 
     },[data])
     
-    // Base form used  to both create and edit a task. We take the post / patch request as a prop as well as default values if they exist. 
 
+
+    // Base form used  to both create and edit a task. We take the post / patch request as a prop as well as default values if they exist. 
+    
     
     const {register, handleSubmit, reset, formState: { errors }} = useForm({defaultValues: data})
-    
-    // React.useEffect(() => {
-    //     if (method.name === "updateTask"){
-    //         setButtonText("Update")
-    //     }
-    // }, [])
+
 
     return (
         <>

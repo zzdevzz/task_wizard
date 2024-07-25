@@ -9,6 +9,7 @@ export default function TasksDashboardHost(){
 
     console.log("dashboard component mounted")
     const [tasks, setTasks ] = React.useState([])
+    console.log(localStorage.getItem('token'))
 
     const retrieveTasks = async () => {
         const response = await fetch(API_URL)
@@ -24,18 +25,18 @@ export default function TasksDashboardHost(){
         console.log("dashboard component loaded useEffect")
     },[])
     
-    return(
-        <TaskContext.Provider value={[tasks, retrieveTasks]}>
-            <div className="dashboard">
-                <div className="dashboard-list col-lg-4">
-                    <TaskList/>
-                </div>
-                <div className="dashboard-detail col-lg-8">
-                    <Outlet/>
-                </div>
-            </div>
-        </TaskContext.Provider>
-    )
+    // return(
+    //     <TaskContext.Provider value={[tasks, retrieveTasks]}>
+    //         <div className="dashboard">
+    //             <div className="dashboard-list col-lg-4">
+    //                 <TaskList/>
+    //             </div>
+    //             <div className="dashboard-detail col-lg-8">
+    //                 <Outlet/>
+    //             </div>
+    //         </div>
+    //     </TaskContext.Provider>
+    // )
 }
 
 export { TaskContext }
