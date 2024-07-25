@@ -14,11 +14,14 @@ export default function LoginForm() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ user: data }),
         })
+        
         const result = await response.json()
-  
+        // JWT is sent in headers (not body) under Authorization for protection.
+        const token = response.headers.get('Authorization')
+        
         if (response.ok) {
-          localStorage.setItem('token', result.jwt) // Store the JWT token
-          console.log(result)
+          localStorage.setItem('token', token) // Store the JWT token
+
           navigate('/tasks'); // Redirect to tasks
           
         } else {

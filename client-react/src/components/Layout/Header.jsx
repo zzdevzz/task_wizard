@@ -6,6 +6,7 @@ export default function Header() {
     const navigate = useNavigate()
     const logout = async () => {
         const token = localStorage.getItem('token')
+
         if (!token) return
 
         try {
@@ -13,13 +14,10 @@ export default function Header() {
               method: 'DELETE',
               headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `${token}`
               }
             })
 
-            console.log(token.toString())
-            console.log(response)
-      
             if (response.ok) {
               localStorage.removeItem('token'); // Remove the token from localStorage
               navigate('/login'); // Redirect to the login page
