@@ -5,8 +5,9 @@ import { AuthContext } from '../Authorisation/AuthProvider'
 
 export default function Header() {
     const navigate = useNavigate()
-    const {isAuthenticated, token, logout} = (React.useContext(AuthContext))
-    
+    const {isAuthenticated, token, logout, login} = (React.useContext(AuthContext))
+
+    console.log(localStorage.getItem('key'))
     console.log(token)
     const signOut = async () => {
 
@@ -20,7 +21,7 @@ export default function Header() {
                 'Authorization': `${token}`
               }
             })
-
+            console.log(response)
             if (response.ok) {
               logout()
               // localStorage.removeItem('token'); // Remove the token from localStorage
