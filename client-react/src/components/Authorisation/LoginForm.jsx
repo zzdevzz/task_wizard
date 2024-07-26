@@ -8,6 +8,7 @@ export default function LoginForm() {
     const { register, handleSubmit, formState: { errors } } = useForm()
     const [error, setError] = React.useState('')
     const navigate = useNavigate()
+    const {login} = React.useContext(AuthContext)
   
     const onSubmit = async (data) => {
       try {
@@ -20,10 +21,9 @@ export default function LoginForm() {
         const result = await response.json()
         // JWT is sent in headers (not body) under Authorization for protection.
         const token = response.headers.get('Authorization')
-        
         if (response.ok) {
           localStorage.setItem('token', token) // Store the JWT token
-
+          login(token)
           navigate('/tasks'); // Redirect to tasks
           
         } else {
@@ -32,7 +32,7 @@ export default function LoginForm() {
       } catch (err) {
         setError('An error occurred. Please try again.')
       }
-    };
+    }
   
     return (
       <form onSubmit={handleSubmit(onSubmit)}>

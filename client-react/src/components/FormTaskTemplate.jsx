@@ -8,14 +8,8 @@ export default function FormTask({method,data, deleteMethod}){
     
     
     const [buttonText, setButtonText] = React.useState("Create")
-    // console.log("rendered")
-    // console.log(buttonText)
 
-    // TO DO
-    // When we go from task:id to task the form will go to else block.
-    // If we give it props it re-mounts, but it does t his anyway too.
 
-    console.log("FormTemplate rendered")
     React.useEffect(() => {
         
         console.log("FormTemplate Mounted")

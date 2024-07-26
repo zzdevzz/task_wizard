@@ -1,4 +1,10 @@
-1. fix update issue and re-render.
-2. allow dates to be part of validation.
+1. Handle  JWT token expiry.
+2. UI and front end.
+3. Get date  working.
+
+Branding and UI
 
 
+
+Luxury
+4. Look at categories.

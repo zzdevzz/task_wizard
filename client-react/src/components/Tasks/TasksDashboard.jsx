@@ -3,19 +3,20 @@ import { Outlet } from "react-router-dom"
 import TaskList from "./TaskList"
 
 import { API_URL } from "../../constants"
+import { AuthContext } from "../Authorisation/AuthProvider"
 const TaskContext = React.createContext()
 
 export default function TasksDashboardHost(){
 
-    console.log("dashboard component mounted")
+    
+    const { token, logout } = React.useContext(AuthContext)
     const [tasks, setTasks ] = React.useState([])
-    const token = localStorage.getItem('token')
-
+    console.log(token)
     const retrieveTasks = async () => {
         const response = await fetch(`${API_URL}/tasks`, {
             method: 'GET',
             headers: {
-              'Authorization': `${token}`
+              'Authorization': token
             }
           })
         const data = await response.json()
