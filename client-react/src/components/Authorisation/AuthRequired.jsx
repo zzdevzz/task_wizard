@@ -1,9 +1,11 @@
 import React from "react"
 import { Navigate, Outlet } from "react-router-dom"
 
-export default function AuthRequired(){
-    const authenticated = !!localStorage.getItem('token')
+import { AuthContext } from "./AuthProvider"
 
-    return authenticated? <Outlet/> : <Navigate to="login"/>
+export default function AuthRequired(){
+    const {isAuthenticated } = React.useContext(AuthContext)
+    return isAuthenticated ? <Outlet/> : <Navigate to="login"/>
 
 }
+

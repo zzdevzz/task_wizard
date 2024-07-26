@@ -1,11 +1,14 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import IMAGES from '../../assets/images/Image'
+import { AuthContext } from '../Authorisation/AuthProvider'
 
 export default function Header() {
     const navigate = useNavigate()
-    const logout = async () => {
-        const token = localStorage.getItem('token')
+    const {isAuthenticated, token, logout} = (React.useContext(AuthContext))
+    
+    console.log(token)
+    const signOut = async () => {
 
         if (!token) return
 
@@ -19,7 +22,8 @@ export default function Header() {
             })
 
             if (response.ok) {
-              localStorage.removeItem('token'); // Remove the token from localStorage
+              logout()
+              // localStorage.removeItem('token'); // Remove the token from localStorage
               navigate('/login'); // Redirect to the login page
             } else {
               console.error('Logout failed');
@@ -36,12 +40,12 @@ export default function Header() {
         <nav className='d-flex justify-content-around'>
             <Link to="/">TaskWizard</Link>
             <Link to="/tasks">My tasks</Link>
-            {/* <Link to="/categories">My Categories</Link> */}
             <Link to="tasks">New Task</Link>
-            <Link to="signup">Sign Up</Link>
-            <Link to="login">Login</Link>
-            {/* <Link to="logout">Log Out</Link> */}
-            <button onClick={logout}>Logout</button>
+            {!isAuthenticated && <Link to="signup">Sign Up</Link>}
+            { isAuthenticated ?
+              <button onClick={signOut}>Logout</button> : 
+              <Link to="login">Login</Link>
+            }
         </nav>
         </>
     )
