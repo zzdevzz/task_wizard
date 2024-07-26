@@ -5,19 +5,17 @@ import { API_URL } from "../constants"
 
 
 import { TaskContext } from "./Tasks/TasksDashboard"
+import { AuthContext } from "./Authorisation/AuthProvider"
 
 
 export default function FormTask({request = "post"}){
   
-  React.useEffect(() => {
-    console.log("FormTask Mounted")
-    return () => console.log("unmounted")
-  }, [])
+
   const navigate = useNavigate()
   const location = useLocation()
 
   
-  console.log("FormTask Render")
+  // console.log("FormTask Render")
 
   // State is being passed if task is existing. If new task and state isn't passed we need to pass empty objects.
 
@@ -33,6 +31,7 @@ export default function FormTask({request = "post"}){
 
   // Destructing and renaming object of multiple values
   const {1: retrieveTasks} = React.useContext(TaskContext)
+  const { token } = React.useContext(AuthContext)
 
   const params = useParams()
   const taskURL = API_URL + "/" + params.id
@@ -43,10 +42,11 @@ export default function FormTask({request = "post"}){
   const createTask = async (data) => {
 
     try {
-      const response = await fetch('http://localhost:3000/api/v1/users/1/tasks', {
+      const response = await fetch('http://localhost:3000/api/v1/tasks', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': token
         },
         body: JSON.stringify(data),
       })
@@ -66,11 +66,12 @@ export default function FormTask({request = "post"}){
   }
 
   const updateTask = async (data) => {
-    const url = `http://localhost:3000/api/v1/users/${userId}/tasks/${taskId}`
+    const url = `http://localhost:3000/api/v1/tasks/${taskId}`
     try {
         const response = await fetch(url, {method: 'PATCH', 
             headers: {
             'Content-Type': 'application/json',
+            'Authorization' : token
           },
           body: JSON.stringify(data)
         })
@@ -87,9 +88,11 @@ export default function FormTask({request = "post"}){
 
   // Delete task from database.
   const deleteTask = async () => {
-      const url = `http://localhost:3000/api/v1/users/${userId}/tasks/${taskId}`
+      const url = `http://localhost:3000/api/v1/tasks/${taskId}`
       try {
-          const response = await fetch(url, {method: 'DELETE'})
+          const response = await fetch(url, {method: 'DELETE', 
+            headers: {'Authorization': token}
+          })
           if (response.ok) {
               setRedirect(true)
               retrieveTasks()

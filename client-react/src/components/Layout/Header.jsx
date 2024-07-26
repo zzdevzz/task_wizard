@@ -7,8 +7,6 @@ export default function Header() {
     const navigate = useNavigate()
     const {isAuthenticated, token, logout, login} = (React.useContext(AuthContext))
 
-    console.log(localStorage.getItem('key'))
-    console.log(token)
     const signOut = async () => {
 
         if (!token) return

@@ -32,7 +32,7 @@ export default function LoginForm() {
       } catch (err) {
         setError('An error occurred. Please try again.')
       }
-    };
+    }
   
     return (
       <form onSubmit={handleSubmit(onSubmit)}>

@@ -3,11 +3,12 @@ import { Outlet } from "react-router-dom"
 import TaskList from "./TaskList"
 
 import { API_URL } from "../../constants"
+import { AuthContext } from "../Authorisation/AuthProvider"
 const TaskContext = React.createContext()
 
 export default function TasksDashboardHost(){
-
-    console.log("dashboard component mounted")
+    
+    const AuthContext = React.useContext(AuthContext)
     const [tasks, setTasks ] = React.useState([])
     const token = localStorage.getItem('token')
 
