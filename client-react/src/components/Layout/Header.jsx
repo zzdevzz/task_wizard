@@ -36,7 +36,7 @@ export default function Header() {
     return (
         <>
         <img src={IMAGES.wizard} style={{width: 200}}/>
-        <nav className='d-flex justify-content-around'>
+        <nav className='d-flex justify-content-around align-items-center my-5 bg-light'>
             <Link to="/">TaskWizard</Link>
             <Link to="/tasks">My tasks</Link>
             <Link to="tasks">New Task</Link>
