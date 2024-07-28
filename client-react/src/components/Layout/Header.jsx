@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import IMAGES from '../../assets/images/Image'
 import { AuthContext } from '../Authorisation/AuthProvider'
 
@@ -32,18 +32,18 @@ export default function Header() {
           }
         }
 
-    
+    // Active styling in App.css for Navbar active class.
     return (
         <>
-        <img src={IMAGES.wizard} style={{width: 200}}/>
-        <nav className='d-flex justify-content-around align-items-center my-5 bg-light'>
-            <Link to="/">TaskWizard</Link>
-            <Link to="/tasks">My tasks</Link>
-            <Link to="tasks">New Task</Link>
-            {!isAuthenticated && <Link to="signup">Sign Up</Link>}
+        <img src={IMAGES.wizard} style={{width: 100}}/>
+        <nav className='d-flex justify-content-around align-items-center m-3 bg-light navbar'>
+            <NavLink to="/">TaskWizard</NavLink>
+            <NavLink to="/tasks">My tasks</NavLink>
+            <NavLink to="tasks">New Task</NavLink>
+            {!isAuthenticated && <NavLink to="signup">Sign Up</NavLink>}
             { isAuthenticated ?
               <button onClick={signOut}>Logout</button> : 
-              <Link to="login">Login</Link>
+              <NavLink to="login">Login</NavLink>
             }
         </nav>
         </>
