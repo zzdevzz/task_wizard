@@ -32,11 +32,11 @@ export default function Header() {
           }
         }
 
-    
+    // Active styling in App.css for Navbar active class.
     return (
         <>
         <img src={IMAGES.wizard} style={{width: 100}}/>
-        <nav className='d-flex justify-content-around align-items-center my-5 bg-light'>
+        <nav className='d-flex justify-content-around align-items-center my-5 bg-light navbar'>
             <NavLink to="/">TaskWizard</NavLink>
             <NavLink to="/tasks">My tasks</NavLink>
             <NavLink to="tasks">New Task</NavLink>

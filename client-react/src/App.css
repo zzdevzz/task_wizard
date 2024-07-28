@@ -40,3 +40,9 @@
 .read-the-docs {
   color: #888;
 }
+
+
+.navbar a.active {
+  color: red;
+  font-weight: bold;
+}
