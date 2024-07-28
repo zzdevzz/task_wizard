@@ -20,7 +20,7 @@ export default function TaskList() {
 
     return (
         <div className="dashboard">
-            <div className="dashboard-list col-lg-4">
+            <div className="dashboard-list col">
                 <ul className="list-group list-group-vertical">
                     {tasks.map((task) => (
                         <div key={task.id}
