@@ -9,10 +9,10 @@ export default function Footer() {
                     <Link to="/">TaskWizard</Link>  
                 </li>
                 <li className='list-group-item'>
-                    <Link to="/">Github</Link>  
+                    <Link to="https://github.com/zzdevzz/task_wizard">Github</Link>  
                 </li>
                 <li className='list-group-item'>
-                    <Link to="/">Linkedin</Link>  
+                    <Link to="https://linkedin.com/in/devhalai">Linkedin</Link>  
                 </li>
             </ul>
         </footer>
