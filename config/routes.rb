@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'refresh_tokens/create'
   get 'current_user', to: 'current_user#show'
 
   # Here we are setting up our own custom controllers for devise for custom JSON response when something is sent.
@@ -17,6 +18,10 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
+
+  # Refresh token path for JWT.
+  post 'refresh_token', to: 'refresh_tokens#create'
+
   # Defines the root path route ("/")
   # root "posts#index"
   namespace :api do
@@ -25,7 +30,6 @@ Rails.application.routes.draw do
         resources :tasks
         resources :categories 
       end
-    # end
   end
 end
 

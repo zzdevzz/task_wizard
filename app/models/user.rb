@@ -8,5 +8,12 @@ class User < ApplicationRecord
   has_many :tasks, dependent: :destroy
   has_many :categories, dependent: :destroy
 
+  has_secure_token :refresh_token
+
+  def regenerate_refresh_token
+    self.refresh_token = SecureRandom.hex(32)
+    save!
+  end
+
   validates :username, presence: true
 end
