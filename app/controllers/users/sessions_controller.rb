@@ -33,6 +33,7 @@ class Users::SessionsController < Devise::SessionsController
   # If there's an error nothing here is reponsible for that.
 
   def respond_with(resource, _opts = {})
+  resource.regenerate_refresh_token
     render json: {
       status: {code: 200, message: 'Logged in sucessfully.'},
       data: {
@@ -47,6 +48,7 @@ class Users::SessionsController < Devise::SessionsController
 
   def respond_to_on_destroy
     if current_user
+      current_user.update(refresh_token: nil, refresh_token_expires_at: nil)
       render json: {
         status: 200,
         message: "logged out successfully"

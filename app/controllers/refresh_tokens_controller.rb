@@ -2,8 +2,10 @@ class RefreshTokensController < ApplicationController
   before_action: authenticate_refresh_token!
 
   def create
+    refresh_token = request.headers['Authorization'].split(' ').last
     user = User.find_by(refresh_token: request.headers['Authorization'].split(' ').last)
-    if user
+
+    if user && user.refresh_token_valid?
       user.regenerate_refresh_token
       access_token = Warden::JWTAuth::UserEncoder.new.call(user, :user, nil).first
       render json: {

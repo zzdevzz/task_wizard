@@ -12,7 +12,13 @@ class User < ApplicationRecord
 
   def regenerate_refresh_token
     self.refresh_token = SecureRandom.hex(32)
+    self.refresh_token_expires_at = 1.weeks.from_now # Expiration time for refresh token.
     save!
+  end
+
+  # Here we see if our token is valid based in our expiration limit defined above.
+  def refresh_token_valid?
+    refresh_token_expires_at > Time.current
   end
 
   validates :username, presence: true
