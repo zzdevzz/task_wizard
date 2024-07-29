@@ -6,14 +6,17 @@ export default function AuthProvider({children}){
     const [ isAuthenticated, setIsAuthenticated ] = React.useState(!!localStorage.getItem('token'))
     const [token, setToken ] = React.useState(localStorage.getItem('token'))
 
-    const login = (token) => {
-        localStorage.setItem('token', token)
-        setToken(token)
+    const login = (accessToken, refreshToken) => {
+        localStorage.setItem('accessToken', accessToken)
+        localStorage.setItem('refreshToken', refreshToken)
+        setToken(accessToken)
         setIsAuthenticated(!!localStorage.getItem('token'))    }
 
     const logout = () => {
-        localStorage.removeItem('token')
-        setIsAuthenticated(null)
+        localStorage.removeItem('accessToken')
+        localStorage.removeItem('refreshToken')
+        setToken(null)
+        setIsAuthenticated(false)
     }
 
     return (

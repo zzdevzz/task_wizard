@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 
 import { AuthContext } from "./AuthProvider"
+import api from "../../api"
 
 export default function LoginForm() {
     const { register, handleSubmit, formState: { errors } } = useForm()
@@ -12,22 +13,18 @@ export default function LoginForm() {
   
     const onSubmit = async (data) => {
       try {
-        const response = await fetch('http://localhost:3000/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ user: data }),
-        })
+        const response = await api.post('../../login', { user: data })
         
-        const result = await response.json()
         // JWT is sent in headers (not body) under Authorization for protection.
-        const token = response.headers.get('Authorization')
+        const {accessToken, refreshToken} = response.data
+        console.log(accessToken, refreshToken)
         if (response.ok) {
-          localStorage.setItem('token', token) // Store the JWT token
-          login(token)
-          navigate('/tasks'); // Redirect to tasks
+          // localStorage.setItem('token', token) // Store the JWT token
+          // login(accessToken, refreshToken)
+          // navigate('/tasks'); // Redirect to tasks
           
         } else {
-          setError(result.error || 'Login failed')
+          setError('Login failed')
         }
       } catch (err) {
         setError('An error occurred. Please try again.')
