@@ -13,7 +13,7 @@ export default function AuthProvider({children}){
 
     const logout = () => {
         localStorage.removeItem('token')
-        setIsAuthenticated(null)
+        setIsAuthenticated(false)
     }
 
     return (

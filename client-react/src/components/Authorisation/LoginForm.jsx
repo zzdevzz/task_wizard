@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 
 import { AuthContext } from "./AuthProvider"
+import api from "../../utils/api"
 
 export default function LoginForm() {
     const { register, handleSubmit, formState: { errors } } = useForm()
@@ -12,13 +13,15 @@ export default function LoginForm() {
   
     const onSubmit = async (data) => {
       try {
-        const response = await fetch('http://localhost:3000/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ user: data }),
-        })
-        
-        const result = await response.json()
+        // const response = await fetch('http://localhost:3000/login', {
+        //   method: 'POST',
+        //   headers: { 'Content-Type': 'application/json' },
+        //   body: JSON.stringify({ user: data }),
+        // })
+        const response = await api.post(`../../login`, {user: data})
+        console.log(response)
+         
+        // const result = await response.json()
         // JWT is sent in headers (not body) under Authorization for protection.
         const token = response.headers.get('Authorization')
         if (response.ok) {
