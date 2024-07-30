@@ -6,7 +6,7 @@ import { AuthContext } from '../Authorisation/AuthProvider'
 export default function Header() {
     const navigate = useNavigate()
     const {isAuthenticated, token, logout, login} = (React.useContext(AuthContext))
-
+    
     const signOut = async () => {
 
         if (!token) return
@@ -34,7 +34,7 @@ export default function Header() {
 
     // Active styling in App.css for Navbar active class.
     return (
-        <>
+      <>
         <img src={IMAGES.wizard} style={{width: 100}}/>
         <nav className='d-flex justify-content-around align-items-center m-3 bg-light navbar'>
             <NavLink to="/">TaskWizard</NavLink>

@@ -1,10 +1,12 @@
-1. Handle  JWT token expiry.
-2. UI and front end.
-3. Get date  working.
+1. Handle  JWT token expiry - fix fetch to AXIOS (on taskform).
+2. Get the SCSS working.
+3. UI and front end.
+4. Get date  working.
 
 Branding and UI
 
 
 
 Luxury
-4. Look at categories.
+5. Look at categories.
+6. Look at search params

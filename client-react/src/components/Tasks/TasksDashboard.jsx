@@ -11,7 +11,6 @@ export default function TasksDashboardHost(){
     
     const { token, logout } = React.useContext(AuthContext)
     const [tasks, setTasks ] = React.useState([])
-    console.log(token)
     const retrieveTasks = async () => {
         const response = await fetch(`${API_URL}/tasks`, {
             method: 'GET',

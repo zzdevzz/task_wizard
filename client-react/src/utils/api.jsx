@@ -15,10 +15,11 @@ api.interceptors.response.use(
       const { logout } = React.useContext(AuthContext);
       const navigate = useNavigate();
       
+      console.log(error.response)
       // Check if the error status is 401 (Unauthorized)
       if (error.response && error.response.status === 401) {
         // Log the user out
-        logout();
+        logout()
         // Redirect to the login page
         navigate('/login');
       }
