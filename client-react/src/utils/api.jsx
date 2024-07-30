@@ -13,7 +13,6 @@ const setupInterceptors = (logout, navigate, token) => {
   api.interceptors.request.eject()
   api.interceptors.response.eject()
 
-
   api.interceptors.request.use(
     (config) => {
       if (token) {
@@ -32,11 +31,9 @@ const setupInterceptors = (logout, navigate, token) => {
       (error) => {
         // Check if the error status is 401 (Unauthorized)
         if (error.response && error.response.status === 401) {
-          console.log("401 axios")
           console.log("token on 401 axios: ", token)
           // Log the user out
           logout()
-          console.log("loguout run")
           // Redirect to the login page
           navigate('/login');
         }
@@ -46,5 +43,11 @@ const setupInterceptors = (logout, navigate, token) => {
     )
 }
 
+const clearInterceptors = () => {
+  console.log("Clearup ran")
+  api.interceptors.request.eject()
+  api.interceptors.response.eject()
+}
+
 export default api
-export { setupInterceptors }
+export { setupInterceptors, clearInterceptors }
