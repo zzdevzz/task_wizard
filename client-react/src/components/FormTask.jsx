@@ -2,7 +2,7 @@ import React from "react"
 import FormTaskTemplate from "./FormTaskTemplate"
 import { useParams, useNavigate, useLocation, Navigate, redirect } from "react-router-dom"
 import { API_URL } from "../constants"
-
+import api from "../utils/api"
 
 import { TaskContext } from "./Tasks/TasksDashboard"
 import { AuthContext } from "./Authorisation/AuthProvider"
@@ -42,14 +42,16 @@ export default function FormTask({request = "post"}){
   const createTask = async (data) => {
 
     try {
-      const response = await fetch('http://localhost:3000/api/v1/tasks', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': token
-        },
-        body: JSON.stringify(data),
-      })
+      // const response = await fetch('http://localhost:3000/api/v1/tasks', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //     'Authorization': token
+      //   },
+      //   body: JSON.stringify(data),
+      // })
+
+      const response = api.post(`${API_URL}/tasks`, {task: data})
       
       //   Even though we have a try catch block. Not all incomplete requests throw appendErrors. They still fulfil thier promise with an error message so we have to check if its okay and chuck an error.
       

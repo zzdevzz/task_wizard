@@ -11,19 +11,13 @@ export default function FormTask({method,data, deleteMethod}){
 
 
     React.useEffect(() => {
-        
-        console.log("FormTemplate Mounted")
+
         if (method.name === "updateTask"){
             setButtonText("Update")
             reset(data)
-            console.log("formtemplate reset")
         } else{
             reset(data)
         }
-        
-        return () => console.log("FormTemplate unmounted")
-
-
     },[data])
     
 

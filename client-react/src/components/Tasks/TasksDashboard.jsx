@@ -7,8 +7,6 @@ import { AuthContext } from "../Authorisation/AuthProvider"
 const TaskContext = React.createContext()
 
 export default function TasksDashboardHost(){
-
-    
     const { token, logout } = React.useContext(AuthContext)
     const [tasks, setTasks ] = React.useState([])
     const retrieveTasks = async () => {
@@ -20,14 +18,11 @@ export default function TasksDashboardHost(){
           })
         const data = await response.json()
         setTasks(data)
-        console.log("dashboard component loaded async")
-        // console.log(data)
     }
 
     
     React.useEffect(()=>{
         retrieveTasks()
-        console.log("dashboard component loaded useEffect")
     },[])
     
     return(
