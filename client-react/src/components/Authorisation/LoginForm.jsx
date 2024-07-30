@@ -12,11 +12,13 @@ export default function LoginForm() {
     const {login} = React.useContext(AuthContext)
   
     const onSubmit = async (data) => {
+      console.log("login form submitted attempt")
       try {
         const response = await api.post(`../../login`, {user: data})
-
+        console.log("response benig sent")
         // JWT is sent in headers (not body) under Authorization for protection.
         const token = response.headers['authorization']
+        console.log("should be new token: ", token)
         if (token) {
           localStorage.setItem('token', token) // Store the JWT token
           login(token)

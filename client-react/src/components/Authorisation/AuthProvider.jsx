@@ -11,19 +11,23 @@ export default function AuthProvider({children}){
     const navigate = useNavigate()
 
     const login = (token) => {
+        console.log("You should now be logged in")
         localStorage.setItem('token', token)
         setToken(token)
-        setIsAuthenticated(!!localStorage.getItem('token'))    }
+        setIsAuthenticated(!!localStorage.getItem('token'))
+        console.log("state updated this is your login token from state: ", token)   
+    }
 
     const logout = () => {
         console.log("Auth provider logout function ran")
         localStorage.removeItem('token')
+        setToken(null)
         setIsAuthenticated(false)
     }
 
     React.useEffect(() => {
-        setupInterceptors(logout, navigate)
-    }, [])
+        setupInterceptors(logout, navigate, token)
+    }, [logout, token])
 
     return (
         <AuthContext.Provider value={{isAuthenticated, setIsAuthenticated, token, login, logout}}>

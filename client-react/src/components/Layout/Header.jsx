@@ -8,7 +8,7 @@ import { API_URL } from '../../constants'
 
 export default function Header() {
     const navigate = useNavigate()
-    const {isAuthenticated, token, logout} = (React.useContext(AuthContext))
+    const {isAuthenticated, token, logout} = React.useContext(AuthContext)
 
     
     const signOut = async () => {
@@ -33,6 +33,8 @@ export default function Header() {
             // }
             // console.log(`${API_URL}` + `/../`)
             const response = await api.delete(`http://localhost:3000/logout`)
+            logout()
+            navigate("..")
           } catch (error) {
             console.error('An error occurred during logout:', error)
           }

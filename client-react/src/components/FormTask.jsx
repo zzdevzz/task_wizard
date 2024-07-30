@@ -42,46 +42,19 @@ export default function FormTask({request = "post"}){
   const createTask = async (data) => {
 
     try {
-      // const response = await fetch('http://localhost:3000/api/v1/tasks', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //     'Authorization': token
-      //   },
-      //   body: JSON.stringify(data),
-      // })
-
-      const response = api.post(`${API_URL}/tasks`, {task: data})
-      
-      //   Even though we have a try catch block. Not all incomplete requests throw appendErrors. They still fulfil thier promise with an error message so we have to check if its okay and chuck an error.
-      
-      if (!response.ok) {
-        throw new Error('Network response was not ok')
-      }
-      
-      const result = await response.json();
+      const response = await api.post(`${API_URL}/tasks`, {task: data})
       retrieveTasks()
-      console.log('Task created successfully:', result);
+      console.log('Task created successfully:', response);
     } catch (error) {
       console.error('Error creating task:', error);
     }
   }
 
   const updateTask = async (data) => {
-    const url = `http://localhost:3000/api/v1/tasks/${taskId}`
+    const url = `${API_URL}/tasks/${taskId}`
     try {
-        const response = await fetch(url, {method: 'PATCH', 
-            headers: {
-            'Content-Type': 'application/json',
-            'Authorization' : token
-          },
-          body: JSON.stringify(data)
-        })
-        
-        if (response.ok) {
-            setRedirect(true)
-            retrieveTasks()
-        }
+        const response = await api.patch(url, {task: data})
+        retrieveTasks()
     } catch (error) {
         console.error("Error:  ",  error) 
     }
@@ -92,14 +65,10 @@ export default function FormTask({request = "post"}){
   const deleteTask = async () => {
       const url = `http://localhost:3000/api/v1/tasks/${taskId}`
       try {
-          const response = await fetch(url, {method: 'DELETE', 
-            headers: {'Authorization': token}
-          })
-          if (response.ok) {
-              setRedirect(true)
-              retrieveTasks()
-              navigate("..")
-          }
+          const response = await api.delete(url)
+          setRedirect(true)
+          retrieveTasks()
+          navigate("..")
       } catch (error) {
           console.error("Error:  ",  error) 
       }
