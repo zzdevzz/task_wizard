@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 
 import { AuthContext } from "./AuthProvider"
+import api from "../../utils/api"
+import { API_URL } from "../../constants"
 
 export default function LoginForm() {
     const { register, handleSubmit, formState: { errors } } = useForm()
@@ -11,23 +13,20 @@ export default function LoginForm() {
     const {login} = React.useContext(AuthContext)
   
     const onSubmit = async (data) => {
+      console.log("login form function initated")
       try {
-        const response = await fetch('http://localhost:3000/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ user: data }),
-        })
         
-        const result = await response.json()
+        // axios can't use API axios instance since causing too much errors with react and JWT.
         // JWT is sent in headers (not body) under Authorization for protection.
-        const token = response.headers.get('Authorization')
-        if (response.ok) {
-          localStorage.setItem('token', token) // Store the JWT token
+
+        const response = await api.post(`http://localhost:3000/login`, {user: data})
+        const token = response.headers['authorization']
+        console.log("Dev: Token from Login: ", token)
+        if (token){
           login(token)
-          navigate('/tasks'); // Redirect to tasks
-          
+          navigate('/tasks')
         } else {
-          setError(result.error || 'Login failed')
+          setError('Login failed')
         }
       } catch (err) {
         setError('An error occurred. Please try again.')

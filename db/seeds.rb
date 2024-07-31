@@ -10,8 +10,8 @@
 #
 require "date"
 
-user1 = User.create(email:"d3@test.com", password: "123456")
-user2 = User.create(email: "g1@test.com", password: "123456")
+user1 = User.create(email:"d3@test.com", password: "123456", username: "d3")
+user2 = User.create(email: "g1@test.com", password: "123456", username: "g1")
 category_finance = Category.create(name: "finance", user: user1)
 category_housework = Category.create(name: "housework", user: user1)
 

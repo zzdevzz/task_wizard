@@ -4,31 +4,21 @@ import TaskList from "./TaskList"
 
 import { API_URL } from "../../constants"
 import { AuthContext } from "../Authorisation/AuthProvider"
+import api from "../../utils/api"
+
 const TaskContext = React.createContext()
 
 export default function TasksDashboardHost(){
-
-    
     const { token, logout } = React.useContext(AuthContext)
     const [tasks, setTasks ] = React.useState([])
-    console.log(token)
     const retrieveTasks = async () => {
-        const response = await fetch(`${API_URL}/tasks`, {
-            method: 'GET',
-            headers: {
-              'Authorization': token
-            }
-          })
-        const data = await response.json()
-        setTasks(data)
-        console.log("dashboard component loaded async")
-        // console.log(data)
+        const response = await api.get(`${API_URL}/tasks`, {headers: {Authorization: token}})
+        setTasks(response.data)
     }
 
     
     React.useEffect(()=>{
         retrieveTasks()
-        console.log("dashboard component loaded useEffect")
     },[])
     
     return(

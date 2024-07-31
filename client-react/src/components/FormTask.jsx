@@ -2,7 +2,7 @@ import React from "react"
 import FormTaskTemplate from "./FormTaskTemplate"
 import { useParams, useNavigate, useLocation, Navigate, redirect } from "react-router-dom"
 import { API_URL } from "../constants"
-
+import api from "../utils/api"
 
 import { TaskContext } from "./Tasks/TasksDashboard"
 import { AuthContext } from "./Authorisation/AuthProvider"
@@ -42,44 +42,19 @@ export default function FormTask({request = "post"}){
   const createTask = async (data) => {
 
     try {
-      const response = await fetch('http://localhost:3000/api/v1/tasks', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': token
-        },
-        body: JSON.stringify(data),
-      })
-      
-      //   Even though we have a try catch block. Not all incomplete requests throw appendErrors. They still fulfil thier promise with an error message so we have to check if its okay and chuck an error.
-      
-      if (!response.ok) {
-        throw new Error('Network response was not ok')
-      }
-      
-      const result = await response.json();
+      const response = await api.post(`${API_URL}/tasks`, {task: data}, {headers: {'Authorization': token}})
       retrieveTasks()
-      console.log('Task created successfully:', result);
+      console.log('Task created successfully:', response);
     } catch (error) {
       console.error('Error creating task:', error);
     }
   }
 
   const updateTask = async (data) => {
-    const url = `http://localhost:3000/api/v1/tasks/${taskId}`
+    const url = `${API_URL}/tasks/${taskId}`
     try {
-        const response = await fetch(url, {method: 'PATCH', 
-            headers: {
-            'Content-Type': 'application/json',
-            'Authorization' : token
-          },
-          body: JSON.stringify(data)
-        })
-        
-        if (response.ok) {
-            setRedirect(true)
-            retrieveTasks()
-        }
+        const response = await api.patch(url, {task: data}, {headers: {'Authorization': token}})
+        retrieveTasks()
     } catch (error) {
         console.error("Error:  ",  error) 
     }
@@ -90,14 +65,10 @@ export default function FormTask({request = "post"}){
   const deleteTask = async () => {
       const url = `http://localhost:3000/api/v1/tasks/${taskId}`
       try {
-          const response = await fetch(url, {method: 'DELETE', 
-            headers: {'Authorization': token}
-          })
-          if (response.ok) {
-              setRedirect(true)
-              retrieveTasks()
-              navigate("..")
-          }
+          const response = await api.delete(url, {headers: {'Authorization': token}})
+          setRedirect(true)
+          retrieveTasks()
+          navigate("..")
       } catch (error) {
           console.error("Error:  ",  error) 
       }
