@@ -42,7 +42,7 @@ export default function FormTask({request = "post"}){
   const createTask = async (data) => {
 
     try {
-      const response = await api.post(`${API_URL}/tasks`, {task: data})
+      const response = await api.post(`${API_URL}/tasks`, {task: data}, {headers: {'Authorization': token}})
       retrieveTasks()
       console.log('Task created successfully:', response);
     } catch (error) {
@@ -53,7 +53,7 @@ export default function FormTask({request = "post"}){
   const updateTask = async (data) => {
     const url = `${API_URL}/tasks/${taskId}`
     try {
-        const response = await api.patch(url, {task: data})
+        const response = await api.patch(url, {task: data}, {headers: {'Authorization': token}})
         retrieveTasks()
     } catch (error) {
         console.error("Error:  ",  error) 
@@ -65,7 +65,7 @@ export default function FormTask({request = "post"}){
   const deleteTask = async () => {
       const url = `http://localhost:3000/api/v1/tasks/${taskId}`
       try {
-          const response = await api.delete(url)
+          const response = await api.delete(url, {headers: {'Authorization': token}})
           setRedirect(true)
           retrieveTasks()
           navigate("..")

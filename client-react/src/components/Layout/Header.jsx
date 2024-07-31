@@ -16,23 +16,7 @@ export default function Header() {
         if (!token) return
 
         try {
-            // const response = await fetch('http://localhost:3000/logout', {
-            //   method: 'DELETE',
-            //   headers: {
-            //     'Content-Type': 'application/json',
-            //     'Authorization': `${token}`
-            //   }
-            // })
-            // console.log(response)
-            // if (response.ok) {
-            //   logout()
-            //   // localStorage.removeItem('token'); // Remove the token from localStorage
-            //   navigate('/login'); // Redirect to the login page
-            // } else {
-            //   console.error('Logout failed');
-            // }
-            // console.log(`${API_URL}` + `/../`)
-            const response = await api.delete(`http://localhost:3000/logout`)
+            const response = await api.delete(`http://localhost:3000/logout`, {headers: {'Authorization': token}})
             logout()
             navigate("..")
           } catch (error) {

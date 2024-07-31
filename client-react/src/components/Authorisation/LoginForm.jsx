@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 
 import { AuthContext } from "./AuthProvider"
-// import api from "../../utils/api"
-import axios from "axios"
+import api from "../../utils/api"
 import { API_URL } from "../../constants"
 
 export default function LoginForm() {
@@ -20,7 +19,7 @@ export default function LoginForm() {
         // axios can't use API axios instance since causing too much errors with react and JWT.
         // JWT is sent in headers (not body) under Authorization for protection.
 
-        const response = await axios.post(`http://localhost:3000/login`, {user: data})
+        const response = await api.post(`http://localhost:3000/login`, {user: data})
         const token = response.headers['authorization']
         console.log("Dev: Token from Login: ", token)
         if (token){

@@ -8,21 +8,11 @@ const api = axios.create({
 // We can't use React Hooks (usecontext) in a non-react component, so no way to pass logout function.
 // Instead we call this function to set up axios in a file where all the variables live. Called in Auth Provider component.
 
+// !! Its possible to set headers on every  request with interceptors. But this gave issues with JWT expiring. Interceptors were using old values, with and without react!! 
+
 const setupInterceptors = (logout, navigate) => {
 
-  const token = localStorage.getItem('token')
-  // console.log(token)
-  api.interceptors.request.use(
-    (config) => {
-      if (token) {
-        config.headers['Authorization'] = token
-      }
-      console.log("token in use: ", token)
-      return config
-    }, (error) => {
-      return Promise.reject(error)
-    }
-  )
+  const token = localStorage.token
 
   // This checks every response we get back and ensures its not an error.
   api.interceptors.response.use(
