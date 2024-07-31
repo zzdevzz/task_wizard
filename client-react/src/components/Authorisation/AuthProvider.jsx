@@ -15,7 +15,6 @@ export default function AuthProvider({children}){
         localStorage.setItem('token', token)
         setToken(token)
         setIsAuthenticated(!!localStorage.getItem('token'))
-        console.log("state updated this is your login token from state: ", token)   
         setupInterceptors(logout, navigate, token)
     }   
 

@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 
 import { AuthContext } from "./AuthProvider"
-import api from "../../utils/api"
+// import api from "../../utils/api"
+import axios from "axios"
+import { API_URL } from "../../constants"
 
 export default function LoginForm() {
     const { register, handleSubmit, formState: { errors } } = useForm()
@@ -14,15 +16,16 @@ export default function LoginForm() {
     const onSubmit = async (data) => {
       console.log("login form function initated")
       try {
-        const response = await api.post(`../../login`, {user: data})
+        
+        // axios can't use API axios instance since causing too much errors with react and JWT.
         // JWT is sent in headers (not body) under Authorization for protection.
+
+        const response = await axios.post(`http://localhost:3000/login`, {user: data})
         const token = response.headers['authorization']
-        console.log("should be new token: ", token)
-        if (token) {
-          localStorage.setItem('token', token) // Store the JWT token
+        console.log("Dev: Token from Login: ", token)
+        if (token){
           login(token)
-          navigate('/tasks') // Redirect to tasks
-          
+          navigate('/tasks')
         } else {
           setError('Login failed')
         }
