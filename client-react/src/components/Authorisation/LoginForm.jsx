@@ -21,7 +21,6 @@ export default function LoginForm() {
 
         const response = await api.post(`http://localhost:3000/login`, {user: data})
         const token = response.headers['authorization']
-        console.log("Dev: Token from Login: ", token)
         if (token){
           login(token)
           navigate('/tasks')

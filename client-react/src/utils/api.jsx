@@ -20,7 +20,7 @@ const setupInterceptors = (logout, navigate) => {
       (error) => {
         // Check if the error status is 401 (Unauthorized)
         if (error.response && error.response.status === 401) {
-          console.log("token on 401 axios: ", token)
+          // console.log("token on 401 axios: ", token)
           // Log the user out
           logout()
           // Redirect to the login page

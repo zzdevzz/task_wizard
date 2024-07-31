@@ -1,9 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import TaskInfo from "../TaskInfo"
 import TaskPreview from "./TaskPreview"
-import FormTask from "../FormTask"
-import { API_URL } from "../../constants"
 
 import { TaskContext } from "./TasksDashboard"
 
@@ -19,9 +16,9 @@ export default function TaskList() {
     const {0: tasks} = React.useContext(TaskContext)
 
     return (
-        <div className="dashboard">
-            <div className="dashboard-list col">
-                <ul className="list-group list-group-vertical">
+        <div className="">
+            <div className="">
+                <ul className="dashboard-list list-group list-group-vertical">
                     {tasks.map((task) => (
                         <div key={task.id}
                         className="post-container">

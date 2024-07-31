@@ -8,7 +8,7 @@ import './stylesheets/application.scss'
 import Layout from "./components/Layout/Layout"
 import Home from "./pages/Home"
 import TasksDashboard from './components/Tasks/TasksDashboard.jsx'
-import FormTask from './components/FormTask'
+import FormTask from './components/Tasks/forms/FormTask'
 
 // Authentication Components
 import AuthProvider from './components/Authorisation/AuthProvider.jsx'
