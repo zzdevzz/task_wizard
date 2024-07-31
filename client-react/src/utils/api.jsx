@@ -8,11 +8,10 @@ const api = axios.create({
 // We can't use React Hooks (usecontext) in a non-react component, so no way to pass logout function.
 // Instead we call this function to set up axios in a file where all the variables live. Called in Auth Provider component.
 
-const setupInterceptors = (logout, navigate, token) => {
+const setupInterceptors = (logout, navigate) => {
 
-  api.interceptors.request.eject()
-  api.interceptors.response.eject()
-
+  const token = localStorage.getItem('token')
+  // console.log(token)
   api.interceptors.request.use(
     (config) => {
       if (token) {

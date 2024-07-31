@@ -26,8 +26,8 @@ export default function AuthProvider({children}){
     }
 
     React.useEffect(() => {
-        setupInterceptors(logout, navigate, token)
-    }, [navigate, token])
+        setupInterceptors(logout, navigate)
+    }, [])
 
     return (
         <AuthContext.Provider value={{isAuthenticated, setIsAuthenticated, token, login, logout}}>
