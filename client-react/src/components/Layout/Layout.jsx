@@ -13,7 +13,7 @@ export default function Layout(){
         <div className="row">
             <div className="col px-0">
                 <Header/>
-                    <div className="container">
+                    <div className="container main-content">
                         <Outlet/>
                     </div>
                 <Footer/>

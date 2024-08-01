@@ -11,10 +11,27 @@
 @import "components/index";
 @import "pages/index";
 
-body{
-    max-height: 100%;
-}
 
 a{
     text-decoration: none;
+}
+
+// Base syling
+
+// * {
+//     margin: 0;
+//     padding: 0;
+//     box-sizing: border-box;
+// }
+
+html, body, #root {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.main-content{
+    height: 100%;
+    overflow: auto;
+    color: red;
 }

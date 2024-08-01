@@ -32,7 +32,7 @@ export default function TasksDashboardHost(){
                 <div className="">
                     <NewTask/>
                 </div>
-                <div className="dashboard-detail col-lg-8 d-flex">
+                <div className="dashboard-detail col-lg-8 d-flex my-5">
                     <Outlet className="bg-dark"/>
                 </div>
             </div>
