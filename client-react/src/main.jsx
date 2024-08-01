@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import './index.css'
-// import './styles/index.scss' // Import your SCSS file
-import 'bootstrap/dist/css/bootstrap.css';
+// import './index.css'
+import './stylesheets/application.scss' // Import your SCSS file
+// import 'bootstrap/dist/css/bootstrap.css';
 
 
 

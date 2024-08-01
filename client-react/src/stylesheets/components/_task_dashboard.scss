@@ -1,0 +1,35 @@
+.dashboard{
+    // position: relative;
+    // max-height: 600px;
+}
+
+.create-task{
+    width: 80px;
+    height: 80px;
+    z-index: 1000;
+    border-radius: 100%;
+    background-color: $brand-light-blue;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    font-weight: bolder;
+    right: 20px;
+    bottom: 20px;
+}
+
+.task-preview{
+    background-color: $brand-backplate;
+    color: $brand-light;
+}
+
+.dashboard-list{
+    max-height: 400px;
+    overflow: auto;
+    position: relative;
+}
+
+// .height-600{
+//     height: 600px;
+// }

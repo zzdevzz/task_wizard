@@ -1,11 +1,11 @@
 import React from "react"
 import FormTaskTemplate from "./FormTaskTemplate"
 import { useParams, useNavigate, useLocation, Navigate, redirect } from "react-router-dom"
-import { API_URL } from "../constants"
-import api from "../utils/api"
+import { API_URL } from "../../../constants"
+import api from "../../../utils/api"
 
-import { TaskContext } from "./Tasks/TasksDashboard"
-import { AuthContext } from "./Authorisation/AuthProvider"
+import { TaskContext } from "../TasksDashboard"
+import { AuthContext } from "../../Authorisation/AuthProvider"
 
 
 export default function FormTask({request = "post"}){

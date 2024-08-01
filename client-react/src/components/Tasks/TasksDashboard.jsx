@@ -6,6 +6,8 @@ import { API_URL } from "../../constants"
 import { AuthContext } from "../Authorisation/AuthProvider"
 import api from "../../utils/api"
 
+import NewTask from "./NewTask"
+
 const TaskContext = React.createContext()
 
 export default function TasksDashboardHost(){
@@ -23,9 +25,12 @@ export default function TasksDashboardHost(){
     
     return(
         <TaskContext.Provider value={[tasks, retrieveTasks]}>
-            <div className="dashboard row">
-                <div className="dashboard-list col-lg-4">
+            <div className="dashboard row height-600">
+                <div className="col-lg-4 height-600">
                     <TaskList/>
+                </div>
+                <div className="">
+                    <NewTask/>
                 </div>
                 <div className="dashboard-detail col-lg-8 mt-5 d-flex">
                     <Outlet className="bg-dark"/>
