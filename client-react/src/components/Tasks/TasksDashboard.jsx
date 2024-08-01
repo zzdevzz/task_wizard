@@ -25,14 +25,14 @@ export default function TasksDashboardHost(){
     
     return(
         <TaskContext.Provider value={[tasks, retrieveTasks]}>
-            <div className="dashboard row height-600">
-                <div className="col-lg-4 height-600">
+            <div className="dashboard row">
+                <div className="col-lg-4">
                     <TaskList/>
                 </div>
                 <div className="">
                     <NewTask/>
                 </div>
-                <div className="dashboard-detail col-lg-8 mt-5 d-flex">
+                <div className="dashboard-detail col-lg-8 d-flex">
                     <Outlet className="bg-dark"/>
                 </div>
             </div>

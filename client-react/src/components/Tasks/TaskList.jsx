@@ -17,7 +17,7 @@ export default function TaskList() {
 
     return (
 
-        <ul className="dashboard-list list-group list-group-vertical">
+        <ul className="dashboard-list list-group list-group-vertical my-3">
             {tasks.map((task) => (
                 <div key={task.id}
                 className="post-container">

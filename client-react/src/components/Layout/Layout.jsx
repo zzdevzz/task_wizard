@@ -10,15 +10,13 @@ export default function Layout(){
 
     // const [ authenticated, setAuthenticated ] = React.useState(!!localStorage.getItem('token'))
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col" style={{position: "relative"}}>
-                    {/* <AuthContext.Provider value={[authenticated]}> */}
-                        <Header/>
-                            <Outlet/>
-                        <Footer/>
-                    {/* </AuthContext.Provider> */}
-                </div>
+        <div className="row">
+            <div className="col px-0">
+                <Header/>
+                    <div className="container">
+                        <Outlet/>
+                    </div>
+                <Footer/>
             </div>
         </div>
     )

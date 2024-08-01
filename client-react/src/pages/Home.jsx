@@ -11,6 +11,7 @@ export default function Home(){
                 <div>
                     <img src={IMAGES.wizardLanding} width={100}/>
                 </div>
+                <h2>Don't wait  to be motivated. Create your own motivation.</h2>
             </div>
         </div>
     )
