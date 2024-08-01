@@ -16,19 +16,17 @@ export default function TaskList() {
     const {0: tasks} = React.useContext(TaskContext)
 
     return (
-        <div className="">
-            <div className="">
-                <ul className="dashboard-list list-group list-group-vertical">
-                    {tasks.map((task) => (
-                        <div key={task.id}
-                        className="post-container">
-                            <Link to={`${task.id}`} state={{taskData: task}}>                 
-                                <TaskPreview taskData={task}/>
-                            </Link>
-                        </div>
-                    ))}
-                </ul>
-            </div>
-        </div>
+
+        <ul className="dashboard-list list-group list-group-vertical">
+            {tasks.map((task) => (
+                <div key={task.id}
+                className="post-container">
+                    <Link to={`${task.id}`} state={{taskData: task}}>                 
+                        <TaskPreview taskData={task}/>
+                    </Link>
+                </div>
+            ))}
+        </ul>
+
     )
 }
