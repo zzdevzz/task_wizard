@@ -10,7 +10,7 @@ export default function Layout(){
 
     // const [ authenticated, setAuthenticated ] = React.useState(!!localStorage.getItem('token'))
     return (
-        <div className="row">
+        <div className="row overflow-auto">
             <div className="col px-0">
                 <Header/>
                     <div className="container main-content">

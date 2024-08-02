@@ -16,13 +16,6 @@ a{
     text-decoration: none;
 }
 
-// Base syling
-
-// * {
-//     margin: 0;
-//     padding: 0;
-//     box-sizing: border-box;
-// }
 
 html, body, #root {
     height: 100%;
@@ -32,6 +25,10 @@ html, body, #root {
 
 .main-content{
     height: 100%;
-    overflow: auto;
+    overflow: scroll;
     color: red;
+    margin-bottom: 50px;
+    // display: flex;
 }
+
+
