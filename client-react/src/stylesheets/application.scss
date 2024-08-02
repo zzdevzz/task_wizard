@@ -11,10 +11,24 @@
 @import "components/index";
 @import "pages/index";
 
-body{
-    max-height: 100%;
-}
 
 a{
     text-decoration: none;
 }
+
+
+html, body, #root {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.main-content{
+    height: 100%;
+    overflow: scroll;
+    color: red;
+    margin-bottom: 50px;
+    // display: flex;
+}
+
+

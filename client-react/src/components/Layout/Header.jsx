@@ -1,7 +1,9 @@
 import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
-import IMAGES from '../../assets/images/Image'
 import { AuthContext } from '../Authorisation/AuthProvider'
+
+import IMAGES from '../../assets/images/Image'
+import BRAND from '../../assets/brand/brand'
 
 import api from '../../utils/api'
 import { API_URL } from '../../constants'
@@ -27,9 +29,9 @@ export default function Header() {
     // Active styling in App.css for Navbar active class.
     return (
       <>
-        <img src={IMAGES.wizard} style={{width: 100}}/>
-        <nav className='d-flex justify-content-around align-items-center m-3 bg-light navbar'>
-            <NavLink to="/">TaskWizard</NavLink>
+        {/* <img src={BRAND.logo} style={{width: 100}}/> */}
+        <nav className='d-flex justify-content-around align-items-center bg-light navbar mb-3'>
+            <NavLink to="/"><img src={BRAND.logo} style={{width: 50}}/></NavLink>
             <NavLink to="/tasks">My tasks</NavLink>
             {!isAuthenticated && <NavLink to="signup">Sign Up</NavLink>}
             { isAuthenticated ?
