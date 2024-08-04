@@ -17,11 +17,11 @@ export default function TaskList() {
 
     return (
 
-        <ul className="dashboard-list list-group list-group-vertical my-3">
+        <ul className="dashboard-list list-group list-group-vertical">
             {tasks.map((task) => (
                 <div key={task.id}
                 className="post-container">
-                    <Link to={`${task.id}`} state={{taskData: task}}>                 
+                    <Link to={`${task.id}`} state={{taskData: task}}>
                         <TaskPreview taskData={task}/>
                     </Link>
                 </div>
@@ -30,4 +30,3 @@ export default function TaskList() {
 
     )
 }
-
