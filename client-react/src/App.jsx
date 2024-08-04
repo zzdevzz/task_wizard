@@ -9,6 +9,8 @@ import Layout from "./components/Layout/Layout"
 import Home from "./pages/Home"
 import TasksDashboard from './components/Tasks/TasksDashboard.jsx'
 import FormTask from './components/Tasks/forms/FormTask'
+import About from "./pages/About"
+
 
 // Authentication Components
 import AuthProvider from './components/Authorisation/AuthProvider.jsx'
@@ -20,11 +22,12 @@ function App() {
 
   return (
     <BrowserRouter>
-      <AuthProvider> {/* Allows us to pass JWT and Authorized state to each component */} 
+      <AuthProvider> {/* Allows us to pass JWT and Authorized state to each component */}
         <Routes>
             <Route path="/" element={<Layout/>}>
-              <Route path="signup" element={<SignUpForm/>}></Route>
-              <Route path="login" element={<LoginForm/>}></Route>
+              <Route path="signup" element={<SignUpForm/>}/>
+              <Route path="login" element={<LoginForm/>}/>
+              <Route path="/about" element={<About/>}/>
               <Route index element={<Home/>}/>
               <Route element={<AuthRequired/>}>
                 <Route path="tasks" element={<TasksDashboard/>}>
