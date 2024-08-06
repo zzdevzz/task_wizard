@@ -31,6 +31,10 @@ html, body, #root {
     margin-bottom: 50px;
 }
 
-* {
-  box-sizing: border-box;
+// * {
+//   box-sizing: border-box;
+// }
+
+.red-border{
+  border: red 3px dashed;
 }
