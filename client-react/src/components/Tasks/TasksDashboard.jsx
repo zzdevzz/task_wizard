@@ -10,12 +10,23 @@ import NewTask from "./NewTask"
 
 const TaskContext = React.createContext()
 
+// Needed to convert date in format to use with HTML form.
+function formatDate(dateString) {
+  if (!dateString) return "" // Handle null or undefined date
+  return dateString.split("T")[0]
+}
+
 export default function TasksDashboardHost(){
     const { token, logout } = React.useContext(AuthContext)
     const [tasks, setTasks ] = React.useState([])
     const retrieveTasks = async () => {
         const response = await api.get(`${API_URL}/tasks`, {headers: {Authorization: token}})
-        setTasks(response.data)
+        const tasksFormatted = response.data.map((task) => ({
+          ...task,
+          date_completed_by: formatDate(task.date_completed_by),
+          date_created: formatDate(task.date_created)
+        }))
+        setTasks(tasksFormatted)
     }
 
 
@@ -25,7 +36,7 @@ export default function TasksDashboardHost(){
 
     return(
         <TaskContext.Provider value={[tasks, retrieveTasks]}>
-            <div className="dashboard row h-100">
+            <div className="dashboard row align-content-start h-100">
                 <div className="col max-height my-3">
                     <TaskList/>
                 </div>

@@ -30,9 +30,9 @@ export default function Header() {
     return (
       <>
         {/* <img src={BRAND.logo} style={{width: 100}}/> */}
-        <nav className='d-flex justify-content-around align-items-center bg-light navbar mb-3'>
+        <nav className='d-flex justify-content-around align-items-center bg-light navbar pb-3'>
             <NavLink to="/"><img src={BRAND.logo} style={{width: 50}}/></NavLink>
-            <NavLink to="/about">About</NavLink>
+            <NavLink to="/about" >About</NavLink>
             <NavLink to="/tasks">My tasks</NavLink>
             {!isAuthenticated && <NavLink to="signup">Sign Up</NavLink>}
             { isAuthenticated ?

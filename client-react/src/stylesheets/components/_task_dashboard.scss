@@ -2,9 +2,12 @@
     // position: relative;
     overflow: scroll;
     // max-height: 600px;
-}
+  }
 
-.create-task{
+  .dashboard > * {
+    border: 3px solid red;
+  }
+  .create-task{
     width: 80px;
     height: 80px;
     z-index: 1000;

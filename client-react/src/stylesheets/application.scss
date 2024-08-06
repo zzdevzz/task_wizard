@@ -28,7 +28,13 @@ html, body, #root {
 .main-content{
     height: 100%;
     overflow: scroll;
-    color: red;
     margin-bottom: 50px;
-    // display: flex;
+}
+
+// * {
+//   box-sizing: border-box;
+// }
+
+.red-border{
+  border: red 3px dashed;
 }
