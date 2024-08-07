@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom'
 
 export default function Footer() {
     return (
-        <footer className='footer'>
-            <ul className="list-group list-group-horizontal d-flex justify-content-around">
+        <footer>
+            <ul className="footer list-group list-group-horizontal d-flex justify-content-around align-items-center">
                 <li className='list-group-item'>
                     <Link to="/">TaskWizard</Link>
                 </li>

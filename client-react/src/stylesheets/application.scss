@@ -26,9 +26,10 @@ html, body, #root {
 }
 
 .main-content{
-    height: 100%;
-    overflow: scroll;
-    margin-bottom: 50px;
+    height: calc(100vh - $footer-height - $header-height);
+    overflow: auto;
+    margin-bottom: $footer-height;
+    box-sizing: border-box;
   }
 
 #root{
@@ -40,10 +41,13 @@ html, body, #root {
   position: absolute;
   height: 100%;
   width: 100%;
+  background: rgb(2,0,36);
+  background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,0) 100%);
   background-image: url("../assets/images/vibrant-magic-bg-01.webp");
   background-size: cover; /* Ensure the image covers the whole area */
   background-repeat: no-repeat;
   background-position: center;
+  background-position-x: right;
   filter: blur(5px);
   z-index: -1; /* Ensure the pseudo-element is behind other content */
 }
@@ -56,5 +60,6 @@ html, body, #root {
 }
 
 .glass-container{
-
+  background-color: rgba(0, 0, 128, 0.2);
+  backdrop-filter: blur(20px) brightness(1.2) contrast(2);
 }
