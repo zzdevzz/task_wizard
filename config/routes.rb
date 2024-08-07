@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'static/index'
   get 'current_user', to: 'current_user#show'
 
   # Here we are setting up our own custom controllers for devise for custom JSON response when something is sent.
@@ -23,10 +24,13 @@ Rails.application.routes.draw do
     namespace :v1 do
       # resources :users do
         resources :tasks
-        resources :categories 
+        resources :categories
       end
     # end
   end
+
+  root to: 'static#index'
+  get '*path', to: 'static#index', constraints: ->(req) { !req.xhr? && req.format.html? }
 end
 
 # For own learning purpose and constant reference.
