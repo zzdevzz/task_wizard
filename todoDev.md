@@ -11,3 +11,4 @@ Branding and UI
 Luxury
 5. Look at categories.
 6. Look at search params
+
