@@ -29,35 +29,38 @@ export default function FormTask({method,data, deleteMethod}){
 
     return (
         <>
-            <form onSubmit={handleSubmit((info) => method(info))}>
+            <form onSubmit={handleSubmit((info) => method(info))} className="w-100">
                 <div>
                     <label htmlFor="name" className="form-label">Task Name</label>
                     <input id="name" className="form-control"{...register("name", { required: "Task name is required" })} placeholder="Task Name" />
                     {errors.name && <span>{errors.name.message}</span>}
                 </div>
-                <div>
+                <div className="overflow-auto">
                     <label htmlFor="description">Task Description</label>
-                    <input id="description" className="form-control" {...register("description")}
+                    <textarea id="description" className="form-control overflow-auto" {...register("description")} rows="3"
+            style={{ resize: 'vertical', maxHeight: '200px', overflowY: 'auto' }}
                     placeholder="Task Description" />
                     {errors.description && <span>{errors.description.message}</span>}
                 </div>
-                <div>
-                    <label htmlFor="priority" className="form-label">Priority</label>
-                    <select id="priority" className="form-control" {...register("priority", { required: "Priority is required" })}>
-                    <option value="low">Low</option>
-                    <option value="medium">Medium</option>
-                    <option value="high">High</option>
-                    </select>
-                    {errors.priority && <span>{errors.priority.message}</span>}
-                </div>
-                <div>
-                    <label htmlFor="status" className="form-label">Status</label>
-                    <select id="status" className="form-control"{...register("status", { required: "Status is required" })}>
-                    <option value="to_be_done">To Be Done</option>
-                    <option value="in_progress">In Progress</option>
-                    <option value="to_be_reviewed">To Be Reviewed</option>
-                    </select>
-                    {errors.status && <span>{errors.status.message}</span>}
+                <div className="d-flex">
+                  <div className="w-100 me-2">
+                      <label htmlFor="priority" className="form-label">Priority</label>
+                      <select id="priority" className="form-control" {...register("priority", { required: "Priority is required" })}>
+                      <option value="low">Low</option>
+                      <option value="medium">Medium</option>
+                      <option value="high">High</option>
+                      </select>
+                      {errors.priority && <span>{errors.priority.message}</span>}
+                  </div>
+                  <div className="w-100">
+                      <label htmlFor="status" className="form-label">Status</label>
+                      <select id="status" className="form-control"{...register("status", { required: "Status is required" })}>
+                      <option value="to_be_done">To Be Done</option>
+                      <option value="in_progress">In Progress</option>
+                      <option value="to_be_reviewed">To Be Reviewed</option>
+                      </select>
+                      {errors.status && <span>{errors.status.message}</span>}
+                  </div>
                 </div>
                 <div>
                   {data.date_completed_by ?
@@ -67,7 +70,7 @@ export default function FormTask({method,data, deleteMethod}){
                   </> :
                   <>
                     <label htmlFor="date_created" className="form-label">Date Created</label>
-                    <input id="date_created" type="date" className="form-control"{...register("date_created")} />
+                    <input id="date_created" type="date" className="form-control" placeholder={new Date().toLocaleDateString()} {...register("date_created")} />
                   </>
                 }
                 </div>

@@ -4,9 +4,6 @@
     // max-height: 600px;
   }
 
-  .dashboard > * {
-    border: 3px solid red;
-  }
   .create-task{
     width: 80px;
     height: 80px;
@@ -19,8 +16,8 @@
     align-items: center;
     font-size: xx-large;
     font-weight: bolder;
-    right: 20px;
-    bottom: 20px;
+    right: 10px;
+    bottom: 50px;
 }
 
 .task-preview{

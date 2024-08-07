@@ -29,12 +29,32 @@ html, body, #root {
     height: 100%;
     overflow: scroll;
     margin-bottom: 50px;
+  }
+
+#root{
+  position: relative;
 }
 
-// * {
-//   box-sizing: border-box;
-// }
+#root::before{
+  content: ""; /* Ensure the pseudo-element is rendered */
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: url("../assets/images/vibrant-magic-bg-01.webp");
+  background-size: cover; /* Ensure the image covers the whole area */
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: blur(5px);
+  z-index: -1; /* Ensure the pseudo-element is behind other content */
+}
+
+
+// debugging
 
 .red-border{
   border: red 3px dashed;
+}
+
+.glass-container{
+
 }
