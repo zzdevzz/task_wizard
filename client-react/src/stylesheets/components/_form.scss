@@ -1,0 +1,22 @@
+::-webkit-calendar-picker-indicator{
+  filter: invert(1)
+}
+
+.dark-form-input {
+  label{
+    color: white;
+  }
+  :is(input, select, textarea) {
+    // background-color: #343a40; /* Bootstrap's dark background */
+    background-color: $brand-background;
+    color: white; /* White text */
+    border-color: $brand-blue; /* Slightly lighter border */
+
+    &:focus {
+      background-color: $brand-background;
+      color: white;
+      border-color: $brand-blue;
+      outline: none; // Consider accessibility implications
+    }
+  }
+}
