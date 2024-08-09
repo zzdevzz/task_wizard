@@ -13,7 +13,8 @@ export default function FormTask({request = "post"}){
 
   const navigate = useNavigate()
   const location = useLocation()
-
+  console.log("request: ")
+  console.log(request)
 
   // console.log("FormTask Render")
 
