@@ -14,7 +14,7 @@ export default function Header() {
 
 
     const signOut = async () => {
-
+        console.log(token)
         if (!token) return
 
         try {

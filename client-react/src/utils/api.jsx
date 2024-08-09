@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { API_URL, BASE_URL } from '../constants'
 
+console.log("axios file base ran")
+
 console.log('BASE_URL: ', BASE_URL)
 console.log('API_URL: ', API_URL)
 
