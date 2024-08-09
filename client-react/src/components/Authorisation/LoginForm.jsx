@@ -14,7 +14,9 @@ export default function LoginForm() {
 
     const onSubmit = async (data) => {
       console.log("login form function initated")
-      console.log("BASE URL FROM LOGIN FORM INPUT: ", BASE_URL)
+      console.log("BASE URL FROM LOGIN FORM INPUT: ")
+      console.log(BASE_URL)
+      console.log("BASE URL SHOULD BE ABOVE")
       try {
 
         // axios can't use API axios instance since causing too much errors with react and JWT.

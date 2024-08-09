@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { base } from "../../utils/api"
 import { AuthContext } from "./AuthProvider"
+import { BASE_URL } from "../../constants"
+
 
 
 
@@ -13,6 +15,7 @@ export default function SignUpForm(){
   const navigate = useNavigate()
   const {login} = React.useContext(AuthContext)
 
+    console.log("BASE URL IN SIGNUP FORM: ", BASE_URL )
     const onSubmit = async (data) => {
         try {
             const response = await base.post(`/signup`, {user: data})
