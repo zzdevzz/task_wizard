@@ -78,6 +78,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         status: { code: 200, message: "Account deleted successfully."}
       }, status: :ok
     else
+      byebug
       render json: {
         status: {code: 422, message: "User couldn't be created successfully. #{resource.errors.full_messages.to_sentence}"}
       }, status: :unprocessable_entity

@@ -1,14 +1,18 @@
 import axios from 'axios'
-import { API_URL } from '../constants'
+import { API_URL, BASE_URL } from '../constants'
 
 const api = axios.create({
-    baseURL: API_URL
+  baseURL: API_URL
+})
+
+const base = axios.create({
+  baseURL: BASE_URL
 })
 
 // We can't use React Hooks (usecontext) in a non-react component, so no way to pass logout function.
 // Instead we call this function to set up axios in a file where all the variables live. Called in Auth Provider component.
 
-// !! Its possible to set headers on every  request with interceptors. But this gave issues with JWT expiring. Interceptors were using old values, with and without react!! 
+// !! Its possible to set headers on every  request with interceptors. But this gave issues with JWT expiring. Interceptors were using old values, with and without react!!
 
 const setupInterceptors = (logout, navigate) => {
 
@@ -26,7 +30,7 @@ const setupInterceptors = (logout, navigate) => {
           // Redirect to the login page
           navigate('/login');
         }
-        
+
         return Promise.reject(error); // Reject the promise with the error
       }
     )
@@ -38,5 +42,5 @@ const clearInterceptors = () => {
   api.interceptors.response.eject()
 }
 
-export default api
-export { setupInterceptors, clearInterceptors }
+
+export { api, base, setupInterceptors, clearInterceptors }

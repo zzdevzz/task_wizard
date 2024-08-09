@@ -1,6 +1,6 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
-import api, {setupInterceptors, clearInterceptors} from "../../utils/api"
+import {api, setupInterceptors, clearInterceptors} from "../../utils/api"
 
 const AuthContext = React.createContext()
 
@@ -16,7 +16,7 @@ export default function AuthProvider({children}){
         setToken(token)
         setIsAuthenticated(!!localStorage.getItem('token'))
         setupInterceptors(logout, navigate, token)
-    }   
+    }
 
     const logout = () => {
         localStorage.removeItem('token')
@@ -38,4 +38,3 @@ export default function AuthProvider({children}){
 
 
 export { AuthContext }
-

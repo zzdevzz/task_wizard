@@ -2,31 +2,31 @@ import React from "react"
 import FormTaskTemplate from "./FormTaskTemplate"
 import { useParams, useNavigate, useLocation, Navigate, redirect } from "react-router-dom"
 import { API_URL } from "../../../constants"
-import api from "../../../utils/api"
+import { api } from "../../../utils/api"
 
 import { TaskContext } from "../TasksDashboard"
 import { AuthContext } from "../../Authorisation/AuthProvider"
 
 
 export default function FormTask({request = "post"}){
-  
+
 
   const navigate = useNavigate()
   const location = useLocation()
 
-  
+
   // console.log("FormTask Render")
 
   // State is being passed if task is existing. If new task and state isn't passed we need to pass empty objects.
 
-  let task = {} 
+  let task = {}
   let taskId, userId
 
   if (location.state !== null) {
     task = location.state.taskData
     taskId = task.id
     userId = task.user_id
-    
+
   }
 
   // Destructing and renaming object of multiple values
@@ -56,21 +56,21 @@ export default function FormTask({request = "post"}){
         const response = await api.patch(url, {task: data}, {headers: {'Authorization': token}})
         retrieveTasks()
     } catch (error) {
-        console.error("Error:  ",  error) 
+        console.error("Error:  ",  error)
     }
   }
 
 
   // Delete task from database.
   const deleteTask = async () => {
-      const url = `http://localhost:3000/api/v1/tasks/${taskId}`
+      const url = `${API_URL}/tasks/${taskId}`
       try {
           const response = await api.delete(url, {headers: {'Authorization': token}})
           setRedirect(true)
           retrieveTasks()
           navigate("..")
       } catch (error) {
-          console.error("Error:  ",  error) 
+          console.error("Error:  ",  error)
       }
   }
 
@@ -81,7 +81,7 @@ export default function FormTask({request = "post"}){
   }
 
   return (
-    <>    
+    <>
       <FormTaskTemplate key={task.id || "new" } method={actions[request]} data={task} deleteMethod={actions["delete"]}/>
     </>
   )
