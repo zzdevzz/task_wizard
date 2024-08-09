@@ -13,7 +13,7 @@ export default function LoginForm() {
     const {login} = React.useContext(AuthContext)
 
     const onSubmit = async (data) => {
-      console.log("login form function initated")
+      console.log("login form function initated test!!!")
       console.log("BASE URL FROM LOGIN FORM INPUT: ")
       console.log(BASE_URL)
       console.log("BASE URL SHOULD BE ABOVE")
