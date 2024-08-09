@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { API_URL, BASE_URL } from '../constants'
 
-console.log("axios file base ran updated NEW")
 console.log("build file running successfully")
 
 console.log('BASE_URL: ', BASE_URL)
