@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form"
 
 import { AuthContext } from "./AuthProvider"
 import { base } from "../../utils/api"
-// import { base } from "../../constants"
 
 export default function LoginForm() {
     const { register, handleSubmit, formState: { errors } } = useForm()
