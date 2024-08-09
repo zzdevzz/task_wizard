@@ -1,7 +1,7 @@
 import React from "react"
 import FormTaskTemplate from "./FormTaskTemplate"
 import { useParams, useNavigate, useLocation, Navigate, redirect } from "react-router-dom"
-// import { API_URL } from "../../../constants"
+import { API_URL } from "../../../constants"
 import { api } from "../../../utils/api"
 
 import { TaskContext } from "../TasksDashboard"
@@ -33,8 +33,11 @@ export default function FormTask({request = "post"}){
   const {1: retrieveTasks} = React.useContext(TaskContext)
   const { token } = React.useContext(AuthContext)
 
-  const params = useParams()
-  const taskURL = API_URL + "/" + params.id
+
+  // NOT NEEDED
+  // const params = useParams()
+  // const taskURL = API_URL + "/" + params.id
+
   const [redirect, setRedirect] = React.useState(false)
 
   // Post data to database.
