@@ -13,7 +13,7 @@ export default function FormTask({method,data, deleteMethod}){
 
     React.useEffect(() => {
         console.log("useEffect ran:")
-        console.log("method: ", method)
+        console.log("method: ", method.name)
         console.log("data: ", data)
         if (method.name === "updateTask"){
             setButtonText("Update")
