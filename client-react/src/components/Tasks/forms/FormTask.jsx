@@ -1,7 +1,7 @@
 import React from "react"
 import FormTaskTemplate from "./FormTaskTemplate"
 import { useParams, useNavigate, useLocation, Navigate, redirect } from "react-router-dom"
-import { API_URL } from "../../../constants"
+// import { API_URL } from "../../../constants"
 import { api } from "../../../utils/api"
 
 import { TaskContext } from "../TasksDashboard"
@@ -42,7 +42,7 @@ export default function FormTask({request = "post"}){
   const createTask = async (data) => {
 
     try {
-      const response = await api.post(`${API_URL}/tasks`, {task: data}, {headers: {'Authorization': token}})
+      const response = await api.post(`/tasks`, {task: data}, {headers: {'Authorization': token}})
       retrieveTasks()
       console.log('Task created successfully:', response);
     } catch (error) {
