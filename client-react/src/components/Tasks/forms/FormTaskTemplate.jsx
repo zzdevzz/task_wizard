@@ -15,7 +15,7 @@ export default function FormTask({method,data, deleteMethod}){
         console.log("useEffect ran:")
         console.log("method: ", method.name)
         console.log("data: ", data)
-        if (method.name === "updateTask"){
+        if (method.name === "updateTask" || method.name === "patch"){
             setButtonText("Update")
             reset(data)
         } else{
