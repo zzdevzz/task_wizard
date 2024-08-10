@@ -9,6 +9,7 @@ export default defineConfig({
     port: 5173,
   },
   build: {
-    outDir: 'public' // Ensure this is the same directory Rails uses for static files
-  }
+    outDir: 'dist', // Output the build files to 'dist'
+  },
+  publicDir: 'public', // Keep serving static assets from 'public'
 })

@@ -4,7 +4,7 @@ import TaskList from "./TaskList"
 
 import { API_URL } from "../../constants"
 import { AuthContext } from "../Authorisation/AuthProvider"
-import api from "../../utils/api"
+import { api } from "../../utils/api"
 
 import NewTask from "./NewTask"
 

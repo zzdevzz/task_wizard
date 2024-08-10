@@ -12,8 +12,10 @@ export default function FormTask({method,data, deleteMethod}){
     const currentDate = new Date().toISOString().split("T")[0]
 
     React.useEffect(() => {
-
-        if (method.name === "updateTask"){
+        console.log("useEffect ran:")
+        console.log("method: ", method.name)
+        console.log("data: ", data)
+        if (method.name === "updateTask" || method.name === "patch"){
             setButtonText("Update")
             reset(data)
         } else{

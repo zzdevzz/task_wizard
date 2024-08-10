@@ -7,6 +7,7 @@ ruby "3.1.2"
 gem 'devise'
 gem 'devise-jwt'
 gem 'jsonapi-serializer'
+gem 'rake'
 
 gem 'byebug'
 
@@ -54,4 +55,3 @@ group :development do
 
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
 end
-

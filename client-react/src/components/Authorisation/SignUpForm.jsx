@@ -1,33 +1,28 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
-import { API_URL } from "../../constants"
+import { base } from "../../utils/api"
+import { AuthContext } from "./AuthProvider"
+import { BASE_URL } from "../../constants"
+
+
+
 
 export default function SignUpForm(){
-    
-    const {register, handleSubmit, formState: {errors}} = useForm()
-    const [message, setMessage ] = React.useState("")
-    const navigate = useNavigate()
 
+  const {register, handleSubmit, formState: {errors}} = useForm()
+  const [message, setMessage ] = React.useState("")
+  const navigate = useNavigate()
+  const {login} = React.useContext(AuthContext)
+
+    console.log("BASE URL IN SIGNUP FORM: ", BASE_URL )
     const onSubmit = async (data) => {
         try {
-            const response = await fetch(`http://localhost:3000/signup`, {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({user: data})
-            })
-
-            const result = await response.json()
-
-            if(response.ok){
-                setMessage("User registered successfully!")
-                navigate("/")
-                
-            } else {
-                setMessage(`Error: ${result.error || 'Registration failed'}`)
-            }     
+            const response = await base.post(`/signup`, {user: data})
+            const token = response.headers['authorization']
+            setMessage("User registered successfully!")
+            login(token)
+            navigate("/tasks")
         } catch (error) {
             setMessage(`Error: ${error.message || 'Registration failed'}`)
         }
@@ -75,7 +70,7 @@ export default function SignUpForm(){
                     />
                     {errors.password_confirmation && <span>{errors.password_confirmation.message}</span>}
                 </div>
-                <button type="submit">Sign Up</button>    
+                <button type="submit">Sign Up</button>
             </form>
             {message && <p>{message}</p>}
         </div>

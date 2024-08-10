@@ -5,7 +5,7 @@ import { AuthContext } from '../Authorisation/AuthProvider'
 import IMAGES from '../../assets/images/Image'
 import BRAND from '../../assets/brand/brand'
 
-import api from '../../utils/api'
+import { base } from '../../utils/api'
 import { API_URL } from '../../constants'
 
 export default function Header() {
@@ -14,11 +14,11 @@ export default function Header() {
 
 
     const signOut = async () => {
-
+        console.log(token)
         if (!token) return
 
         try {
-            const response = await api.delete(`http://localhost:3000/logout`, {headers: {'Authorization': token}})
+            const response = await base.delete(`/logout`, {headers: {'Authorization': token}})
             logout()
             navigate("..")
           } catch (error) {
@@ -29,7 +29,6 @@ export default function Header() {
     // Active styling in App.css for Navbar active class.
     return (
       <>
-        {/* <img src={BRAND.logo} style={{width: 100}}/> */}
         <nav className='d-flex justify-content-around align-items-center navbar'>
             <NavLink to="/"><img src={BRAND.logo} style={{width: 50}}/></NavLink>
             <NavLink to="/about" >About</NavLink>
