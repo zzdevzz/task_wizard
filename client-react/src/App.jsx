@@ -18,6 +18,9 @@ import AuthRequired from './components/Authorisation/AuthRequired.jsx'
 import SignUpForm from './components/Authorisation/SignUpForm.jsx'
 import LoginForm from './components/Authorisation/LoginForm.jsx'
 
+console.log('React build running successfully');
+
+
 function App() {
 
   return (
