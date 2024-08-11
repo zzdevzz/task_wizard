@@ -1,6 +1,8 @@
 import React from "react"
 
 export default function About(){
+
+  console.log("About us build done")
   return (
     <div>
       <h1>About this</h1>

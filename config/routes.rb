@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   end
 
   root to: 'static#index'
+  get 'about', to: 'static#index'
   get '*path', to: 'static#index', constraints: ->(req) { !req.xhr? && req.format.html? }
 end
 
