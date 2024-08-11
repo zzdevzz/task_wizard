@@ -2,7 +2,7 @@
   "root": "public/",
   "clean_urls": false,
   "routes": {
-    "/**": "index.html"
+    "/**": "./public/index.html"
   },
-  "error_page": "index.html"
+  "error_page": "./public/index.html"
 }

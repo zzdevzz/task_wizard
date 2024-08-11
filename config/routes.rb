@@ -30,7 +30,8 @@ Rails.application.routes.draw do
   end
 
   root to: 'static#index'
-  get 'about', to: 'static#index'
+  # Route to serve the index.html file for the /about path
+  get '/about', to: 'static#serve_about'
   get '*path', to: 'static#index', constraints: ->(req) { !req.xhr? && req.format.html? }
 end
 

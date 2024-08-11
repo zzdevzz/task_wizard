@@ -25,7 +25,7 @@ function App() {
       <AuthProvider> {/* Allows us to pass JWT and Authorized state to each component */}
         <Routes>
             <Route path="/" element={<Layout/>}>
-              <Route path="/about" element={<About/>}/>
+              <Route path="about" element={<About/>}/>
               <Route path="signup" element={<SignUpForm/>}/>
               <Route path="login" element={<LoginForm/>}/>
               <Route index element={<Home/>}/>
