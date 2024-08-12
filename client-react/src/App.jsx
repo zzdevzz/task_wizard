@@ -18,6 +18,7 @@ import AuthRequired from './components/Authorisation/AuthRequired.jsx'
 import SignUpForm from './components/Authorisation/SignUpForm.jsx'
 import LoginForm from './components/Authorisation/LoginForm.jsx'
 
+
 function App() {
 
   return (
@@ -25,9 +26,9 @@ function App() {
       <AuthProvider> {/* Allows us to pass JWT and Authorized state to each component */}
         <Routes>
             <Route path="/" element={<Layout/>}>
+              <Route path="about" element={<About/>}/>
               <Route path="signup" element={<SignUpForm/>}/>
               <Route path="login" element={<LoginForm/>}/>
-              <Route path="/about" element={<About/>}/>
               <Route index element={<Home/>}/>
               <Route element={<AuthRequired/>}>
                 <Route path="tasks" element={<TasksDashboard/>}>

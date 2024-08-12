@@ -6,4 +6,8 @@ cd client-react
 npm install
 npm run build
 cp -r dist/* ../public/
+cp ../static.json ../public/
+
 cd ..
+
+echo "Build completed and files copied to public directory."
