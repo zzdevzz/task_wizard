@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { API_URL, BASE_URL } from '../constants'
 
-console.log("build file running successfully - working now dev")
+console.log("build file running successfully - working now dev PROCFILE WAS ISSUE")
 
 console.log('BASE_URL: ', BASE_URL)
 console.log('API_URL: ', API_URL)
