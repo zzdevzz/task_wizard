@@ -5,6 +5,8 @@
 
 # Read more: https://github.com/cyu/rack-cors
 
+# EVERYTHING IN THIS FILE NEEDS TO BE FRONTEND PORT OF VITE OR PRODUCTION URL
+# DYMAMIC STATIC IP IS GATHERED AND SET FROM dynamic_ip.rb file.
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     origins "http://127.0.0.1:5173",
@@ -14,8 +16,9 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
             "http://172.17.186.63:3000",
             "https://task-wizard-566e44.herokuapp.com",
             "https://taskwizard.devcreates.com",
-            "https://192.168.1.143:3000",
-            "172.17.176.1"
+            "http://#{$windows_ip}:5173" if $windows_ip.present?
+
+
 
     resource "*",
       headers: :any,
