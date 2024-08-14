@@ -13,7 +13,7 @@ export default function Layout(){
         <div className="row">
             <div className="col">
                 <Header/>
-                  <div className="main-content py-3">
+                  <div className="main-content pt-2">
                     <div className="container">
                         <Outlet/>
                     </div>
