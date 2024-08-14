@@ -40,11 +40,11 @@ export default function TasksDashboardHost(){
                 <div className="dashboard-detail col-lg-8 d-flex my-2">
                     <Outlet/>
                 </div>
-            </div>
                 <div className="col max-height my-3">
                     <TaskList/>
                 </div>
                 <NewTask/>
+            </div>
         </TaskContext.Provider>
     )
 }

@@ -79,7 +79,7 @@ export default function FormTask({method,data, deleteMethod}){
                 }
                 </div>
                 <div>
-                    <label htmlFor="completed">Completed</label>
+                    <label htmlFor="completed">Task Completed?</label>
                     <input id="completed" type="checkbox" {...register("completed")} />
                 </div>
                 <input type="submit" value={buttonText}/>
