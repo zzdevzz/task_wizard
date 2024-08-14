@@ -9,4 +9,34 @@ class User < ApplicationRecord
   has_many :categories, dependent: :destroy
 
   validates :username, presence: true
+
+  after_create :initialize_defaults
+
+  private
+
+  def initialize_defaults
+    Task.create(
+      name: "Follow Dev on LinkedIn",
+      description: "Do it asap to see all the cool things he'll continue to make!",
+      priority: :high,
+      user: self
+    )
+    Task.create(
+      name: "Share this site with your friends",
+      description: "Wow this site is super useful for me, I bet it will be handy for my friends and family.",
+      priority: :high,
+      user: self
+    )
+    Task.create(
+      name: "Do work and stop procrastinating.",
+      priority: :low,
+      user: self
+    )
+    Task.create(
+      name: "Check out Dev's YouTube channel.",
+      description: "There was some cool things I wanted to check out.",
+      priority: :high,
+      user: self
+    )
+  end
 end

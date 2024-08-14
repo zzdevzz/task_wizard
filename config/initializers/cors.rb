@@ -13,7 +13,9 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
             "http://localhost:5500",
             "http://172.17.186.63:3000",
             "https://task-wizard-566e44.herokuapp.com",
-            "https://taskwizard.devcreates.com"
+            "https://taskwizard.devcreates.com",
+            "https://192.168.1.143:3000",
+            "172.17.176.1"
 
     resource "*",
       headers: :any,
