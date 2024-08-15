@@ -17,7 +17,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
             "https://task-wizard-566e44.herokuapp.com",
             "https://taskwizard.devcreates.com",
             "172.17.254.36:5173"
-            # "http://#{$windows_ip}:5173" if $windows_ip.present?
+            "http://#{local_ip}:5173" if $local_ip.present?
 
 
 
