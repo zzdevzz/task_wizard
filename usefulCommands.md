@@ -10,3 +10,5 @@ netsh interface portproxy add v4tov4 listenport=3000 listenaddress=0.0.0.0 conne
 
 
 netsh interface portproxy delete v4tov4 listenport=3000 listenaddress=0.0.0.0
+
+netsh interface portproxy delete v4tov4 listenaddress=192.168.1.172
