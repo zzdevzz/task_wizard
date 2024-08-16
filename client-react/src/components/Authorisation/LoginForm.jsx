@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form"
 
 import { AuthContext } from "./AuthProvider"
 import { base } from "../../utils/api"
-import { BASE_URL } from "../../constants"
+import { BASE_URL, API_URL } from "../../constants"
 
 export default function LoginForm() {
     const { register, handleSubmit, formState: { errors } } = useForm()
@@ -16,7 +16,8 @@ export default function LoginForm() {
       console.log("login form function initated test!!!")
       console.log("BASE URL FROM LOGIN FORM INPUT: ")
       console.log(BASE_URL)
-      console.log("BASE URL SHOULD BE ABOVE")
+      console.log("API URL FROM LOGIN FORM INPUT: ")
+      console.log(API_URL)
       try {
 
         // axios can't use API axios instance since causing too much errors with react and JWT.

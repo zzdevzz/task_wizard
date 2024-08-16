@@ -14,8 +14,8 @@ def windows_ip
     nil
   end
   
-  # Set the IP address as an environment variable
-  $windows_ip = windows_ip
+# Set the IP address as an environment variable
+$windows_ip = windows_ip
 
 # Actually needs the WSL ip
   
