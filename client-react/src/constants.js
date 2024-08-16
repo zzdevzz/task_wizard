@@ -1,7 +1,7 @@
 // EVERYTHING IN THIS FILE NEEDS TO BE THE BACKEND PORT (3000) OR PRODUCTION URL. ALL ADDRSSED TO BE FROM WINDOWS IPCONFIG.
-// THIS IS IPCONFIG FROM WSL.
+// THIS IS IPCONFIG FROM WINDOWS.
 
-const dynamicIp = "http://172.18.124.228:3000"
+const dynamicIp = "http://192.168.1.172:3000"
 
 export const API_URL = process.env.NODE_ENV === "production"
   ? import.meta.env.VITE_API_URL

@@ -15,6 +15,7 @@ netsh interface portproxy delete v4tov4 listenaddress=192.168.1.172
 
 netsh interface portproxy reset
 
+
 # Get the current WSL IP address (assumes WSL 2 and Ubuntu distribution)
 $wslIp = wsl -d Ubuntu -e bash -c "hostname -I | awk '{print $1}'"
 
@@ -31,6 +32,10 @@ if (-not $windowsIp) {
     Write-Host "Could not retrieve Windows IP address."
     exit 1
 }
+
+# Convert WSL IP to a string (to ensure it works correctly in the netsh command)
+$wslIp = $wslIp.Trim()
+$windowsIp = $windowsIp.Trim()
 
 # Remove old portproxy rules for both ports
 netsh interface portproxy delete v4tov4 listenport=3000 listenaddress=$windowsIp

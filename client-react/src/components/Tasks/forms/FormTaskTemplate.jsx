@@ -67,7 +67,7 @@ export default function FormTask({method,data, deleteMethod}){
                   </div>
                 </div>
                 <div>
-                  {data.date_completed_by ?
+                  {data.date_completed_by = null ?
                   <>
                     <label htmlFor="date_completed_by" className="form-label">Date To Complete By</label>
                     <input id="date_completed_by" type="date" className="form-control"{...register("date_completed_by")} />
@@ -78,12 +78,18 @@ export default function FormTask({method,data, deleteMethod}){
                   </>
                 }
                 </div>
-                <div>
+                <div className="my-3">
                     <label htmlFor="completed">Task Completed?</label>
                     <input id="completed" type="checkbox" {...register("completed")} />
                 </div>
-                <input type="submit" value={buttonText}/>
-                { buttonText === "Update" && <button onClick={deleteMethod}>Delete</button>}
+                <div className={buttonText === "Update" ? "d-flex gap-10" : ""}>
+                    <div className="flex-fill mx-auto">
+                        <button type="submit" className="pill-button w-100 bg-brand-blue">{buttonText}</button>
+                    </div>
+                    <div className="flex-fill mx-auto">
+                        { buttonText === "Update" && <button onClick={deleteMethod} className="pill-button w-100">Delete</button>}
+                    </div>
+                </div>
             </form>
         </>
     )
