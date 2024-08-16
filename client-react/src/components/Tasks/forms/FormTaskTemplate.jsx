@@ -67,7 +67,7 @@ export default function FormTask({method,data, deleteMethod}){
                   </div>
                 </div>
                 <div>
-                  {data.date_completed_by = null ?
+                  {data.date_completed_by ?
                   <>
                     <label htmlFor="date_completed_by" className="form-label">Date To Complete By</label>
                     <input id="date_completed_by" type="date" className="form-control"{...register("date_completed_by")} />
