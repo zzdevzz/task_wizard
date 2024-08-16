@@ -18,9 +18,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
             "https://taskwizard.devcreates.com",
             "http://192.168.1.172:5173",
             'http://192.168.1.172:3000',
-            "http://172.18.124.228:5173",
-            "https://3cm3pbkd-5173.uks1.devtunnels.ms",
-            "3cm3pbkd-3000.uks1.devtunnels.ms"
+            "http://172.18.124.228:5173"
 
             # "http://#{local_ip}:5173" if $local_ip.present?
             # "http://#{windows_ip}:5173" if $windows_ip.present?

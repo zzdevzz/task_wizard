@@ -6,6 +6,7 @@ export default function About(){
   return (
     <div>
       <h1>About this</h1>
+      <h2>Is this working</h2>
       <h2>Creator</h2>
       <h3>Upcoming</h3>
       <ul>
