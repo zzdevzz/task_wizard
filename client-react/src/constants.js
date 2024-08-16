@@ -1,7 +1,7 @@
 // EVERYTHING IN THIS FILE NEEDS TO BE THE BACKEND PORT (3000) OR PRODUCTION URL. ALL ADDRSSED TO BE FROM WINDOWS IPCONFIG.
 // THIS IS IPCONFIG FROM WSL.
 
-const dynamicIp = "http://172.30.169.106:3000"
+const dynamicIp = "https://taskwizard.devcreates.com"
 
 export const API_URL = process.env.NODE_ENV === "production"
   ? import.meta.env.VITE_API_URL
