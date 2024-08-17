@@ -11,6 +11,7 @@
     background-color: $brand-background;
     color: white; /* White text */
     border-color: $brand-blue; /* Slightly lighter border */
+    border-width: 2px;
 
     &:focus {
       background-color: $brand-background;
