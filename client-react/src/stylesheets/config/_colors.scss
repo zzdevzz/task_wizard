@@ -8,3 +8,12 @@ $brand-background: #0F1D26;
 $brand-backplate: #22303E;
 $brand-blue: #52A0D4;
 $brand-light-blue: #43CFEB;
+
+
+.text-brand-blue{
+    color: $brand-blue;
+}
+
+.bg-brand-blue{
+    background-color: $brand-blue;
+}

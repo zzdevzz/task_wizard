@@ -66,24 +66,28 @@ export default function FormTask({method,data, deleteMethod}){
                       {errors.status && <span>{errors.status.message}</span>}
                   </div>
                 </div>
-                <div>
-                  {data.date_completed_by ?
-                  <>
-                    <label htmlFor="date_completed_by" className="form-label">Date To Complete By</label>
-                    <input id="date_completed_by" type="date" className="form-control"{...register("date_completed_by")} />
-                  </> :
-                  <>
-                    <label htmlFor="date_created" className="form-label">Date Created</label>
-                    <input id="date_created" type="date" className="form-control" defaultValue={currentDate} {...register("date_created")} />
-                  </>
-                }
+                <div className="d-flex gap-10">
+                    <div className="flex-fill mx-auto">
+                        <label htmlFor="date_created" className="form-label">Date Created</label>
+                        <input id="date_created" type="date" className="form-control" defaultValue={currentDate} {...register("date_created")} />
+                    </div>
+                    <div className="flex-fill mx-auto">
+                        <label htmlFor="date_completed_by" className="form-label">Complete By</label>
+                        <input id="date_completed_by" type="date" className="form-control" defaultValue={currentDate}{...register("date_completed_by")} />
+                    </div>
                 </div>
-                <div>
-                    <label htmlFor="completed">Completed</label>
-                    <input id="completed" type="checkbox" {...register("completed")} />
+                <div className="my-3">
+                    <label htmlFor="completed">Done?</label>
+                    <input id="completed" type="checkbox" className="d-block"{...register("completed")} />
                 </div>
-                <input type="submit" value={buttonText}/>
-                { buttonText === "Update" && <button onClick={deleteMethod}>Delete</button>}
+                <div className={buttonText === "Update" ? "d-flex gap-10" : ""}>
+                    <div className="flex-fill mx-auto">
+                        <button type="submit" className="pill-button w-100 bg-brand-blue">{buttonText}</button>
+                    </div>
+                    <div className="flex-fill mx-auto">
+                        { buttonText === "Update" && <button onClick={deleteMethod} className="pill-button w-100">Delete</button>}
+                    </div>
+                </div>
             </form>
         </>
     )
