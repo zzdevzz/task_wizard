@@ -23,6 +23,12 @@
 .task-preview{
     // background-color: $brand-backplate;
     color: $brand-light;
+
+    .box{
+        min-width: 20%;
+        min-height: 50%;
+        background-color: red;
+    }
 }
 
 // Allows for seperate scrolling on our dashboard list.

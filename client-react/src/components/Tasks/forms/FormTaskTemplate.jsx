@@ -66,21 +66,19 @@ export default function FormTask({method,data, deleteMethod}){
                       {errors.status && <span>{errors.status.message}</span>}
                   </div>
                 </div>
-                <div>
-                  {data.date_completed_by ?
-                  <>
-                    <label htmlFor="date_completed_by" className="form-label">Date To Complete By</label>
-                    <input id="date_completed_by" type="date" className="form-control"{...register("date_completed_by")} />
-                  </> :
-                  <>
-                    <label htmlFor="date_created" className="form-label">Date Created</label>
-                    <input id="date_created" type="date" className="form-control" defaultValue={currentDate} {...register("date_created")} />
-                  </>
-                }
+                <div className="d-flex gap-10">
+                    <div className="flex-fill mx-auto">
+                        <label htmlFor="date_created" className="form-label">Date Created</label>
+                        <input id="date_created" type="date" className="form-control" defaultValue={currentDate} {...register("date_created")} />
+                    </div>
+                    <div className="flex-fill mx-auto">
+                        <label htmlFor="date_completed_by" className="form-label">Complete By</label>
+                        <input id="date_completed_by" type="date" className="form-control" defaultValue={currentDate}{...register("date_completed_by")} />
+                    </div>
                 </div>
                 <div className="my-3">
-                    <label htmlFor="completed">Task Completed?</label>
-                    <input id="completed" type="checkbox" {...register("completed")} />
+                    <label htmlFor="completed">Done?</label>
+                    <input id="completed" type="checkbox" className="d-block"{...register("completed")} />
                 </div>
                 <div className={buttonText === "Update" ? "d-flex gap-10" : ""}>
                     <div className="flex-fill mx-auto">
