@@ -7,11 +7,13 @@ import { TaskContext } from "./TasksDashboard"
 export default function TaskList() {
 
     const {0: tasks} = React.useContext(TaskContext)
+    const sortedTasks = [...tasks].sort((a, b) => a.id - b.id)
+
 
     return (
         <div className="py-2">
           <ul className="dashboard-list list-group list-group-vertical">
-              {tasks.map((task) => (
+              {sortedTasks.map((task) => (
                   <div key={task.id}
                   className="post-container">
                       <Link to={`${task.id}`} state={{taskData: task}}>

@@ -16,9 +16,9 @@ export default function About(){
         </p>
         <h3>Upcoming Features!</h3>
         <ul>
-          <li>Animation</li>
-          <li>Update tasks from preview mode</li>
-          <li>Native Mobile App</li>
+          <li>Animation.</li>
+          <li>Sort Tasks on urgency or date required by.</li>
+          <li>Native Mobile App.</li>
         </ul>
       </div>
     </div>

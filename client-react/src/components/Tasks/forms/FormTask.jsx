@@ -13,10 +13,7 @@ export default function FormTask({request = "post"}){
 
   const navigate = useNavigate()
   const location = useLocation()
-  console.log("request: ")
-  console.log(request)
 
-  // console.log("FormTask Render")
 
   // State is being passed if task is existing. If new task and state isn't passed we need to pass empty objects.
 

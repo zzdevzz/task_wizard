@@ -67,7 +67,7 @@ html, body, #root {
   backdrop-filter: blur(20px) brightness(1.2) contrast(1);
 }
 
-.post-container{
+.post-container::before{
   :hover{
     filter: brightness(2) contrast(1);
   }

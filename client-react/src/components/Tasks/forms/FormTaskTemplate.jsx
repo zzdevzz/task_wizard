@@ -12,9 +12,9 @@ export default function FormTask({method,data, deleteMethod}){
     const currentDate = new Date().toISOString().split("T")[0]
 
     React.useEffect(() => {
-        console.log("useEffect ran:")
-        console.log("method: ", method.name)
-        console.log("data: ", data)
+        // console.log("useEffect ran:")
+        // console.log("method: ", method.name)
+        // console.log("data: ", data)
         if (method.name === "updateTask" || method.name === "patch"){
             setButtonText("Update")
             reset(data)
@@ -29,11 +29,23 @@ export default function FormTask({method,data, deleteMethod}){
 
 
     const {register, handleSubmit, reset, formState: { errors }} = useForm({defaultValues: data})
+    // console.log(data)
 
+    const formatToDateTime = (dateString) => {
+        if (!dateString) return null
+        return new Date(dateString).toISOString()
+    }
+
+    const onSubmit = (formData) => {
+        formData.date_created = new Date(formData.date_created).toISOString()
+        formData.date_completed_by = new Date(formData.date_completed_by).toISOString()
+        console.log(formData)
+        method(formData)
+    }
 
     return (
         <>
-            <form onSubmit={handleSubmit((info) => method(info))} className="w-100 dark-form-input">
+            <form onSubmit={handleSubmit(onSubmit)} className="w-100 dark-form-input">
                 <div>
                     <label htmlFor="name" className="form-label">Task Name</label>
                     <input id="name" className="form-control"{...register("name", { required: "Task name is required" })} placeholder="Task Name" />
@@ -69,7 +81,7 @@ export default function FormTask({method,data, deleteMethod}){
                 <div className="d-flex gap-10">
                     <div className="flex-fill mx-auto">
                         <label htmlFor="date_created" className="form-label">Date Created</label>
-                        <input id="date_created" type="date" className="form-control" defaultValue={currentDate} {...register("date_created")} />
+                        <input id="date_created" type="date" className="form-control" readOnly defaultValue={currentDate} {...register("date_created")} />
                     </div>
                     <div className="flex-fill mx-auto">
                         <label htmlFor="date_completed_by" className="form-label">Complete By</label>

@@ -13,13 +13,13 @@ class Task < ApplicationRecord
   validates :completed, inclusion: { in: [true, false] }
   validates :date_created, presence: true
 
-  before_validation :set_default_values
+  before_create :set_default_values
 
   def set_default_values
     self.priority = self.priority || :low
     self.status = self.status || :to_be_done
-    self.date_created = Time.now.strftime("%d/%m/%Y %H:%M")
-    self.date_completed_by = Time.now.strftime("%d/%m/%Y %H:%M")
+    self.date_created ||= Time.now.strftime("%Y-%m-%dT%H:%M:%S.%LZ") # Use ISO 8601 format
+    self.date_completed_by ||= Time.now.strftime("%Y-%m-%dT%H:%M:%S.%LZ")
     # The if statement is if our form does not have a checkbox or the attribute is forgotten. It means the value can be nil.
     self.completed = false if self.completed.nil?
   end
