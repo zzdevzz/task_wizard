@@ -80,6 +80,9 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  # config.hosts << "3cm3pbkd-3000.uks1.devtunnels.ms"
+  # config.hosts << "3cm3pbkd-5173.uks1.devtunnels.ms"
+
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
   #   "example.com",     # Allow requests from example.com

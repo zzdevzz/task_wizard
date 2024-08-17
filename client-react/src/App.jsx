@@ -2,7 +2,6 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './stylesheets/application.scss'
-// import './main.scss'
 
 // Components
 import Layout from "./components/Layout/Layout"

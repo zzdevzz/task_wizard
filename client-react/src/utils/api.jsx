@@ -1,10 +1,9 @@
 import axios from 'axios'
 import { API_URL, BASE_URL } from '../constants'
 
-console.log("build file running successfully - working now autobuild working")
-
-console.log('BASE_URL: ', BASE_URL)
-console.log('API_URL: ', API_URL)
+// console.log('BASE_URL: ', BASE_URL)
+// console.log('API_URL: ', API_URL)
+// console.log("Environment: ", process.env.NODE_ENV);
 
 const api = axios.create({
   baseURL: API_URL

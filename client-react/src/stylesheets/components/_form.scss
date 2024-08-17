@@ -11,6 +11,12 @@
     background-color: $brand-background;
     color: white; /* White text */
     border-color: $brand-blue; /* Slightly lighter border */
+    border-width: 2px;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.6); /* Lighten the placeholder text color */
+      opacity: 1; /* Ensure full opacity */
+    }
 
     &:focus {
       background-color: $brand-background;

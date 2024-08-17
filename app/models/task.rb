@@ -19,6 +19,7 @@ class Task < ApplicationRecord
     self.priority = self.priority || :low
     self.status = self.status || :to_be_done
     self.date_created = Time.now.strftime("%d/%m/%Y %H:%M")
+    self.date_completed_by = Time.now.strftime("%d/%m/%Y %H:%M")
     # The if statement is if our form does not have a checkbox or the attribute is forgotten. It means the value can be nil.
     self.completed = false if self.completed.nil?
   end

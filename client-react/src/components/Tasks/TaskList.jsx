@@ -5,13 +5,6 @@ import TaskPreview from "./TaskPreview"
 import { TaskContext } from "./TasksDashboard"
 
 export default function TaskList() {
-    // const [tasks, setTasks ] = React.useState([])
-
-    // const retrieveTasks = async () => {
-    //     const response = await fetch(API_URL)
-    //     const data = await response.json()
-    //     setTasks(data)
-    // }
 
     const {0: tasks} = React.useContext(TaskContext)
 
