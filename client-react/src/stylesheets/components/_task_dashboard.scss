@@ -23,6 +23,7 @@
 .task-preview{
     // background-color: $brand-backplate;
     color: $brand-light;
+    min-height: 100px;
 
     .box{
         min-width: 20%;
@@ -52,4 +53,10 @@
 .dashboard-list{
     max-height: 250px;
     overflow: auto;
+}
+
+@media (min-width: 992px) {
+  .dashboard-list {
+    max-height: 50%; /* Full height on large screens */
+  }
 }

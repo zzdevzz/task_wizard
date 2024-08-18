@@ -8,8 +8,14 @@ export default function FormTask({method,data, deleteMethod}){
 
 
     const [buttonText, setButtonText] = React.useState("Create")
+    const [formVisible, setFormVisible] = React.useState(true)
 
     const currentDate = new Date().toISOString().split("T")[0]
+
+    function activeForm(){
+      setFormVisible(prevFormVisible => !prevFormVisible)
+      console.log(formVisible)
+    }
 
     React.useEffect(() => {
         // console.log("useEffect ran:")
@@ -45,9 +51,12 @@ export default function FormTask({method,data, deleteMethod}){
 
     return (
         <>
-            <form onSubmit={handleSubmit(onSubmit)} className="w-100 dark-form-input">
+            <form onSubmit={handleSubmit(onSubmit)} className={formVisible ? "w-100 dark-form-input" : "collapse"}>
                 <div>
-                    <label htmlFor="name" className="form-label">Task Name</label>
+                    <div className="d-flex justify-content-between align-items-end">
+                      <label htmlFor="name" className="form-label">Task Name</label>
+                      <p className="mb-2" onClick={activeForm}>Dismiss</p>
+                    </div>
                     <input id="name" className="form-control"{...register("name", { required: "Task name is required" })} placeholder="Task Name" />
                     {errors.name && <span>{errors.name.message}</span>}
                 </div>
@@ -81,18 +90,18 @@ export default function FormTask({method,data, deleteMethod}){
                 <div className="d-flex gap-10">
                     <div className="flex-fill mx-auto">
                         <label htmlFor="date_created" className="form-label">Date Created</label>
-                        <input id="date_created" type="date" className="form-control" readOnly defaultValue={currentDate} {...register("date_created")} />
+                        <input id="date_created" type="date" className="form-control" defaultValue={currentDate} {...register("date_created")} />
                     </div>
                     <div className="flex-fill mx-auto">
                         <label htmlFor="date_completed_by" className="form-label">Complete By</label>
                         <input id="date_completed_by" type="date" className="form-control" defaultValue={currentDate}{...register("date_completed_by")} />
                     </div>
                 </div>
-                <div className="my-3">
+                <div className="my-3 collapse">
                     <label htmlFor="completed">Done?</label>
                     <input id="completed" type="checkbox" className="d-block"{...register("completed")} />
                 </div>
-                <div className={buttonText === "Update" ? "d-flex gap-10" : ""}>
+                <div className={`mt-3 ${buttonText === "Update" ? "d-flex gap-10" : ""}`}>
                     <div className="flex-fill mx-auto">
                         <button type="submit" className="pill-button w-100 bg-brand-blue">{buttonText}</button>
                     </div>

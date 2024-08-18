@@ -5,6 +5,8 @@
 .dark-form-input {
   label{
     color: white;
+    margin: 0.5rem 0;
+
   }
   :is(input, select, textarea) {
     // background-color: #343a40; /* Bootstrap's dark background */
@@ -25,4 +27,8 @@
       outline: none; // Consider accessibility implications
     }
   }
+
+  // div {
+  //   margin: 0.5rem 0;
+  // }
 }
