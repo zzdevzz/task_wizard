@@ -12,7 +12,7 @@
     // background-color: #343a40; /* Bootstrap's dark background */
     background-color: $brand-background;
     color: white; /* White text */
-    border-color: $brand-blue; /* Slightly lighter border */
+    border-color: $brand-purple; /* Slightly lighter border */
     border-width: 2px;
 
     &::placeholder {
@@ -23,7 +23,7 @@
     &:focus {
       background-color: $brand-background;
       color: white;
-      border-color: $brand-blue;
+      border-color: $brand-purple;
       outline: none; // Consider accessibility implications
     }
   }

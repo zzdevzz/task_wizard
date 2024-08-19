@@ -41,7 +41,7 @@ export default function TasksDashboardHost(){
                 <div className="dashboard-detail col-lg-8 d-flex my-2 order-md-2">
                     <Outlet/>
                 </div>
-                <div className="col-lg-4 max-height my-3 order-md-1">
+                <div className="col-lg-4 my-3 order-md-1">
                     <TaskList/>
                 </div>
                 <NewTask/>

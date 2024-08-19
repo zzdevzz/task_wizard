@@ -50,13 +50,13 @@ export default function TaskPreview({ taskData }) {
   }
 
   return (
-    <li className="task-preview list-group-item glass-container d-flex">
+    <li className="task-preview list-group-item glass-container d-flex align-items-center">
       <div
-        className={`box me-3 ${getStatusColor()}`}
+        className={`box orb ${getStatusColor()}`}
         onClick={handleStatusChange}
         title="Click to change status"
       ></div>
-      <div className={`overflow-hidden ${currentStatus === "to_be_reviewed" ? "task-complete" : ""}`}>
+      <div className={`overflow-hidden ms-3 ${currentStatus === "to_be_reviewed" ? "task-complete" : ""}`}>
         <h2 className="text-truncate">{taskData.name}</h2>
         <p className="text-truncate">{taskData.description}</p>
       </div>

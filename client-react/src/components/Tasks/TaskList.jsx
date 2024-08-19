@@ -11,17 +11,15 @@ export default function TaskList() {
 
 
     return (
-        <div className="py-2">
-          <ul className="dashboard-list list-group list-group-vertical">
-              {sortedTasks.map((task) => (
-                  <div key={task.id}
-                  className="post-container">
-                      <Link to={`${task.id}`} state={{taskData: task}}>
-                          <TaskPreview taskData={task}/>
-                      </Link>
-                  </div>
-              ))}
-          </ul>
-        </div>
+        <ul className="dashboard-list list-group list-group-vertical py-2">
+            {sortedTasks.map((task) => (
+                <div key={task.id}
+                className="post-container">
+                    <Link to={`${task.id}`} state={{taskData: task}}>
+                        <TaskPreview taskData={task}/>
+                    </Link>
+                </div>
+            ))}
+        </ul>
     )
 }
