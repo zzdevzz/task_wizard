@@ -10,7 +10,7 @@ export default function Layout(){
             <div className="col">
                 <Header/>
                   <div className="main-content pt-2 custom-scroll">
-                    <div className="container">
+                    <div className="container overflow-hidden">
                         <Outlet/>
                     </div>
                   </div>

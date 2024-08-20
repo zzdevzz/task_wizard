@@ -1,18 +1,24 @@
 import React from "react"
 import IMAGES from "../assets/images/Image"
 
+import Signup from "../components/Authorisation/Signup"
+
 export default function Home(){
     return (
-        <div className="mt-5 landing">
-            <h2>Forget your todo list. Add spells to your motivation spellbook.</h2>
-            <h1>Welcome to TaskWizard</h1>
-            <h2>The perfect way to summon your motivation.</h2>
-            <div>
-                <div>
-                    <img src={IMAGES.wizardLanding} width={100}/>
+        <>  
+            <div className="landing-image full-width vh-100" style={{paddingTop: -8}}>
+                <div className="mt-5 landing-text container text-center">            
+                    <h1 className="display-1">Welcome to <strong>TaskWizard</strong></h1>
+                    <h2>Don't wait for motivation. Summon it instead.</h2>
                 </div>
-                <h2>Don't wait  to be motivated. Create your own motivation.</h2>
+                <Signup/>
             </div>
-        </div>
+            {/* <div className="vh-100">
+                <h2>Forget your todo list.</h2>
+                <h2>Add spells to your motivation spellbook instead.</h2>
+                <h2>The perfect way to summon your motivation.</h2>
+                <p>- Gandalf</p>
+            </div> */}
+        </>
     )
 }

@@ -3,3 +3,33 @@
 .home-bg{
     color: pink;
 }
+
+
+.landing-image {
+    height: 100%;
+    background: linear-gradient(
+        $brand-background 15%,
+        transparent 60%,
+        transparent 80%,
+        $brand-background 98%,
+        
+        ),
+        url("../assets/images/Chatgpt-Wizard-Landing/Wizard-Landing-03.webp");
+    background-size: cover; /* Ensure the image covers the whole area */
+    background-repeat: no-repeat;
+    background-position: center;
+    // background-position-x: right;
+}
+
+.landing-text{
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+}
+
+.full-width {
+    width: 100vw; /* Full viewport width */
+    margin-left: calc(-50vw + 50%); /* Center the element on the page */
+    position: relative; /* Maintain the position relative to the normal document flow */
+    overflow-x: hidden;
+}
