@@ -2,9 +2,8 @@ import React from "react"
 
 export default function About(){
 
-  console.log("About us build done")
   return (
-    <div className="py-3">
+    <div className="about-us-text">
       <h1 className="text-center">About TaskWizard 🧙‍♂️</h1>
       <div className="pt-2">
         <p> Tired of those same old boring to-do apps that make you feel like productivity is a chore? We get it. </p> 
@@ -22,6 +21,7 @@ export default function About(){
         </ul>
       </div>
     </div>
-
   )
 }
+
+

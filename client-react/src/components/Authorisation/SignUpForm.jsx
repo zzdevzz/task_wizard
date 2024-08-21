@@ -41,14 +41,16 @@ export default function SignUpForm({className=""}){
                     />
                     {errors.email && <span>{errors.email.message}</span>}
                     </div>
-                    {/* <label>Username:</label> */}
-                    <input
-                        placeholder="Username"
-                        className="form-control"     
-                        {...register('username', {
-                        required: 'Username is required'
-                    })}/>
-                    {errors.username && <span>{errors.username.message}</span>}
+                    <div>
+                        {/* <label>Username:</label> */}
+                        <input
+                            placeholder="Username"
+                            className="form-control"     
+                            {...register('username', {
+                                required: 'Username is required'
+                            })}/>
+                        {errors.username && <span>{errors.username.message}</span>}
+                    </div>
                     <div>
                     {/* <label>Password:</label> */}
                     <input
