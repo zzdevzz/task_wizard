@@ -55,16 +55,16 @@ export default function FormTask({method,data, deleteMethod}){
                 <div>
                     <div className="d-flex justify-content-between align-items-end">
                       <label htmlFor="name" className="form-label">Task Name</label>
-                      <p className="mb-2" onClick={activeForm}>Dismiss</p>
+                      {/* <p className="mb-2" onClick={activeForm}>Dismiss</p> */}
                     </div>
-                    <input id="name" className="form-control"{...register("name", { required: "Task name is required" })} placeholder="Task Name" />
+                    <input id="name" className="form-control"{...register("name", { required: "Task name is required" })} placeholder="I need to..." />
                     {errors.name && <span>{errors.name.message}</span>}
                 </div>
                 <div className="overflow-auto">
                     <label htmlFor="description">Task Description</label>
                     <textarea id="description" className="form-control overflow-auto" {...register("description")} rows="3"
-            style={{ resize: 'vertical', maxHeight: '200px', overflowY: 'auto' }}
-                    placeholder="Task Description" />
+                    style={{ resize: 'vertical', maxHeight: '200px', overflowY: 'auto' }}
+                    placeholder="Don't forget for this I need..." />
                     {errors.description && <span>{errors.description.message}</span>}
                 </div>
                 <div className="d-flex">
@@ -90,7 +90,7 @@ export default function FormTask({method,data, deleteMethod}){
                 <div className="d-flex gap-10">
                     <div className="flex-fill mx-auto">
                         <label htmlFor="date_created" className="form-label">Date Created</label>
-                        <input id="date_created" type="date" className="form-control" defaultValue={currentDate} {...register("date_created")} />
+                        <input id="date_created" type="date" className="form-control" defaultValue={currentDate} {...register("date_created")} readOnly />
                     </div>
                     <div className="flex-fill mx-auto">
                         <label htmlFor="date_completed_by" className="form-label">Complete By</label>

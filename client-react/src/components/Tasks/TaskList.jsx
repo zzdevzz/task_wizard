@@ -11,7 +11,7 @@ export default function TaskList() {
 
 
     return (
-        <ul className="dashboard-list list-group list-group-vertical py-2">
+        <ul className="dashboard-list py-2">
             {sortedTasks.map((task) => (
                 <div key={task.id}
                 className="post-container">

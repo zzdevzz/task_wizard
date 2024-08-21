@@ -50,7 +50,7 @@ export default function TaskPreview({ taskData }) {
   }
 
   return (
-    <li className="task-preview list-group-item glass-container d-flex align-items-center">
+    <li className="task-preview list-group-item d-flex align-items-center">
       <div
         className={`box orb ${getStatusColor()}`}
         onClick={handleStatusChange}

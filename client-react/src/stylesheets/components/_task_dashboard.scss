@@ -21,9 +21,10 @@
 }
 
 .task-preview{
-    // background-color: $brand-backplate;
+    background-color: $brand-backplate;
     color: $brand-light;
     min-height: 100px;
+    padding: 0.5rem 1rem;
 
     .box{
         height: 50px;
@@ -54,6 +55,10 @@
 .dashboard-list{
     max-height: 250px;
     overflow: auto;
+    padding: 0;
+    border-radius: 16px;
+    border: solid 2px $brand-purple;
+    // background-color: $brand-backplate;
 }
 
 @media (min-width: 992px) {
