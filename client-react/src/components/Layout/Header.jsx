@@ -35,7 +35,8 @@ export default function Header() {
             <NavLink to="/tasks">My tasks</NavLink>
             {!isAuthenticated && <NavLink to="signup">Sign Up</NavLink>}
             { isAuthenticated ?
-              <button onClick={signOut} className='btn btn-outline-warning'>Logout</button> :
+              // <button onClick={signOut} className='btn btn-outline-warning'>Logout</button> :
+              <button onClick={signOut} className='btn btn-warning'>Logout</button> :
               <NavLink to="login">Login</NavLink>
             }
         </nav>

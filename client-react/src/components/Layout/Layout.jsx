@@ -24,7 +24,7 @@ export default function Layout(){
         <div className="row h-100">
             <div className="col h-100">
                 <Header/>
-                <div className="main-content custom-scroll">
+                <div className="main-content custom-scroll flex-grow-1">
                     {/* Conditionally apply the 'container' class only if it's not the homepage */}
                     <div className={`${noContainer ? "" : "container"} h-100 py-2`}>
                         <Outlet/>

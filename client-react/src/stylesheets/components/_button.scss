@@ -30,4 +30,14 @@
         @extend .base-button;
         background: radial-gradient(circle, $brand-purple 0%, $brand-highlight 100%);
     }
+
+    &-orange {
+        @extend .base-button;
+        background: radial-gradient(circle, orange 0%, yellow 100%);
+    }
+
+    &-red {
+        @extend .base-button;
+        background: radial-gradient(circle, rgb(255, 0, 0) 0%, rgb(255, 60, 0) 100%);
+    }
 }

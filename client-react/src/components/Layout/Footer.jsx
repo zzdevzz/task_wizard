@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 
 export default function Footer() {
     return (
-        <footer className='mt-5'>
+        <footer>
             <ul className="layout-stroke-top footer list-unstyled d-flex justify-content-around align-items-center">
                 <li className=''>
                     <Link to="/">TaskWizard</Link>

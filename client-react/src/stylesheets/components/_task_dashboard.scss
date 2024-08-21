@@ -20,36 +20,7 @@
     bottom: 50px;
 }
 
-.task-preview{
-    background-color: $brand-backplate;
-    color: $brand-light;
-    min-height: 100px;
-    padding: 0.5rem 1rem;
 
-    .box{
-        height: 50px;
-        min-width: 50px;
-        background-color: red;
-    }
-
-    .color-todo{
-        background-color: red;
-    }
-
-    .color-wip{
-        background-color: orange;
-    }
-
-    .color-done{
-        background-color: green;
-        // filter: hue-rotate(180deg); /* Blue hue */
-    }
-
-    .task-complete{
-        text-decoration: line-through;
-        opacity: 0.5;
-    }
-}
 
 // Allows for seperate scrolling on our dashboard list.
 .dashboard-list{
@@ -58,7 +29,38 @@
     padding: 0;
     border-radius: 16px;
     border: solid 2px $brand-purple;
-    // background-color: $brand-backplate;
+    
+    .task-preview{
+        background-color: $brand-backplate;
+        color: $brand-light;
+        min-height: 100px;
+        padding: 0.5rem 1rem;
+        border: solid 1px $brand-highlight;
+    
+        .box{
+            height: 50px;
+            min-width: 50px;
+            background-color: red;
+        }
+    
+        .color-todo{
+            background-color: red;
+        }
+    
+        .color-wip{
+            background-color: orange;
+        }
+    
+        .color-done{
+            background-color: green;
+            // filter: hue-rotate(180deg); /* Blue hue */
+        }
+    
+        .task-complete{
+            text-decoration: line-through;
+            opacity: 0.5;
+        }
+    }
 }
 
 @media (min-width: 992px) {
