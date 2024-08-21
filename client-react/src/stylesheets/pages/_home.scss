@@ -8,16 +8,32 @@
 .landing-image {
     height: 100%;
     background: linear-gradient(
-        $brand-background 15%,
-        transparent 60%,
-        transparent 80%,
-        $brand-background 98%,
-        
+        $brand-background 10%,
+        transparent 50%,
+        transparent 65%,
+        $brand-background 90%,
         ),
         url("../assets/images/Chatgpt-Wizard-Landing/Wizard-Landing-03.webp");
     background-size: cover; /* Ensure the image covers the whole area */
     background-repeat: no-repeat;
     background-position: center;
+    padding-bottom: -80px;
+    // background-position-x: right;
+}
+
+.cover-image {
+    height: 100%;
+    background: linear-gradient(
+        $brand-background 0%,
+        transparent 15%,
+        transparent 85%,
+        $brand-background 100%,
+        ),
+        url("../assets/images/Chatgpt-Wizard-Landing/Wizard-Landing-05.webp");
+    background-size: cover; /* Ensure the image covers the whole area */
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-bottom: -80px;
     // background-position-x: right;
 }
 
@@ -26,6 +42,7 @@
     // top: 0;
     // left: 0;
 }
+
 
 .full-width {
     width: 100vw; /* Full viewport width */

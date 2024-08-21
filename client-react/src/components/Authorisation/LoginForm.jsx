@@ -6,7 +6,7 @@ import { AuthContext } from "./AuthProvider"
 import { base } from "../../utils/api"
 import { BASE_URL, API_URL } from "../../constants"
 
-export default function LoginForm() {
+export default function LoginForm({className=""}) {
     const { register, handleSubmit, formState: { errors } } = useForm()
     const [error, setError] = React.useState('')
     const navigate = useNavigate()
@@ -37,25 +37,29 @@ export default function LoginForm() {
     }
 
     return (
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            {...register('email', { required: 'Email is required' })}
-          />
-          {errors.email && <span>{errors.email.message}</span>}
+      <div className="cover-image h-100 d-flex justify-content-center flex-column">
+        <div className="container">
+          <form onSubmit={handleSubmit(onSubmit)} className={`glass-form ${className}`}>
+            <div>
+              <label>Email:</label>
+              <input
+                type="email"
+                {...register('email', { required: 'Email is required' })}
+                />
+              {errors.email && <span>{errors.email.message}</span>}
+            </div>
+            <div>
+              <label>Password:</label>
+              <input
+                type="password"
+                {...register('password', { required: 'Password is required' })}
+                />
+              {errors.password && <span>{errors.password.message}</span>}
+            </div>
+            <button type="submit">Login</button>
+            {error && <p>{error}</p>}
+          </form>
         </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            {...register('password', { required: 'Password is required' })}
-          />
-          {errors.password && <span>{errors.password.message}</span>}
-        </div>
-        <button type="submit">Login</button>
-        {error && <p>{error}</p>}
-      </form>
-    );
+      </div>
+    )
   }

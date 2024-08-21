@@ -8,7 +8,7 @@ import { BASE_URL } from "../../constants"
 
 
 
-export default function SignUpForm(){
+export default function SignUpForm({className=""}){
 
   const {register, handleSubmit, formState: {errors}} = useForm()
   const [message, setMessage ] = React.useState("")
@@ -28,9 +28,9 @@ export default function SignUpForm(){
         }
     }
     return(
-        <div>
+        <div className="cover-image h-100 container d-flex justify-content-center flex-column">
             <h2>Sign Up!</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form className="glass-form" onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <label>Email:</label>
                     <input
