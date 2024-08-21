@@ -3,3 +3,50 @@
 .home-bg{
     color: pink;
 }
+
+
+.landing-image {
+    height: 100%;
+    background: linear-gradient(
+        $brand-background 10%,
+        transparent 50%,
+        transparent 65%,
+        $brand-background 90%,
+        ),
+        url("../assets/images/Chatgpt-Wizard-Landing/Wizard-Landing-03.webp");
+    background-size: cover; /* Ensure the image covers the whole area */
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-bottom: -80px;
+    // background-position-x: right;
+}
+
+.cover-image {
+    height: 100%;
+    background: linear-gradient(
+        $brand-background 0%,
+        transparent 40%,
+        transparent 60%,
+        $brand-background 100%,
+        ),
+        url("../assets/images/Chatgpt-Wizard-Landing/Wizard-Landing-04.webp");
+    background-size: cover; /* Ensure the image covers the whole area */
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-bottom: -80px;
+    // background-position-x: right;
+}
+
+.landing-text{
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+}
+
+
+.full-width {
+    width: 100vw; /* Full viewport width */
+    margin-left: calc(-50vw + 50%); /* Center the element on the page */
+    position: relative; /* Maintain the position relative to the normal document flow */
+    overflow-x: hidden;
+}

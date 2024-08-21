@@ -8,7 +8,7 @@ import { BASE_URL } from "../../constants"
 
 
 
-export default function SignUpForm(){
+export default function SignUpForm({className=""}){
 
   const {register, handleSubmit, formState: {errors}} = useForm()
   const [message, setMessage ] = React.useState("")
@@ -28,26 +28,33 @@ export default function SignUpForm(){
         }
     }
     return(
-        <div>
-            <h2>Sign Up!</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="cover-image h-100 container d-flex justify-content-center flex-column">
+            <form className="glass-form" onSubmit={handleSubmit(onSubmit)}>
+                <h1>Sign Up</h1>
                 <div>
-                    <label>Email:</label>
+                    {/* <label>Email:</label> */}
                     <input
                         type="email"
+                        placeholder="Email"
+                        className="form-control"
                         {...register('email', { required: 'Email is required' })}
                     />
                     {errors.email && <span>{errors.email.message}</span>}
                     </div>
-                    <label>Username:</label>
-                    <input {...register('username', {
+                    {/* <label>Username:</label> */}
+                    <input
+                        placeholder="Username"
+                        className="form-control"     
+                        {...register('username', {
                         required: 'Username is required'
                     })}/>
                     {errors.username && <span>{errors.username.message}</span>}
                     <div>
-                    <label>Password:</label>
+                    {/* <label>Password:</label> */}
                     <input
-                        type="password"
+                        type="Password"
+                        placeholder="Email"
+                        className="form-control"
                         {...register('password', {
                             required: 'Password is required',
                             minLength: {
@@ -59,9 +66,11 @@ export default function SignUpForm(){
                     {errors.password && <span>{errors.password.message}</span>}
                     </div>
                     <div>
-                    <label>Confirm Password:</label>
+                    {/* <label>Confirm Password:</label> */}
                     <input
                         type="password"
+                        placeholder="Confirm Password"
+                        className="form-control"
                         {...register('password_confirmation', {
                         required: 'Password confirmation is required',
                         validate: (value) =>
@@ -70,7 +79,7 @@ export default function SignUpForm(){
                     />
                     {errors.password_confirmation && <span>{errors.password_confirmation.message}</span>}
                 </div>
-                <button type="submit">Sign Up</button>
+                <button type="submit" className="base-button-purple">Sign Up</button>
             </form>
             {message && <p>{message}</p>}
         </div>

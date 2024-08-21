@@ -19,6 +19,7 @@ function formatDate(dateString) {
 export default function TasksDashboardHost(){
     const { token, logout } = React.useContext(AuthContext)
     const [tasks, setTasks ] = React.useState([])
+    // console.log("tasksdashboard: ", tasks)
     const retrieveTasks = async () => {
         const response = await api.get(`${API_URL}/tasks`, {headers: {Authorization: token}})
         const tasksFormatted = response.data.map((task) => ({
@@ -37,10 +38,10 @@ export default function TasksDashboardHost(){
     return(
         <TaskContext.Provider value={[tasks, retrieveTasks]}>
             <div className="dashboard row align-content-start h-100">
-                <div className="dashboard-detail col-lg-8 d-flex my-2">
+                <div className="dashboard-detail col-lg-8 d-flex my-2 order-md-2">
                     <Outlet/>
                 </div>
-                <div className="col max-height my-3">
+                <div className="col-lg-4 my-3 order-md-1">
                     <TaskList/>
                 </div>
                 <NewTask/>

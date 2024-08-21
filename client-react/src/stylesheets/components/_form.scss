@@ -5,12 +5,14 @@
 .dark-form-input {
   label{
     color: white;
+    margin: 0.5rem 0;
+
   }
   :is(input, select, textarea) {
     // background-color: #343a40; /* Bootstrap's dark background */
     background-color: $brand-background;
     color: white; /* White text */
-    border-color: $brand-blue; /* Slightly lighter border */
+    border-color: $brand-purple; /* Slightly lighter border */
     border-width: 2px;
 
     &::placeholder {
@@ -21,8 +23,36 @@
     &:focus {
       background-color: $brand-background;
       color: white;
-      border-color: $brand-blue;
+      border-color: $brand-purple;
       outline: none; // Consider accessibility implications
     }
+  }
+
+  // div {
+  //   margin: 0.5rem 0;
+  // }
+}
+
+.glass-form {
+  /* From https://css.glass */
+  // background: rgba(16, 17, 55, 0.226);
+  background: rgba(34, 35, 56, 0.226);
+
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 3rem 1.5rem;
+  box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.308);
+
+  div{
+    // margin: 1rem 0
+    margin-top: 1rem;
+  }
+
+  h1{
+    margin-bottom: 2rem;
+    text-align: center;
+
   }
 }

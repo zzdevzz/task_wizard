@@ -4,3 +4,30 @@
     border-style: none;
     
 }
+
+.signup-button{
+    @extend .pill-button;
+    background: rgb(63,94,251);
+    background: radial-gradient(circle, $brand-purple 0%, $brand-highlight 100%);
+    max-width: 150px;
+
+    p{
+        font-size: 1rem;
+        font-weight: bolder;
+        color: white;
+    }
+}
+
+.base-button{
+    @extend .pill-button;
+    width: 100%;
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: bolder;
+    color: white;
+
+    &-purple {
+        @extend .base-button;
+        background: radial-gradient(circle, $brand-purple 0%, $brand-highlight 100%);
+    }
+}

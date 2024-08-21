@@ -1,0 +1,18 @@
+$radial-background: radial-gradient(circle, rgba(66, 88, 236, 1) 22%, rgba(0, 0, 0, 0) 100%);
+
+.layout-stroke {
+    border-image: $radial-background;
+    border-image-slice: 1; /* Ensures the gradient is applied across the entire border */
+}
+
+/* Specific styles for the top border */
+.layout-stroke-top {
+    @extend .layout-stroke; /* Inherits the common properties */
+    border-top: 2px solid transparent; /* Set the border width for top */
+}
+
+/* Specific styles for the bottom border */
+.layout-stroke-bottom {
+    @extend .layout-stroke; /* Inherits the common properties */
+    border-bottom: 2px solid transparent; /* Set the border width for bottom */
+}

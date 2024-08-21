@@ -17,7 +17,7 @@ class User < ApplicationRecord
   def initialize_defaults
     Task.create(
       name: "Follow Dev on LinkedIn",
-      description: "Do it asap to see all the cool things he'll continue to make!",
+      description: "Do it asap to see all the cool things he'll continue to make! https://www.linkedin.com/in/devhalai/",
       priority: :high,
       user: self
     )
@@ -34,7 +34,7 @@ class User < ApplicationRecord
     )
     Task.create(
       name: "Check out Dev's YouTube channel.",
-      description: "There was some cool things I wanted to check out.",
+      description: "There was some cool things I wanted to check out. https://www.youtube.com/@bydevcreates",
       priority: :high,
       user: self
     )

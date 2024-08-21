@@ -29,13 +29,13 @@ export default function Header() {
     // Active styling in App.css for Navbar active class.
     return (
       <>
-        <nav className='d-flex justify-content-around align-items-center navbar'>
+        <nav className='d-flex justify-content-around align-items-center navbar layout-stroke-bottom'>
             <NavLink to="/"><img src={BRAND.logo} style={{width: 50}}/></NavLink>
             <NavLink to="/about" >About</NavLink>
             <NavLink to="/tasks">My tasks</NavLink>
             {!isAuthenticated && <NavLink to="signup">Sign Up</NavLink>}
             { isAuthenticated ?
-              <button onClick={signOut}>Logout</button> :
+              <button onClick={signOut} className='btn btn-outline-warning'>Logout</button> :
               <NavLink to="login">Login</NavLink>
             }
         </nav>

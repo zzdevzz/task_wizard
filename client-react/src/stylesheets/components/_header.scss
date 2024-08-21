@@ -7,11 +7,13 @@ a.active {
 
 nav{
   height: $header-height;
-  background-color: rgba(255, 255, 255, 0.1); /* Optional: Add a semi-transparent background color */
+  // background-color: rgba(255, 255, 255, 0.1); /* Optional: Add a semi-transparent background color */
+  background-color: $brand-backplate;
   backdrop-filter: blur(5px) brightness(1.2); /* Ensure blur is applied to the content behind the nav */
   border-bottom: 2px solid black 0.1;
   a {
-    color: $brand-light-blue;
-    font-weight: bolder;
+    color: $brand-light;
+    // font-weight: bolder;
   }
+
 }
