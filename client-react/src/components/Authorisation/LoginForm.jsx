@@ -40,23 +40,28 @@ export default function LoginForm({className=""}) {
       <div className="cover-image h-100 d-flex justify-content-center flex-column">
         <div className="container">
           <form onSubmit={handleSubmit(onSubmit)} className={`glass-form ${className}`}>
-            <div>
-              <label>Email:</label>
+            <h1> Login</h1>
+            <div className="">
+              {/* <label className="form-label">Email:</label> */}
               <input
                 type="email"
+                className="form-control"
+                placeholder="Email"
                 {...register('email', { required: 'Email is required' })}
                 />
               {errors.email && <span>{errors.email.message}</span>}
             </div>
             <div>
-              <label>Password:</label>
+              {/* <label>Password:</label> */}
               <input
                 type="password"
+                placeholder="Password"
+                className="form-control"
                 {...register('password', { required: 'Password is required' })}
                 />
               {errors.password && <span>{errors.password.message}</span>}
             </div>
-            <button type="submit">Login</button>
+            <button type="submit" className="base-button-purple">Sign In</button>
             {error && <p>{error}</p>}
           </form>
         </div>
