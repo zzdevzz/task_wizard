@@ -4,6 +4,8 @@ import { api } from "../../utils/api"
 import { TaskContext } from "./TasksDashboard"
 import { AuthContext } from "../Authorisation/AuthProvider"
 
+import IMAGES from "../../assets/images/Image"
+
 // Define possible statuses
 const statuses = ["to_be_done", "in_progress", "to_be_reviewed"]
 
@@ -50,13 +52,15 @@ export default function TaskPreview({ taskData }) {
   }
 
   return (
-    <li className="task-preview list-group-item d-flex align-items-center">
+    <li className="task-preview d-flex align-items-center">
       <div
-        className={`box orb ${getStatusColor()}`}
+        className={`box text-center ${getStatusColor()}`}
         onClick={handleStatusChange}
         title="Click to change status"
-      ></div>
-      <div className={`overflow-hidden ms-3 ${currentStatus === "to_be_reviewed" ? "task-complete" : ""}`}>
+      >
+        <img src={IMAGES.gemBase} alt="Magic Crystal" style={{transform: "scale(1.1)"}} className="h-100"/>
+      </div>
+      <div className={`overflow-hidden ms-4 ${currentStatus === "to_be_reviewed" ? "task-complete" : ""}`}>
         <h2 className="text-truncate">{taskData.name}</h2>
         <p className="text-truncate">{taskData.description}</p>
       </div>
