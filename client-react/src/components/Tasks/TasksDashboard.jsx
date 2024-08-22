@@ -1,6 +1,8 @@
 import React from "react"
 import { Outlet } from "react-router-dom"
 import TaskList from "./TaskList"
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { API_URL } from "../../constants"
 import { AuthContext } from "../Authorisation/AuthProvider"
@@ -38,6 +40,7 @@ export default function TasksDashboardHost(){
     return(
         <TaskContext.Provider value={[tasks, retrieveTasks]}>
             <div className="dashboard row align-content-start h-100">
+                <ToastContainer autoClose={2000}/>
                 <div className="dashboard-detail col-lg-8 d-flex my-2 order-md-2">
                     <Outlet/>
                 </div>

@@ -15,10 +15,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: xx-large;
+    font-size: 3rem;
     font-weight: bolder;
     right: 10px;
     bottom: 50px;
+    box-shadow:  -3px 5px 10px black;
 }
 
 
@@ -26,12 +27,19 @@
 // Allows for seperate scrolling on our dashboard list.
 .dashboard-list{
     max-height: 250px;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     padding: 0;
     border-radius: 16px;
     border: solid 4px $brand-highlight;
     
     .post-container {
+
+        &.active {
+          filter: brightness(1.1) contrast(1.1);
+          margin: 0px -8px;
+        }
+
         &:first-child  {
           border-bottom: 1px solid $brand-med; /* Border for the first element */
         }
@@ -115,4 +123,5 @@
     max-height: 75%; /* Full height on large screens */
   }
 }
+
 

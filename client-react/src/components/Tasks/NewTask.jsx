@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 
 export default function NewTask(){
     return (
-        <Link className="create-task" to="new">+</Link>
+        <Link className="create-task" to="new">
+            <p className="m-0">
+                +
+            </p>
+        </Link>
     )
 }

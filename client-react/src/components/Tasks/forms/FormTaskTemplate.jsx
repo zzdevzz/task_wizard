@@ -1,5 +1,6 @@
 import React from "react"
-import { appendErrors, useForm } from "react-hook-form"
+import { appendErrors, useForm } from "react-hook-form";
+
 
 export default function FormTask({method,data, deleteMethod}){
 
