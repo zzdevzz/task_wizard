@@ -11,7 +11,7 @@ export default function TaskList() {
 
 
     return (
-        <ul className="dashboard-list py-2 flex-grow-1">
+        <ul className="dashboard-list flex-grow-1 custom-scroll">
             {sortedTasks.map((task) => (
                 <div key={task.id}
                 className="post-container">

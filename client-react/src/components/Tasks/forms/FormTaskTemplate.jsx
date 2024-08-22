@@ -108,7 +108,7 @@ export default function FormTask({method,data, deleteMethod}){
                         <button type="submit" className="base-button-purple w-100 bg-brand-blue mt-2">{buttonText}</button>
                     </div>
                     <div className="flex-fill mx-auto">
-                        { buttonText === "Update" && <button onClick={deleteMethod} className="base-button-red w-100 mt-2">Delete</button>}
+                        { buttonText === "Update" && <button onClick={deleteMethod} className="base-button-red w-100 mt-2">{ data.status === "to_be_reviewed" ? "Cast Spell" : "Delete"}</button>}
                     </div>
                 </div>
             </form>

@@ -10,6 +10,7 @@
     z-index: 1000;
     border-radius: 100%;
     background-color: $brand-purple;
+    color: $brand-light;
     position: fixed;
     display: flex;
     justify-content: center;
@@ -47,11 +48,40 @@
         
     }
     .task-preview{
-        background-color: $brand-backplate;
+        // background-color: $brand-backplate;
         color: $brand-light;
         min-height: 100px;
         padding: 0.5rem 1rem;
+        transition: opacity 0.2s ease-in-out, background-color 0.2s ease-in-out;
         // border: solid 1px $brand-highlight;
+
+        &.color-todo{
+          // background-color: red($color: #000000);
+        }
+
+        &.color-wip{
+          background-color: #ce00ca1f;
+        }
+
+        &.color-done{
+          background-color: #e30fdf33;
+          position: relative; /* Ensure the border glow is positioned correctly */
+          animation: pulsateInset 1.5s infinite ease-in-out;          
+        }
+
+        @keyframes pulsateInset {
+          0%, 100% {
+            box-shadow: inset 0 0 10px rgba(66, 88, 236, 0.3), 
+                        inset 0 0 20px rgba(66, 88, 236, 0.2), 
+                        inset 0 0 30px rgba(66, 88, 236, 0.15);
+          }
+          50% {
+            box-shadow: inset 0 0 20px rgba(66, 88, 236, 0.4), 
+                        inset 0 0 30px rgba(66, 88, 236, 0.3), 
+                        inset 0 0 40px rgba(66, 88, 236, 0.25);
+          }
+        }
+
     
         .box{
             height: 100px;
@@ -59,20 +89,18 @@
             // background-color: red;
         }
     
-        .color-todo{
-            // background-color: red;
-            filter: hue-rotate(60deg) saturate(0.3);
+        // Gem styling
+        .gem.color-todo{
+            filter: hue-rotate(60deg) saturate(0.1);
         }
     
-        .color-wip{
-            // background-color: orange;
-            filter: hue-rotate(330deg) saturate(0.7) brightness(1.1) contrast(1);
+        .gem.color-wip{
+            filter: hue-rotate(135deg) brightness(1.2) contrast(1);
         }
     
-        .color-done{
-          filter: hue-rotate(35deg) saturate(1.3) brightness(1.1) contrast(1.2)
-            // background-color: green;
-            // filter: hue-rotate(180deg); /* Blue hue */
+        .gem.color-done{
+          filter: hue-rotate(224deg) saturate(1.3) brightness(1.5) contrast(1.3)
+
         }
     
         .task-complete{
@@ -84,57 +112,7 @@
 
 @media (min-width: 992px) {
   .dashboard-list {
-    max-height: 50%; /* Full height on large screens */
+    max-height: 75%; /* Full height on large screens */
   }
 }
 
-.orb {
-
-    border-radius: 50%; /* Make it a circle */
-    // box-shadow: 
-    //   inset 0 0 50px #ffffff, /* Inner white glow */
-    //   inset 20px 0 60px rgba(255, 255, 255, 0.5), /* Inner light glow */
-    //   inset -20px 0 60px rgba(255, 255, 255, 0.3), /* Inner lighter glow */
-    //   inset 0 0 300px rgba(255, 255, 255, 0.2), /* Inner deep glow */
-    //   inset -20px 0 300px rgba(255, 255, 255, 0.1), /* Inner deepest glow */
-    //   0 5px #ffffff, /* Outer white shadow */
-    //   -10px 0 60px rgba(255, 255, 255, 0.5), /* Outer shadow */
-    //   10px 0 60px rgba(255, 255, 255, 0.3); /* Outer lighter shadow */
-    
-    // filter: brightness(0.8) contrast(1.5) saturate(2); /* Slightly darken the grayscale */
-    // background: rgb(255,255,255);
-    // background: linear-gradient(24deg, rgba(255,255,255,1) 39%, rgba(0,0,0,1) 100%);
-
-    
-  }
-
-  .sphere{
-    // height:200px;
-    // width: 200px;
-    border-radius:50%;
-    text-align:center;
-    vertical-align:middle;
-    font-size:500%;
-    position:relative;
-    
-    box-shadow: inset -10px -10px 20px rgba(0, 0, 0, 0.3),
-                10px 10px 20px rgba(0, 0, 0, 0.4),
-                inset 0px 0px 10px rgba(0, 0, 0, 0.4); 
-    display:inline-block;
-    margin:5%;
-      
-  }
-  
-  .sphere::after{
-   background-color: rgba(255, 255, 255, 0.3);
-    content: '';
-    height: 45%;
-    width: 12%;
-    position: absolute;
-    top: 4%;
-    left: 22%;
-    border-radius: 50%;
-    transform: rotate(70deg);
-    
-  }
-  

@@ -4,6 +4,8 @@ import { api } from "../../utils/api"
 import { TaskContext } from "./TasksDashboard"
 import { AuthContext } from "../Authorisation/AuthProvider"
 
+import { motion, useAnimation } from "framer-motion"
+
 import IMAGES from "../../assets/images/Image"
 
 // Define possible statuses
@@ -18,6 +20,8 @@ export default function TaskPreview({ taskData }) {
   const { 1: retrieveTasks } = useContext(TaskContext)
   const { token } = useContext(AuthContext)
 
+  const controls = useAnimation()
+
   // Function to handle status change
   const handleStatusChange = async () => {
     // Find the index of the current status
@@ -25,6 +29,12 @@ export default function TaskPreview({ taskData }) {
 
     // Calculate the next status (looping back to the first if necessary)
     const nextStatus = statuses[(currentIndex + 1) % statuses.length]
+
+    controls.start({
+      rotate: [0, -15, 15, -10, 10, -5, 5, 0],  // Rotate back and forth
+      transition: { duration: 0.5 },  // Duration of the shake
+    })
+
 
     // Update the status on the backend by making an API call
     const url = `${API_URL}/tasks/${taskData.id}`
@@ -52,14 +62,15 @@ export default function TaskPreview({ taskData }) {
   }
 
   return (
-    <li className="task-preview d-flex align-items-center">
-      <div
-        className={`box text-center ${getStatusColor()}`}
+    <li className={`task-preview d-flex align-items-center ${getStatusColor()}`}>
+      <motion.div
+        className={`box text-center gem ${getStatusColor()}`}
         onClick={handleStatusChange}
         title="Click to change status"
+        animate={controls}
       >
         <img src={IMAGES.gemBase} alt="Magic Crystal" style={{transform: "scale(1.1)"}} className="h-100"/>
-      </div>
+      </motion.div>
       <div className={`overflow-hidden ms-4 ${currentStatus === "to_be_reviewed" ? "task-complete" : ""}`}>
         <h2 className="text-truncate">{taskData.name}</h2>
         <p className="text-truncate">{taskData.description}</p>
