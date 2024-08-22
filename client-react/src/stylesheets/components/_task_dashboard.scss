@@ -119,8 +119,13 @@
 }
 
 @media (min-width: 992px) {
+
+  .dashboard {
+    padding-top: 2rem;
+  }
+  
   .dashboard-list {
-    max-height: 75%; /* Full height on large screens */
+    max-height: 500px; /* Full height on large screens */
   }
 }
 
