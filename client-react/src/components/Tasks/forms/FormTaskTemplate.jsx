@@ -4,9 +4,9 @@ import { motion, AnimatePresence } from "framer-motion"
 
 import { TaskContext } from "../TasksDashboard"
 
-export default function FormTask({method,data, deleteMethod}){
+export default function FormTask({method, deleteMethod}){
 
-    const { additionalInfo, setAdditionalInfo } = React.useContext(TaskContext)
+    const { additionalInfo, setAdditionalInfo, selectedTask:data } = React.useContext(TaskContext)
 
     // Even though component re-renders, data wont change unless form is reset with default values.
 
@@ -16,15 +16,10 @@ export default function FormTask({method,data, deleteMethod}){
     const currentDate = new Date().toISOString().split("T")[0]
 
     function moreInfo(){
-    //   setExtraDetail(prevExtraDetail => !prevExtraDetail)
-    //   console.log(extraDetail)
         setAdditionalInfo(prevAdditionalInfo => !prevAdditionalInfo)
     }
 
     React.useEffect(() => {
-        // console.log("useEffect ran:")
-        // console.log("method: ", method.name)
-        // console.log("data: ", data)
         if (method.name === "updateTask" || method.name === "patch"){
             setButtonText("Update")
             reset(data)
@@ -75,10 +70,10 @@ export default function FormTask({method,data, deleteMethod}){
                 <AnimatePresence> 
                     {additionalInfo && (
                     <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
+                    // initial={{ height: 0, opacity: 0 }}
+                    // animate={{ height: 'auto', opacity: 1 }}
+                    // exit={{ height: 0, opacity: 0 }}
+                    // transition={{ duration: 0.2 }}
                     className="extra-detail-section"
                     >
                         <div className="d-flex">

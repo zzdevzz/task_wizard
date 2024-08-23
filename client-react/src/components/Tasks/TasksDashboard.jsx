@@ -21,7 +21,7 @@ function formatDate(dateString) {
 export default function TasksDashboardHost(){
     const { token, logout } = React.useContext(AuthContext)
     const [tasks, setTasks ] = React.useState([])
-    const [selectedTask, setSelectedTask] = React.useState(null)
+    const [selectedTask, setSelectedTask] = React.useState({})
     const [additionalInfo, setAdditionalInfo] = React.useState(false)
 
     // console.log("tasksdashboard: ", tasks)
@@ -42,7 +42,7 @@ export default function TasksDashboardHost(){
 
     return(
         <TaskContext.Provider value={{
-            tasks, retrieveTasks,
+            tasks, setTasks, retrieveTasks,
             selectedTask, setSelectedTask,
             additionalInfo, setAdditionalInfo
         }}>
