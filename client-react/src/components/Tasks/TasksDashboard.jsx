@@ -23,6 +23,7 @@ export default function TasksDashboardHost(){
     const [tasks, setTasks ] = React.useState([])
     const [selectedTask, setSelectedTask] = React.useState(null)
     const [additionalInfo, setAdditionalInfo] = React.useState(false)
+
     // console.log("tasksdashboard: ", tasks)
     const retrieveTasks = async () => {
         const response = await api.get(`${API_URL}/tasks`, {headers: {Authorization: token}})
@@ -40,10 +41,11 @@ export default function TasksDashboardHost(){
     },[])
 
     return(
-        <TaskContext.Provider value={[
+        <TaskContext.Provider value={{
             tasks, retrieveTasks,
+            selectedTask, setSelectedTask,
             additionalInfo, setAdditionalInfo
-            ]}>
+        }}>
             <div className="dashboard row align-content-start h-100">
                 <ToastContainer autoClose={2000}/>
                 <div className="dashboard-detail col-lg-8 d-flex my-2 order-md-2">

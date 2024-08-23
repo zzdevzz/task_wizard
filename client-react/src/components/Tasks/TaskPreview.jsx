@@ -16,14 +16,10 @@ export default function TaskPreview({ taskData }) {
   // Use task's current status from props
   const [currentStatus, setCurrentStatus] = useState(taskData.status)
 
-  console.log("Task Preview component")
   const { additionalInfo, setAdditionalInfo } = React.useContext(TaskContext)
-    console.log("additionalinfo: ", additionalInfo)
-    console.log("function")
-    console.log(setAdditionalInfo)
 
   // Context to retrieve tasks and auth token
-  const { 1: retrieveTasks } = useContext(TaskContext)
+  const { retrieveTasks } = useContext(TaskContext)
   const { token } = useContext(AuthContext)
 
   const controls = useAnimation()

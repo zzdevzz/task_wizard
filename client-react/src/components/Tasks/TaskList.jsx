@@ -7,9 +7,13 @@ import { TaskContext } from "./TasksDashboard"
 
 export default function TaskList() {
 
-    const {0: tasks} = React.useContext(TaskContext)
+    const {tasks, setSelectedTask } = React.useContext(TaskContext)
     const sortedTasks = [...tasks].sort((a, b) => a.id - b.id)
     const location = useLocation()
+
+    const handleTaskClick = (task) => {
+        setSelectedTask(task);  // Update selected task in context
+    };
 
     return (
         <ul className="dashboard-list flex-grow-1 custom-scroll">
@@ -23,8 +27,11 @@ export default function TaskList() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
                 >
-                    <div key={task.id}
-                    className={`post-container ${location.pathname.includes(`${task.id}`) ? "active" : ""}`}>
+                    <div 
+                        key={task.id}
+                        className={`post-container ${location.pathname.includes(`${task.id}`) ? "active" : ""}`}
+                        onClick={() => handleTaskClick(task)}
+                    >
                         <Link to={`${task.id}`} state={{taskData: task}}>
                             <TaskPreview taskData={task}/>
                         </Link>

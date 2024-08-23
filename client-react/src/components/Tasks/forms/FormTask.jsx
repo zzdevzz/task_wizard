@@ -31,7 +31,7 @@ export default function FormTask({request = "post"}){
   }
 
   // Destructing and renaming object of multiple values
-  const {1: retrieveTasks} = React.useContext(TaskContext)
+  const {retrieveTasks} = React.useContext(TaskContext)
   const { token } = React.useContext(AuthContext)
 
 

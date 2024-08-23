@@ -7,16 +7,11 @@ import { TaskContext } from "../TasksDashboard"
 export default function FormTask({method,data, deleteMethod}){
 
     const { additionalInfo, setAdditionalInfo } = React.useContext(TaskContext)
-    console.log("additionalinfo: ", additionalInfo)
-    console.log("function")
-    console.log(setAdditionalInfo)
-
 
     // Even though component re-renders, data wont change unless form is reset with default values.
 
 
     const [buttonText, setButtonText] = React.useState("Create")
-    // const [extraDetail, setExtraDetail] = React.useState(false)
 
     const currentDate = new Date().toISOString().split("T")[0]
 
