@@ -16,7 +16,7 @@ export default function TaskList() {
     };
 
     return (
-        <ul className="dashboard-list flex-grow-1 custom-scroll">
+        <ul className="dashboard-list flex-grow-1 custom-scroll h-100">
             <AnimatePresence>
 
             {sortedTasks.map((task) => (

@@ -17,6 +17,16 @@ export default function FormTask({method, deleteMethod}){
 
     function moreInfo(){
         setAdditionalInfo(prevAdditionalInfo => !prevAdditionalInfo)
+
+        setTimeout(() => {
+            const height = document.querySelector(".dashboard-detail").offsetHeight
+            const styleSheet = document.styleSheets[0];
+    
+            // Correctly reference the "dashboard-list" class
+            // styleSheet.insertRule(`.dashboard-list { max-height: ${height}px; transition: max-height 0.5s ease; }`, styleSheet.cssRules.length) 
+            styleSheet.insertRule(`.dashboard-list { max-height: ${height}px;}`, styleSheet.cssRules.length)       
+            console.log(height)
+        }, 1)
     }
 
     React.useEffect(() => {

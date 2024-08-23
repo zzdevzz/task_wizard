@@ -46,12 +46,12 @@ export default function TasksDashboardHost(){
             selectedTask, setSelectedTask,
             additionalInfo, setAdditionalInfo
         }}>
-            <div className="dashboard row align-content-start h-100">
+            <div className="dashboard row align-content-start">
                 <ToastContainer autoClose={2000}/>
                 <div className="dashboard-detail col-lg-8 d-flex my-2 order-md-2">
                     <Outlet/>
                 </div>
-                <div className="col-lg-4 my-3 order-md-1 -">
+                <div className="col-lg-4 my-2 order-md-1">
                     <TaskList/>
                 </div>
                 <NewTask/>

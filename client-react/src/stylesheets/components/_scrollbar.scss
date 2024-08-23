@@ -3,16 +3,12 @@
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
     background-color: $brand-med;
     border-radius: 5px;
-    padding: 10px 0px;
 }
 
 .custom-scroll::-webkit-scrollbar
 {
     width: 5px;
     background-color: $brand-med;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 10px 0px;
 }
 
 .custom-scroll::-webkit-scrollbar-thumb
@@ -25,11 +21,3 @@
                                         from($brand-highlight),
                                         to($brand-purple))
 }
-
-// .custom-scroll::-webkit-scrollbar-track {
-//     margin-top: 10px;
-//     margin-bottom: 10px;
-//     .
-//     .
-//     .
-// }

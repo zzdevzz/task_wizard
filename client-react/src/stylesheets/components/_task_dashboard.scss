@@ -126,7 +126,11 @@
   }
 
   .dashboard-list {
-    max-height: 500px; /* Full height on large screens */
+    max-height: 272px; /* Full height on large screens */
+  }
+
+  .dashboard-detail {
+    height: max-content;
   }
 }
 

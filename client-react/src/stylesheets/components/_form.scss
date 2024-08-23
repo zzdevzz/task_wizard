@@ -3,6 +3,10 @@
 }
 
 .dark-form-input {
+  // display: flex;
+  // justify-content: stretch;
+  // flex-direction: column;
+  height: max-content;
   label{
     color: white;
     margin: 0.5rem 0;
