@@ -38,6 +38,7 @@
         &.active {
           filter: brightness(1.1) contrast(1.1);
           margin: 0px -8px;
+          border-left: white 6px solid;
         }
 
         &:first-child  {
@@ -123,7 +124,7 @@
   .dashboard {
     padding-top: 2rem;
   }
-  
+
   .dashboard-list {
     max-height: 500px; /* Full height on large screens */
   }

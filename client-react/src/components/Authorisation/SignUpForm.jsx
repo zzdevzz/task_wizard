@@ -28,8 +28,8 @@ export default function SignUpForm({className=""}){
         }
     }
     return(
-        <div className="cover-image h-100 container d-flex justify-content-center flex-column">
-            <form className="glass-form" onSubmit={handleSubmit(onSubmit)}>
+        <div className="cover-image h-100 d-flex justify-content-center flex-column">
+            <form className="glass-form container" onSubmit={handleSubmit(onSubmit)}>
                 <h1>Sign Up</h1>
                 <div>
                     {/* <label>Email:</label> */}

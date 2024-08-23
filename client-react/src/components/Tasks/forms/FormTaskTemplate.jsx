@@ -1,21 +1,29 @@
 import React from "react"
-import { appendErrors, useForm } from "react-hook-form";
+import { appendErrors, useForm } from "react-hook-form"
+import { motion, AnimatePresence } from "framer-motion"
 
+import { TaskContext } from "../TasksDashboard"
 
 export default function FormTask({method,data, deleteMethod}){
+
+    const { additionalInfo, setAdditionalInfo } = React.useContext(TaskContext)
+    console.log("additionalinfo: ", additionalInfo)
+    console.log("function")
+    console.log(setAdditionalInfo)
 
 
     // Even though component re-renders, data wont change unless form is reset with default values.
 
 
     const [buttonText, setButtonText] = React.useState("Create")
-    const [extraDetail, setExtraDetail] = React.useState(false)
+    // const [extraDetail, setExtraDetail] = React.useState(false)
 
     const currentDate = new Date().toISOString().split("T")[0]
 
     function moreInfo(){
-      setExtraDetail(prevExtraDetail => !prevExtraDetail)
-      console.log(extraDetail)
+    //   setExtraDetail(prevExtraDetail => !prevExtraDetail)
+    //   console.log(extraDetail)
+        setAdditionalInfo(prevAdditionalInfo => !prevAdditionalInfo)
     }
 
     React.useEffect(() => {
@@ -56,7 +64,7 @@ export default function FormTask({method,data, deleteMethod}){
                 <div>
                     <div className="d-flex justify-content-between align-items-end">
                       <label htmlFor="name" className="form-label">Task Name</label>
-                      <p className="mb-2 badge rounded-pill text-bg-info" onClick={moreInfo}>{`${extraDetail ? "Less" : "More"} Info`}</p>
+                      <p className="mb-2 badge rounded-pill text-bg-info" onClick={moreInfo}>{`${additionalInfo ? "Less" : "More"} Info`}</p>
                     </div>
                     <input id="name" className="form-control"{...register("name", { required: "Task name is required" })} placeholder="I need to..." />
                     {errors.name && <span>{errors.name.message}</span>}
@@ -68,38 +76,48 @@ export default function FormTask({method,data, deleteMethod}){
                     placeholder="Don't forget for this I need..." />
                     {errors.description && <span>{errors.description.message}</span>}
                 </div>
-                <div className={extraDetail ? "" : "collapse"}>
-                    <div className="d-flex">
-                    <div className="w-100 me-2">
-                        <label htmlFor="priority" className="form-label">Priority</label>
-                        <select id="priority" className="form-control" {...register("priority", { required: "Priority is required" })}>
-                        <option value="low">Low</option>
-                        <option value="medium">Medium</option>
-                        <option value="high">High</option>
-                        </select>
-                        {errors.priority && <span>{errors.priority.message}</span>}
-                    </div>
-                    <div className="w-100">
-                        <label htmlFor="status" className="form-label">Status</label>
-                        <select id="status" className="form-control"{...register("status", { required: "Status is required" })}>
-                        <option value="to_be_done">To Be Done</option>
-                        <option value="in_progress">In Progress</option>
-                        <option value="to_be_reviewed">To Be Reviewed</option>
-                        </select>
-                        {errors.status && <span>{errors.status.message}</span>}
-                    </div>
-                    </div>
-                    <div className="d-flex gap-10">
-                        <div className="flex-fill mx-auto">
-                            <label htmlFor="date_created" className="form-label">Date Created</label>
-                            <input id="date_created" type="date" className="form-control" defaultValue={currentDate} {...register("date_created")} readOnly />
+
+                <AnimatePresence> 
+                    {additionalInfo && (
+                    <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="extra-detail-section"
+                    >
+                        <div className="d-flex">
+                        <div className="w-100 me-2">
+                            <label htmlFor="priority" className="form-label">Priority</label>
+                            <select id="priority" className="form-control" {...register("priority", { required: "Priority is required" })}>
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                            </select>
+                            {errors.priority && <span>{errors.priority.message}</span>}
                         </div>
-                        <div className="flex-fill mx-auto">
-                            <label htmlFor="date_completed_by" className="form-label">Complete By</label>
-                            <input id="date_completed_by" type="date" className="form-control" defaultValue={currentDate}{...register("date_completed_by")} />
+                        <div className="w-100">
+                            <label htmlFor="status" className="form-label">Status</label>
+                            <select id="status" className="form-control"{...register("status", { required: "Status is required" })}>
+                            <option value="to_be_done">To Be Done</option>
+                            <option value="in_progress">In Progress</option>
+                            <option value="to_be_reviewed">To Be Reviewed</option>
+                            </select>
+                            {errors.status && <span>{errors.status.message}</span>}
                         </div>
-                    </div>
-                </div>
+                        </div>
+                        <div className="d-flex gap-10">
+                            <div className="flex-fill mx-auto">
+                                <label htmlFor="date_created" className="form-label">Date Created</label>
+                                <input id="date_created" type="date" className="form-control" defaultValue={currentDate} {...register("date_created")} readOnly />
+                            </div>
+                            <div className="flex-fill mx-auto">
+                                <label htmlFor="date_completed_by" className="form-label">Complete By</label>
+                                <input id="date_completed_by" type="date" className="form-control" defaultValue={currentDate}{...register("date_completed_by")} />
+                            </div>
+                        </div>
+                    </motion.div>)}
+                </AnimatePresence>
                 <div className="my-3 collapse">
                     <label htmlFor="completed">Done?</label>
                     <input id="completed" type="checkbox" className="d-block"{...register("completed")} />
