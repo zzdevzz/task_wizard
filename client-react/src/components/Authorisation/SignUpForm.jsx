@@ -55,7 +55,7 @@ export default function SignUpForm({className=""}){
                     {/* <label>Password:</label> */}
                     <input
                         type="Password"
-                        placeholder="Email"
+                        placeholder="Password"
                         className="form-control"
                         {...register('password', {
                             required: 'Password is required',

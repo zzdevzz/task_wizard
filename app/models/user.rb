@@ -12,31 +12,31 @@ class User < ApplicationRecord
 
   after_create :initialize_defaults
 
+
   private
 
+
   def initialize_defaults
-    Task.create(
+    current_time = Time.current
+    Rails.logger.info "Creating default tasks for user #{self.id}"
+    task1 = self.tasks.create(
       name: "Follow Dev on LinkedIn",
       description: "Do it asap to see all the cool things he'll continue to make! https://www.linkedin.com/in/devhalai/",
-      priority: :high,
-      user: self
+      priority: :high
     )
-    Task.create(
+    task2 = self.tasks.create(
       name: "Share this site with your friends",
       description: "Wow this site is super useful for me, I bet it will be handy for my friends and family.",
-      priority: :high,
-      user: self
+      priority: :high
     )
-    Task.create(
+    task3 = self.tasks.create(
       name: "Do work and stop procrastinating.",
-      priority: :low,
-      user: self
+      priority: :low
     )
-    Task.create(
+    task4 = self.tasks.create(
       name: "Check out Dev's YouTube channel.",
       description: "There was some cool things I wanted to check out. https://www.youtube.com/@bydevcreates",
-      priority: :high,
-      user: self
+      priority: :high
     )
   end
 end

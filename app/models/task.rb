@@ -13,7 +13,7 @@ class Task < ApplicationRecord
   validates :completed, inclusion: { in: [true, false] }
   validates :date_created, presence: true
 
-  before_create :set_default_values
+  before_validation :set_default_values
 
   def set_default_values
     self.priority = self.priority || :low

@@ -16,11 +16,11 @@ export default function TaskList() {
     };
 
     return (
-        <ul className="dashboard-list flex-grow-1 custom-scroll h-100">
+        <div className="dashboard-list flex-grow-1 custom-scroll h-100">
             <AnimatePresence>
 
             {sortedTasks.map((task) => (
-                <motion.li
+                <motion.div
                 key={task.id}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -36,9 +36,9 @@ export default function TaskList() {
                             <TaskPreview taskData={task}/>
                         </Link>
                     </div>
-                </motion.li>
+                </motion.div>
             ))}
             </AnimatePresence>
-        </ul>
+        </div>
     )
 }
