@@ -18,16 +18,48 @@ export default function FormTask({method, deleteMethod}){
     function moreInfo(){
         setAdditionalInfo(prevAdditionalInfo => !prevAdditionalInfo)
 
-        // setTimeout(() => {
-        //     const height = document.querySelector(".dashboard-detail").offsetHeight
-        //     const styleSheet = document.styleSheets[0];
+        setTimeout(() => {
+            const height = document.querySelector(".dashboard-detail").offsetHeight
+            const styleSheet = document.styleSheets[0];
     
-        //     // Correctly reference the "dashboard-list" class
-        //     styleSheet.insertRule(`.dashboard-list { max-height: ${height}px; transition: max-height 0.1s ease; }`, styleSheet.cssRules.length) 
-        //     // styleSheet.insertRule(`.dashboard-list { max-height: ${height}px;}`, styleSheet.cssRules.length)       
-        //     console.log(height)
-        // },1)
+            // Correctly reference the "dashboard-list" class
+            styleSheet.insertRule(`.dashboard-list { max-height: ${height}px; transition: max-height 0.1s ease; }`, styleSheet.cssRules.length) 
+            // styleSheet.insertRule(`.dashboard-list { max-height: ${height}px;}`, styleSheet.cssRules.length)       
+            console.log(height)
+        },1)
     }
+
+    React.useEffect(() => {
+        const adjustTaskListHeight = () => {
+          // Check if the device is mobile (you can adjust the width threshold if needed)
+          if (window.innerWidth <= 768) {
+            // Get the height of the dashboard-detail element
+            const detailHeight = document.querySelector(".dashboard-detail").offsetHeight;
+            const viewportHeight = window.innerHeight;
+    
+            // Calculate the available height for the dashboard-list
+            const availableHeight = viewportHeight - detailHeight;
+    
+            // Apply the height to the dashboard-list
+            const taskList = document.querySelector(".dashboard-list");
+            if (taskList) {
+              taskList.style.maxHeight = `${availableHeight}px`;
+              taskList.style.transition = "max-height 0.3s ease"; // Optional: add transition for smooth adjustment
+            }
+          }
+        };
+    
+        // Initial adjustment
+        adjustTaskListHeight();
+    
+        // Re-adjust when the window is resized
+        window.addEventListener("resize", adjustTaskListHeight);
+    
+        // Cleanup the event listener on component unmount
+        return () => {
+          window.removeEventListener("resize", adjustTaskListHeight);
+        };
+      }, []); // Run on mount and whenever the component updates
 
     React.useEffect(() => {
         if (method.name === "updateTask" || method.name === "patch"){
@@ -90,9 +122,9 @@ export default function FormTask({method, deleteMethod}){
                         <div className="w-100 me-2">
                             <label htmlFor="priority" className="form-label">Priority</label>
                             <select id="priority" className="form-control" {...register("priority", { required: "Priority is required" })}>
-                            <option value="low">Low</option>
-                            <option value="medium">Medium</option>
-                            <option value="high">High</option>
+                            <option value="background">Background</option>
+                            <option value="normal">Normal</option>
+                            <option value="urgent">Urgent</option>
                             </select>
                             {errors.priority && <span>{errors.priority.message}</span>}
                         </div>

@@ -22,21 +22,21 @@ class User < ApplicationRecord
     task1 = self.tasks.create(
       name: "Follow Dev on LinkedIn",
       description: "Do it asap to see all the cool things he'll continue to make! https://www.linkedin.com/in/devhalai/",
-      priority: :high
+      priority: :urgent
     )
     task2 = self.tasks.create(
       name: "Share this site with your friends",
       description: "Wow this site is super useful for me, I bet it will be handy for my friends and family.",
-      priority: :high
+      priority: :urgent
     )
     task3 = self.tasks.create(
       name: "Do work and stop procrastinating.",
-      priority: :low
+      priority: :background
     )
     task4 = self.tasks.create(
       name: "Check out Dev's YouTube channel.",
       description: "There was some cool things I wanted to check out. https://www.youtube.com/@bydevcreates",
-      priority: :high
+      priority: :urgent
     )
   end
 end

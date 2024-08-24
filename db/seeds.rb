@@ -18,7 +18,7 @@ category_housework = Category.create(name: "housework", user: user1)
 task1 = Task.create(name: "Finish the application",
                     description: "Do it asap to be a millionaire",
                     category: category_finance,
-                    priority: :high,
+                    priority: :urgent,
                     user: user1)
 
 task2 = Task.create(name: "Mop the house", category: category_housework, user: user1)

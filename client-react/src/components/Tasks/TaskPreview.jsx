@@ -77,7 +77,7 @@ export default function TaskPreview({ taskData }) {
   }
 
   return (
-    <li className={`task-preview d-flex align-items-center ${getStatusColor()}`}>
+    <li className={`task-preview d-flex align-items-center ${taskData.priority === "urgent" ? "urgent" : ""} ${getStatusColor()}`}>
       <motion.div
         className={`box text-center gem ${getStatusColor()}`}
         onClick={handleStatusChange}
