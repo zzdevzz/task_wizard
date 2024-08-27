@@ -187,8 +187,10 @@
   }
 
   .dashboard-detail {
-    height: max-content;
+    // height: max-content;
     border-top: none;
+    border: solid 2px $brand-highlight;
+    border-radius: 20px;
   }
 
   .additional-info-buttons {

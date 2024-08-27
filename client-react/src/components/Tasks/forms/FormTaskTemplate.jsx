@@ -10,6 +10,24 @@ export default function FormTask({method, deleteMethod}){
 
     // Even though component re-renders, data wont change unless form is reset with default values.
 
+    const [isMobile, setIsMobile] = React.useState(window.matchMedia("(max-width: 992px)").matches);
+
+    React.useEffect(() => {
+        const mediaQuery = window.matchMedia("(max-width: 768px)");
+
+        const handleMediaChange = (event) => {
+        setIsMobile(event.matches);
+        };
+
+        // Attach listener
+        mediaQuery.addEventListener("change", handleMediaChange);
+
+        // Clean up the event listener on component unmount
+        return () => {
+        mediaQuery.removeEventListener("change", handleMediaChange);
+        };
+    }, []);
+
 
     const [buttonText, setButtonText] = React.useState("Create")
     const currentDate = new Date().toISOString().split("T")[0]
@@ -29,24 +47,6 @@ export default function FormTask({method, deleteMethod}){
             reset(data)
         }
     },[data])
-
-    const [isMobile, setIsMobile] = React.useState(window.matchMedia("(max-width: 768px)").matches)
-
-    React.useEffect(() => {
-        const mediaQuery = window.matchMedia("(max-width: 992px)")
-
-        const handleMediaChange = (event) => {
-        setIsMobile(event.matches);
-        }
-
-        // Attach listener
-        mediaQuery.addEventListener("change", handleMediaChange)
-
-        // Clean up the event listener on component unmount
-        return () => {
-        mediaQuery.removeEventListener("change", handleMediaChange)
-        }
-    }, [])
 
 
 
@@ -76,18 +76,15 @@ export default function FormTask({method, deleteMethod}){
         method(formData)
         closeModal()
     }
-    var w = window.innerWidth;
-    console.log(w)
+
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)} className="w-100 dark-form-input">
-                <div className="d-flex justify-content-between align-items-end additional-info-buttons">
-                    {isMobile ? 
-                        <>
+                <div className="d-flex justify-content-start additional-info-buttons">
+                    { isMobile ? 
                         <p className="mb-2 badge rounded-pill text-bg-info" onClick={closeModal}>Close</p>
-                        <p className="mb-2 badge rounded-pill text-bg-info" onClick={moreInfo}>{`${additionalInfo ? "Less" : "More"} Info`}</p>
-                        </>
-                        : <p>Task Info</p>}
+                        : <h2>Task Info</h2>
+                    }
                 </div>
                 <div>
                     <label htmlFor="name" className="form-label">Task Name</label>

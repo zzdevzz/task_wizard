@@ -23,7 +23,7 @@ export default function TasksDashboardHost(){
     const [tasks, setTasks ] = React.useState([])
     const [selectedTask, setSelectedTask] = React.useState({})
     const [toggleModal, setToggleModal] = React.useState(false)
-    const [additionalInfo, setAdditionalInfo] = React.useState(false)
+    const [additionalInfo, setAdditionalInfo] = React.useState(true)
 
     const openModal = () => setToggleModal(true)
     const closeModal = () => setToggleModal(false)
