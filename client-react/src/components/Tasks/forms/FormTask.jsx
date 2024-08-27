@@ -35,10 +35,6 @@ export default function FormTask({request = "post"}){
   const { token } = React.useContext(AuthContext)
 
 
-  // NOT NEEDED
-  // const params = useParams()
-  // const taskURL = API_URL + "/" + params.id
-
   const [redirect, setRedirect] = React.useState(false)
 
   // Post data to database.
@@ -46,6 +42,7 @@ export default function FormTask({request = "post"}){
   const createTask = async (data) => {
 
     try {
+      console.log("Try block set")
       const response = await api.post(`/tasks`, {task: data}, {headers: {'Authorization': token}})
       retrieveTasks()
       console.log('Task created successfully:', response);

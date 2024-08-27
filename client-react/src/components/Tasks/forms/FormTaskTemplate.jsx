@@ -6,69 +6,47 @@ import { TaskContext } from "../TasksDashboard"
 
 export default function FormTask({method, deleteMethod}){
 
-    const { additionalInfo, setAdditionalInfo, selectedTask:data } = React.useContext(TaskContext)
+    const { additionalInfo, setAdditionalInfo, selectedTask:data, closeModal } = React.useContext(TaskContext)
 
     // Even though component re-renders, data wont change unless form is reset with default values.
 
 
     const [buttonText, setButtonText] = React.useState("Create")
-
     const currentDate = new Date().toISOString().split("T")[0]
+
 
     function moreInfo(){
         setAdditionalInfo(prevAdditionalInfo => !prevAdditionalInfo)
-
-        setTimeout(() => {
-            const height = document.querySelector(".dashboard-detail").offsetHeight
-            const styleSheet = document.styleSheets[0];
-    
-            // Correctly reference the "dashboard-list" class
-            styleSheet.insertRule(`.dashboard-list { max-height: ${height}px; transition: max-height 0.1s ease; }`, styleSheet.cssRules.length) 
-            // styleSheet.insertRule(`.dashboard-list { max-height: ${height}px;}`, styleSheet.cssRules.length)       
-            console.log(height)
-        },1)
     }
-
-    React.useEffect(() => {
-        const adjustTaskListHeight = () => {
-          // Check if the device is mobile (you can adjust the width threshold if needed)
-          if (window.innerWidth <= 768) {
-            // Get the height of the dashboard-detail element
-            const detailHeight = document.querySelector(".dashboard-detail").offsetHeight;
-            const viewportHeight = window.innerHeight;
-    
-            // Calculate the available height for the dashboard-list
-            const availableHeight = viewportHeight - detailHeight;
-    
-            // Apply the height to the dashboard-list
-            const taskList = document.querySelector(".dashboard-list");
-            if (taskList) {
-              taskList.style.maxHeight = `${availableHeight}px`;
-              taskList.style.transition = "max-height 0.3s ease"; // Optional: add transition for smooth adjustment
-            }
-          }
-        };
-    
-        // Initial adjustment
-        adjustTaskListHeight();
-    
-        // Re-adjust when the window is resized
-        window.addEventListener("resize", adjustTaskListHeight);
-    
-        // Cleanup the event listener on component unmount
-        return () => {
-          window.removeEventListener("resize", adjustTaskListHeight);
-        };
-      }, []); // Run on mount and whenever the component updates
 
     React.useEffect(() => {
         if (method.name === "updateTask" || method.name === "patch"){
             setButtonText("Update")
             reset(data)
+        } else if (method.name === "createTask" | method.name === "post") {
+            reset()
         } else{
             reset(data)
         }
     },[data])
+
+    const [isMobile, setIsMobile] = React.useState(window.matchMedia("(max-width: 768px)").matches)
+
+    React.useEffect(() => {
+        const mediaQuery = window.matchMedia("(max-width: 992px)")
+
+        const handleMediaChange = (event) => {
+        setIsMobile(event.matches);
+        }
+
+        // Attach listener
+        mediaQuery.addEventListener("change", handleMediaChange)
+
+        // Clean up the event listener on component unmount
+        return () => {
+        mediaQuery.removeEventListener("change", handleMediaChange)
+        }
+    }, [])
 
 
 
@@ -76,7 +54,6 @@ export default function FormTask({method, deleteMethod}){
 
 
     const {register, handleSubmit, reset, formState: { errors }} = useForm({defaultValues: data})
-    // console.log(data)
 
     const formatToDateTime = (dateString) => {
         if (!dateString) return null
@@ -84,20 +61,36 @@ export default function FormTask({method, deleteMethod}){
     }
 
     const onSubmit = (formData) => {
-        formData.date_created = new Date(formData.date_created).toISOString()
-        formData.date_completed_by = new Date(formData.date_completed_by).toISOString()
+        if (!formData.date_created || isNaN(new Date(formData.date_created).getTime())) {
+            formData.date_created = new Date().toISOString();  // Set current date if invalid or missing
+        } else {
+            formData.date_created = new Date(formData.date_created).toISOString();
+        }
+    
+        if (!formData.date_completed_by || isNaN(new Date(formData.date_completed_by).getTime())) {
+            formData.date_completed_by = new Date().toISOString();  // Set current date if invalid or missing
+        } else {
+            formData.date_completed_by = new Date(formData.date_completed_by).toISOString();
+        }
         console.log(formData)
         method(formData)
+        closeModal()
     }
-
+    var w = window.innerWidth;
+    console.log(w)
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)} className="w-100 dark-form-input">
+                <div className="d-flex justify-content-between align-items-end additional-info-buttons">
+                    {isMobile ? 
+                        <>
+                        <p className="mb-2 badge rounded-pill text-bg-info" onClick={closeModal}>Close</p>
+                        <p className="mb-2 badge rounded-pill text-bg-info" onClick={moreInfo}>{`${additionalInfo ? "Less" : "More"} Info`}</p>
+                        </>
+                        : <p>Task Info</p>}
+                </div>
                 <div>
-                    <div className="d-flex justify-content-between align-items-end">
-                      <label htmlFor="name" className="form-label">Task Name</label>
-                      <p className="mb-2 badge rounded-pill text-bg-info" onClick={moreInfo}>{`${additionalInfo ? "Less" : "More"} Info`}</p>
-                    </div>
+                    <label htmlFor="name" className="form-label">Task Name</label>
                     <input id="name" className="form-control"{...register("name", { required: "Task name is required" })} placeholder="I need to..." />
                     {errors.name && <span>{errors.name.message}</span>}
                 </div>
@@ -159,7 +152,7 @@ export default function FormTask({method, deleteMethod}){
                         <button type="submit" className="base-button-purple w-100 bg-brand-blue mt-2">{buttonText}</button>
                     </div>
                     <div className="flex-fill mx-auto">
-                        { buttonText === "Update" && <button onClick={deleteMethod} className="base-button-red w-100 mt-2">{ data.status === "to_be_reviewed" ? "Cast Spell" : "Delete"}</button>}
+                        { buttonText === "Update" && <button onClick={deleteMethod} className="base-button-red w-100 mt-2">{ data.status === "to_be_reviewed" ? "Remove" : "Delete"}</button>}
                     </div>
                 </div>
             </form>

@@ -22,8 +22,12 @@ export default function TasksDashboardHost(){
     const { token, logout } = React.useContext(AuthContext)
     const [tasks, setTasks ] = React.useState([])
     const [selectedTask, setSelectedTask] = React.useState({})
+    const [toggleModal, setToggleModal] = React.useState(false)
     const [additionalInfo, setAdditionalInfo] = React.useState(false)
 
+    const openModal = () => setToggleModal(true)
+    const closeModal = () => setToggleModal(false)
+    
     // console.log("tasksdashboard: ", tasks)
     const retrieveTasks = async () => {
         const response = await api.get(`${API_URL}/tasks`, {headers: {Authorization: token}})
@@ -44,14 +48,15 @@ export default function TasksDashboardHost(){
         <TaskContext.Provider value={{
             tasks, setTasks, retrieveTasks,
             selectedTask, setSelectedTask,
-            additionalInfo, setAdditionalInfo
+            additionalInfo, setAdditionalInfo,
+            openModal, closeModal
         }}>
             <div className="dashboard row align-content-start">
                 <ToastContainer autoClose={2000}/>
-                <div className="dashboard-detail col-lg-8 d-flex my-2 order-md-2">
+                <div className={`dashboard-detail col-lg-8 d-flex my-2 order-md-2 mh-100 sliding-modal ${toggleModal ? "open" : ""}`}>
                     <Outlet/>
                 </div>
-                <div className="col-lg-4 my-2 order-md-1">
+                <div className="col-lg-4 py-2 order-md-1 mh-100">
                     <TaskList/>
                 </div>
                 <NewTask/>

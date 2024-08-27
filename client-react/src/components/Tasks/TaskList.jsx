@@ -7,18 +7,18 @@ import { TaskContext } from "./TasksDashboard"
 
 export default function TaskList() {
 
-    const {tasks, setSelectedTask } = React.useContext(TaskContext)
+    const {tasks, setSelectedTask, openModal } = React.useContext(TaskContext)
     const sortedTasks = [...tasks].sort((a, b) => a.id - b.id)
     const location = useLocation()
 
     const handleTaskClick = (task) => {
-        setSelectedTask(task);  // Update selected task in context
+        setSelectedTask(task)
+        openModal()  // Update selected task in context
     };
 
     return (
         <div className="dashboard-list flex-grow-1 custom-scroll h-100">
             <AnimatePresence>
-
             {sortedTasks.map((task) => (
                 <motion.div
                 key={task.id}
@@ -31,7 +31,7 @@ export default function TaskList() {
                         key={task.id}
                         className={`post-container ${location.pathname.includes(`${task.id}`) ? "active" : ""}`}
                         onClick={() => handleTaskClick(task)}
-                    >
+                        >
                         <Link to={`${task.id}`} state={{taskData: task}}>
                             <TaskPreview taskData={task}/>
                         </Link>
