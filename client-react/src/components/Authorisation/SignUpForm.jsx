@@ -28,8 +28,8 @@ export default function SignUpForm({className=""}){
         }
     }
     return(
-        <div className="cover-image h-100 container d-flex justify-content-center flex-column">
-            <form className="glass-form" onSubmit={handleSubmit(onSubmit)}>
+        <div className="cover-image h-100 d-flex justify-content-center flex-column">
+            <form className="glass-form container" onSubmit={handleSubmit(onSubmit)}>
                 <h1>Sign Up</h1>
                 <div>
                     {/* <label>Email:</label> */}
@@ -41,19 +41,21 @@ export default function SignUpForm({className=""}){
                     />
                     {errors.email && <span>{errors.email.message}</span>}
                     </div>
-                    {/* <label>Username:</label> */}
-                    <input
-                        placeholder="Username"
-                        className="form-control"     
-                        {...register('username', {
-                        required: 'Username is required'
-                    })}/>
-                    {errors.username && <span>{errors.username.message}</span>}
+                    <div>
+                        {/* <label>Username:</label> */}
+                        <input
+                            placeholder="Username"
+                            className="form-control"     
+                            {...register('username', {
+                                required: 'Username is required'
+                            })}/>
+                        {errors.username && <span>{errors.username.message}</span>}
+                    </div>
                     <div>
                     {/* <label>Password:</label> */}
                     <input
                         type="Password"
-                        placeholder="Email"
+                        placeholder="Password"
                         className="form-control"
                         {...register('password', {
                             required: 'Password is required',

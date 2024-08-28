@@ -15,11 +15,11 @@ user2 = User.create(email: "g1@test.com", password: "123456", username: "g1")
 category_finance = Category.create(name: "finance", user: user1)
 category_housework = Category.create(name: "housework", user: user1)
 
-task1 = Task.create(name: "Finish the application",
-                    description: "Do it asap to be a millionaire",
-                    category: category_finance,
-                    priority: :high,
-                    user: user1)
+# task1 = Task.create(name: "Finish the application",
+#                     description: "Do it asap to be a millionaire",
+#                     category: category_finance,
+#                     priority: :urgent,
+#                     user: user1)
 
-task2 = Task.create(name: "Mop the house", category: category_housework, user: user1)
-task3 = Task.create(name: "make the Crud work", user: user2)
+# task2 = Task.create(name: "Mop the house", category: category_housework, user: user1)
+# task3 = Task.create(name: "make the Crud work", user: user2)

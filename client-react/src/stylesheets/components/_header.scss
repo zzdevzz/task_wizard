@@ -13,7 +13,10 @@ nav{
   border-bottom: 2px solid black 0.1;
   a {
     color: $brand-light;
-    // font-weight: bolder;
+    &:hover{
+      color: $brand-highlight;
+      transition: all 0.2s;
+    }
   }
 
 }

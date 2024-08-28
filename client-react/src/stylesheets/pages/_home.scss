@@ -11,7 +11,7 @@
         $brand-background 10%,
         transparent 50%,
         transparent 65%,
-        $brand-background 90%,
+        $brand-background 98%,
         ),
         url("../assets/images/Chatgpt-Wizard-Landing/Wizard-Landing-03.webp");
     background-size: cover; /* Ensure the image covers the whole area */
@@ -27,14 +27,12 @@
         $brand-background 0%,
         transparent 40%,
         transparent 60%,
-        $brand-background 100%,
+        $brand-background 95%,
         ),
         url("../assets/images/Chatgpt-Wizard-Landing/Wizard-Landing-04.webp");
     background-size: cover; /* Ensure the image covers the whole area */
     background-repeat: no-repeat;
     background-position: center;
-    padding-bottom: -80px;
-    // background-position-x: right;
 }
 
 .landing-text{

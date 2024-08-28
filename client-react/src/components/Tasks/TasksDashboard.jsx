@@ -1,10 +1,14 @@
 import React from "react"
 import { Outlet } from "react-router-dom"
 import TaskList from "./TaskList"
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { API_URL } from "../../constants"
 import { AuthContext } from "../Authorisation/AuthProvider"
 import { api } from "../../utils/api"
+
+import { useDocumentTitle } from "../customHook/useDocumentTitle"
 
 import NewTask from "./NewTask"
 
@@ -17,8 +21,17 @@ function formatDate(dateString) {
 }
 
 export default function TasksDashboardHost(){
+
+    useDocumentTitle("Tasks")
     const { token, logout } = React.useContext(AuthContext)
     const [tasks, setTasks ] = React.useState([])
+    const [selectedTask, setSelectedTask] = React.useState({})
+    const [toggleModal, setToggleModal] = React.useState(false)
+    const [additionalInfo, setAdditionalInfo] = React.useState(true)
+
+    const openModal = () => setToggleModal(true)
+    const closeModal = () => setToggleModal(false)
+    
     // console.log("tasksdashboard: ", tasks)
     const retrieveTasks = async () => {
         const response = await api.get(`${API_URL}/tasks`, {headers: {Authorization: token}})
@@ -36,12 +49,18 @@ export default function TasksDashboardHost(){
     },[])
 
     return(
-        <TaskContext.Provider value={[tasks, retrieveTasks]}>
-            <div className="dashboard row align-content-start h-100">
-                <div className="dashboard-detail col-lg-8 d-flex my-2 order-md-2">
+        <TaskContext.Provider value={{
+            tasks, setTasks, retrieveTasks,
+            selectedTask, setSelectedTask,
+            additionalInfo, setAdditionalInfo,
+            openModal, closeModal
+        }}>
+            <div className="dashboard row align-content-start">
+                <ToastContainer autoClose={2000}/>
+                <div className={`dashboard-detail col-lg-8 d-flex my-2 order-md-2 mh-100 sliding-modal ${toggleModal ? "open" : ""}`}>
                     <Outlet/>
                 </div>
-                <div className="col-lg-4 my-3 order-md-1">
+                <div className={`col-lg-4 py-2 order-md-1 mh-100 ${toggleModal ? "background-blur" : ""}`}>
                     <TaskList/>
                 </div>
                 <NewTask/>
