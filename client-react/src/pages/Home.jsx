@@ -1,9 +1,13 @@
 import React from "react"
 import IMAGES from "../assets/images/Image"
 
+import { useDocumentTitle } from "../components/customHook/useDocumentTitle"
 import Signup from "../components/Authorisation/Signup"
 
 export default function Home(){
+
+    useDocumentTitle("Home")
+
     return (
         <>  
             <div className="landing-image h-100">

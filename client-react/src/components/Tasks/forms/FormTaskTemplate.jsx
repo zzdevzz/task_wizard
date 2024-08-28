@@ -4,6 +4,9 @@ import { motion, AnimatePresence } from "framer-motion"
 
 import { TaskContext } from "../TasksDashboard"
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCircleXmark } from "@fortawesome/free-solid-svg-icons"
+
 export default function FormTask({method, deleteMethod}){
 
     const { additionalInfo, setAdditionalInfo, selectedTask:data, closeModal } = React.useContext(TaskContext)
@@ -13,20 +16,20 @@ export default function FormTask({method, deleteMethod}){
     const [isMobile, setIsMobile] = React.useState(window.matchMedia("(max-width: 992px)").matches);
 
     React.useEffect(() => {
-        const mediaQuery = window.matchMedia("(max-width: 768px)");
+        const mediaQuery = window.matchMedia("(max-width: 992px)")
 
         const handleMediaChange = (event) => {
-        setIsMobile(event.matches);
-        };
+        setIsMobile(event.matches)
+        }
 
         // Attach listener
-        mediaQuery.addEventListener("change", handleMediaChange);
+        mediaQuery.addEventListener("change", handleMediaChange)
 
         // Clean up the event listener on component unmount
         return () => {
-        mediaQuery.removeEventListener("change", handleMediaChange);
-        };
-    }, []);
+        mediaQuery.removeEventListener("change", handleMediaChange)
+        }
+    }, [])
 
 
     const [buttonText, setButtonText] = React.useState("Create")
@@ -80,9 +83,10 @@ export default function FormTask({method, deleteMethod}){
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)} className="w-100 dark-form-input">
-                <div className="d-flex justify-content-start additional-info-buttons">
+                <div className="d-flex additional-info-buttons">
                     { isMobile ? 
-                        <p className="mb-2 badge rounded-pill text-bg-info" onClick={closeModal}>Close</p>
+                        // <p className="mb-2 badge rounded-pill text-bg-info" onClick={closeModal}>Close</p>
+                        <FontAwesomeIcon icon={faCircleXmark} onClick={closeModal} className="ms-auto fs-1 close-form"/>
                         : <h2>Task Info</h2>
                     }
                 </div>

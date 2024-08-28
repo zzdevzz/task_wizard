@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 
 import { TaskContext } from "../TasksDashboard"
 import { AuthContext } from "../../Authorisation/AuthProvider"
+import { Toast } from "bootstrap"
 
 
 export default function FormTask({request = "post"}){
@@ -49,7 +50,7 @@ export default function FormTask({request = "post"}){
       toast.success('New Task Added')
     } catch (error) {
       console.error('Error creating task:', error);
-      toast.error(`Error: `, error)
+      // handleAxiosError(error)
     }
   }
 
@@ -61,8 +62,22 @@ export default function FormTask({request = "post"}){
         toast.success('Task updated successfully!')
     } catch (error) {
         console.error("Error:  ",  error)
+        // handleAxiosError(error)
     }
   }
+
+  // const handleAxiosError = (error) => {
+  //   if (error.response) {
+  //     // Request made and server responded with a status code that falls out of the range of 2xx
+  //     toast.error(`Error: ${error.response.data.message || error.response.statusText}`)
+  //   } else if (error.request) {
+  //     // The request was made but no response was received
+  //     toast.error("Network error: No response received")
+  //   } else {
+  //     // Something happened in setting up the request that triggered an Error
+  //     toast.error(`Error: ${error.message}`)
+  //   }
+  // }
 
 
   // Delete task from database.
@@ -73,8 +88,10 @@ export default function FormTask({request = "post"}){
           setRedirect(true)
           retrieveTasks()
           navigate("..")
+          toast.success('Task deleted successfully!')
       } catch (error) {
           console.error("Error:  ",  error)
+          // handleAxiosError(error)
       }
   }
 

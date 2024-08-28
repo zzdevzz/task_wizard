@@ -47,24 +47,6 @@ html, body, #root {
   background-color: $brand-background;
 }
 
-// #root::before{
-//   content: ""; /* Ensure the pseudo-element is rendered */
-//   position: absolute;
-//   height: 100%;
-//   width: 100%;
-//   background: linear-gradient(
-//     rgba(0, 11, 58, 0.8),
-//     rgba(0, 0, 0, 0.9)
-//   ), url("../assets/images/vibrant-magic-bg-01.webp");
-//   background-size: cover; /* Ensure the image covers the whole area */
-//   background-repeat: no-repeat;
-//   background-position: center;
-//   background-position-x: right;
-//   filter: blur(2px);
-//   z-index: -1; /* Ensure the pseudo-element is behind other content */
-// }
-
-
 // debugging
 
 .red-border{
@@ -76,9 +58,17 @@ html, body, #root {
   backdrop-filter: blur(20px) brightness(1.2) contrast(1);
 }
 
-.post-container::before{
-  :hover{
-    filter: brightness(2) contrast(1);
-  }
-}
+// .post-container::before{
+//   :hover{
+//     filter: brightness(2) contrast(1);
+//   }
+// }
 
+// Only Add blur to background on mobile devices when modal open.
+
+@media (max-width: 992px) {
+  .background-blur{
+    filter: blur(2px);
+    transition: all 0.3s;
+  }
+}  

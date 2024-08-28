@@ -8,6 +8,8 @@ import { API_URL } from "../../constants"
 import { AuthContext } from "../Authorisation/AuthProvider"
 import { api } from "../../utils/api"
 
+import { useDocumentTitle } from "../customHook/useDocumentTitle"
+
 import NewTask from "./NewTask"
 
 const TaskContext = React.createContext()
@@ -19,6 +21,8 @@ function formatDate(dateString) {
 }
 
 export default function TasksDashboardHost(){
+
+    useDocumentTitle("Tasks")
     const { token, logout } = React.useContext(AuthContext)
     const [tasks, setTasks ] = React.useState([])
     const [selectedTask, setSelectedTask] = React.useState({})
@@ -56,7 +60,7 @@ export default function TasksDashboardHost(){
                 <div className={`dashboard-detail col-lg-8 d-flex my-2 order-md-2 mh-100 sliding-modal ${toggleModal ? "open" : ""}`}>
                     <Outlet/>
                 </div>
-                <div className="col-lg-4 py-2 order-md-1 mh-100">
+                <div className={`col-lg-4 py-2 order-md-1 mh-100 ${toggleModal ? "background-blur" : ""}`}>
                     <TaskList/>
                 </div>
                 <NewTask/>

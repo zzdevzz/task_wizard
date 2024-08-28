@@ -6,7 +6,11 @@ import { AuthContext } from "./AuthProvider"
 import { base } from "../../utils/api"
 import { BASE_URL, API_URL } from "../../constants"
 
+import { useDocumentTitle } from "../customHook/useDocumentTitle"
+
 export default function LoginForm({className=""}) {
+
+    useDocumentTitle("Login")
     const { register, handleSubmit, formState: { errors } } = useForm()
     const [error, setError] = React.useState('')
     const navigate = useNavigate()

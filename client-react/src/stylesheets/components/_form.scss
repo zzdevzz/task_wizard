@@ -10,8 +10,13 @@
   label{
     color: white;
     margin: 0.5rem 0;
-
   }
+
+  .close-form{
+    color: $brand-highlight;
+  }
+
+
   :is(input, select, textarea) {
     // background-color: #343a40; /* Bootstrap's dark background */
     background-color: $brand-background;
@@ -32,9 +37,6 @@
     }
   }
 
-  // div {
-  //   margin: 0.5rem 0;
-  // }
 }
 
 .glass-form {

@@ -1,7 +1,8 @@
 import React from "react"
+import { useDocumentTitle } from "../components/customHook/useDocumentTitle"
 
 export default function About(){
-
+  useDocumentTitle("About")
   return (
     <div className="about-us-text py-4">
       <h1 className="text-center display-2">About TaskWizard</h1>
