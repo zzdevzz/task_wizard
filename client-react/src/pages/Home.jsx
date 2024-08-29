@@ -10,11 +10,13 @@ export default function Home(){
 
     return (
         <>  
-            <div className="landing-image h-100">
-                <div className="p-5 landing-text container text-center h-75 d-flex justify-content-between flex-column">            
-                    <h1 className="display-1">Welcome to <strong>TaskWizard</strong></h1>
-                    <h2>Don't wait for motivation. Summon it instead.</h2>
-                    <Signup className="p-3 mx-auto">Start casting</Signup>
+            <div className="landing-image h-100 d-flex align-items-center">
+                <div className="landing-text container text-center h-75 d-flex flex-column justify-content-between">            
+                    <h1 className="welcome-text">Welcome to <strong>TaskWizard</strong></h1>
+                    <div>
+                        <h2 className="mb-3">Don't wait for motivation. Summon it instead.</h2>
+                        <Signup className="p-3 mx-auto">Start casting</Signup>
+                    </div>
                 </div>
             </div>
             {/* <div className="vh-100">

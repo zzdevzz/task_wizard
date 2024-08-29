@@ -8,7 +8,7 @@ export default function About(){
       <h1 className="text-center display-2">About TaskWizard</h1>
       <h2>Do things when you feel motivated</h2>
       <h2>Feel motivated by doing things.</h2>
-      <div className="py-2">
+      {/* <div className="py-2">
         <p> Why use those same old boring to-do apps that make you feel like productivity is a chore? We get it. </p> 
         <p> That’s why we created TaskWizard – a fun, simple way to tackle your tasks without feeling like you’re slogging through a never-ending list of "stuff to do." </p>
         <p>Let’s face it: waiting around for motivation is like waiting for a unicorn to show up at your door. Instead of hoping for that magical moment of inspiration, TaskWizard helps you create your own motivation by getting things done, one step at a time. The magic is in the momentum! </p>
@@ -34,7 +34,7 @@ export default function About(){
             </div>
           </li>
         </ul>
-      </div>
+      </div> */}
     </div>
   )
 }
