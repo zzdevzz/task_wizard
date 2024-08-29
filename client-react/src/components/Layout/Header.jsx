@@ -2,6 +2,8 @@ import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../Authorisation/AuthProvider'
 
+import { Navbar, Nav, Container } from 'react-bootstrap';
+
 import IMAGES from '../../assets/images/Image'
 import BRAND from '../../assets/brand/brand'
 
@@ -26,20 +28,38 @@ export default function Header() {
           }
         }
 
-    // Active styling in App.css for Navbar active class.
     return (
-      <>
-        <nav className='d-flex justify-content-around align-items-center navbar layout-stroke-bottom'>
-            <NavLink to="/"><img src={BRAND.logo} style={{width: 50}}/></NavLink>
-            <NavLink to="/about" >About</NavLink>
-            <NavLink to="/tasks">My tasks</NavLink>
-            {!isAuthenticated && <NavLink to="signup">Sign Up</NavLink>}
-            { isAuthenticated ?
-              // <button onClick={signOut} className='btn btn-outline-warning'>Logout</button> :
-              <button onClick={signOut} className='btn btn-outline-warning'>Logout</button> :
-              <NavLink to="login">Login</NavLink>
-            }
-        </nav>
-        </>
+      <Navbar expand="md" className='layout-stroke-bottom'>
+        <Container fluid className='mx-3'>
+        <Navbar.Brand href="/" className='d-flex align-items-center'>
+            <img
+              alt=""
+              src={BRAND.logo}
+              width="30"
+              height="30"
+              className="d-inline-block align-top me-3"
+            />
+            <h2 className='m-0'>Task Wizard</h2>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" className='toggle-icon'/>
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ms-auto">
+              <Nav.Link as={NavLink} to="/">Home</Nav.Link>
+              <Nav.Link as={NavLink} to="/about">About</Nav.Link>
+              <Nav.Link as={NavLink} to="/tasks">Tasks</Nav.Link>
+              {isAuthenticated ? (
+                 <a onClick={logout} className="btn btn-outline-warning navbar-button">
+                 Logout
+               </a>
+              ) : (
+                <>
+                  <NavLink to="/signup" className='btn btn-outline-info navbar-button'>Sign Up</NavLink>
+                  <NavLink to="/login" className='btn btn-outline-primary navbar-button'>Login</NavLink>
+                </>
+              )}
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     )
 }

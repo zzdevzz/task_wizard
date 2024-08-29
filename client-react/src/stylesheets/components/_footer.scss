@@ -14,7 +14,7 @@ $footer-height: 40px;
     }
 
     .icons {
-      max-width: 50%;
+      max-width: 200px;
 
       a:hover{
         color: $brand-highlight;
@@ -23,10 +23,10 @@ $footer-height: 40px;
     }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .footer{
     .icons{
-      max-width: 33%;
+      max-width: 300px;
       font-size: 1.5rem;
     }
   }

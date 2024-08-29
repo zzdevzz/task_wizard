@@ -1,22 +1,44 @@
 $header-height: 70px;
 // Active styling from
 
-a.active {
-  text-decoration: underline;
-}
 
 nav{
-  height: $header-height;
-  // background-color: rgba(255, 255, 255, 0.1); /* Optional: Add a semi-transparent background color */
+  // height: $header-height;
   background-color: $brand-backplate;
-  backdrop-filter: blur(5px) brightness(1.2); /* Ensure blur is applied to the content behind the nav */
   border-bottom: 2px solid black 0.1;
-  a {
-    color: $brand-light;
-    &:hover{
-      color: $brand-highlight;
-      transition: all 0.2s;
+
+  .navbar-button{
+    margin-left: 0.5rem;
+  }
+  
+
+  .navbar-nav, .navbar-brand{
+    * {
+      color: $brand-light;
+      &:hover {
+        color: $brand-highlight;
+        transition: all 0.2s;
+      }
+      &.active{
+        color: $brand-light !important;
+        text-decoration: underline;
+      }
     }
   }
+  //For hamburger menu
+  .toggle-icon{
+    filter: invert(1);
+  }
 
+}
+
+
+@media (max-width: 768px) {
+
+  nav{
+    .navbar-button{
+      width: max-content;
+      margin-left: 0px;
+    }
+  }
 }

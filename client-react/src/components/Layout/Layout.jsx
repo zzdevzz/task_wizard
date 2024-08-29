@@ -22,7 +22,7 @@ export default function Layout(){
 
     return (
         <div className="row h-100">
-            <div className="col h-100">
+            <div className="col h-100 d-flex flex-column">
                 <Header/>
                 <div className="main-content custom-scroll flex-grow-1">
                     {/* Conditionally apply the 'container' class only if it's not the homepage */}
