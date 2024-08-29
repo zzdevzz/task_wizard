@@ -19,7 +19,8 @@ export default function TaskPreview({ taskData }) {
   const { additionalInfo, setAdditionalInfo, 
           selectedTask,  setSelectedTask,
           retrieveTasks,
-          tasks, setTasks } = React.useContext(TaskContext)
+          tasks, setTasks,
+          openModal } = React.useContext(TaskContext)
 
   // Context to retrieve tasks and auth token
   // const { retrieveTasks } = useContext(TaskContext)
@@ -39,7 +40,6 @@ export default function TaskPreview({ taskData }) {
       rotate: [0, -15, 15, -10, 10, -5, 5, 0],  // Rotate back and forth
       transition: { duration: 0.5 },  // Duration of the shake
     })
-
 
     // Update the status on the backend by making an API call
     const url = `${API_URL}/tasks/${taskData.id}`
@@ -68,6 +68,10 @@ export default function TaskPreview({ taskData }) {
     }
   }
 
+  const handleTaskClick = (task) => {
+    setSelectedTask(task)
+    openModal()  // Update selected task in context
+  }
   // Function to determine the box color based on the current status
   const getStatusColor = () => {
     if (taskData.status === "to_be_done") return "color-todo"
@@ -86,7 +90,7 @@ export default function TaskPreview({ taskData }) {
       >
         <img src={IMAGES.gemBase} alt="Magic Crystal" style={{transform: "scale(1.1)"}} className="h-100"/>
       </motion.div>
-      <div className={`overflow-hidden ms-4 ${taskData.status === "to_be_reviewed" ? "task-complete" : ""}`}>
+      <div className={`overflow-hidden ms-4 w-100 h-100 d-flex flex-column justify-content-center ${taskData.status === "to_be_reviewed" ? "task-complete" : ""}`} onClick={() => handleTaskClick(taskData)}>
         <h2 className="text-truncate">{taskData.name}</h2>
         <p className="text-truncate">{taskData.description}</p>
       </div>
