@@ -1,6 +1,8 @@
 import React from "react"
 import { useDocumentTitle } from "../components/customHook/useDocumentTitle"
 
+import AboutPoint from "../components/AboutInfo/AboutPoint"
+
 export default function About(){
   useDocumentTitle("About")
   return (
@@ -35,6 +37,22 @@ export default function About(){
           </li>
         </ul>
       </div> */}
+      <AboutPoint
+        title="Easy to Update!"
+        text="Sleek UI makes it easy to use!"
+      />
+      <AboutPoint
+        title="Urgent Tasks"
+        text="Highlighted and pulsating to convey the daunting dread of urgency. Easily able to prioritise these tasks quicker to get the bad vibes away."
+      />
+      <AboutPoint
+        title="Feel like a wizard!"
+        text="Highlighted and pulsating to convey the daunting dread of urgency. Easily able to prioritise these tasks quicker to get the bad vibes away."
+      />
+      <AboutPoint
+        title="Easy to Update!"
+        text="Highlighted and pulsating to convey the daunting dread of urgency. Easily able to prioritise these tasks quicker to get the bad vibes away."
+      />
     </div>
   )
 }
