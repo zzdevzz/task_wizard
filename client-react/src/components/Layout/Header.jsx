@@ -4,7 +4,7 @@ import { AuthContext } from '../Authorisation/AuthProvider'
 
 import { Navbar, Nav, Container } from 'react-bootstrap';
 
-import IMAGES from '../../assets/images/Image'
+import { IMAGES } from '../../assets/images/Image'
 import BRAND from '../../assets/brand/brand'
 
 import { base } from '../../utils/api'
@@ -35,8 +35,8 @@ export default function Header() {
             <img
               alt=""
               src={BRAND.logo}
-              width="30"
-              height="30"
+              width="40"
+              height="40"
               className="d-inline-block align-top me-3"
             />
             <h2 className='m-0'>Task Wizard</h2>

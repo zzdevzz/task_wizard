@@ -1,5 +1,5 @@
 import React from "react"
-import IMAGES from "../assets/images/Image"
+import { IMAGES } from "../assets/images/Image"
 
 import { useDocumentTitle } from "../components/customHook/useDocumentTitle"
 import Signup from "../components/Authorisation/Signup"

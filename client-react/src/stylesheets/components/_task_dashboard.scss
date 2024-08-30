@@ -63,12 +63,10 @@
         
     }
     .task-preview{
-        // background-color: $brand-backplate;
         color: $brand-light;
         height: 115px;
         padding: 0.5rem 1rem;
         transition: opacity 0.2s ease-in-out, background-color 0.2s ease-in-out;
-        // border: solid 1px $brand-highlight;
         
         @mixin pulsateInset($color, $name) {
           @keyframes #{$name} {
@@ -87,6 +85,9 @@
 
         &.color-todo{
           // background-color: red($color: #000000);
+          &.fake{
+            background-color: rgba(10, 0, 46, 0.623);
+          }
         }
 
         &.color-wip{
@@ -100,7 +101,6 @@
         }
 
         &.color-done{
-          // background-color: #e30fdf33;
           background-color: #0fe34433;
           position: relative; /* Ensure the border glow is positioned correctly */
           @include pulsateInset(rgb(66, 236, 66), pulsateDone);
@@ -113,6 +113,7 @@
         .box{
             height: 100px;
             min-width: 50px;
+            overflow: hidden;
             // background-color: red;
         }
     

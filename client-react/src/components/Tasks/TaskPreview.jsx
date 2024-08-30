@@ -6,13 +6,13 @@ import { AuthContext } from "../Authorisation/AuthProvider"
 
 import { motion, useAnimation } from "framer-motion"
 
-import IMAGES from "../../assets/images/Image"
+import { IMAGES } from "../../assets/images/Image"
 
 // Define possible statuses
 const statuses = ["to_be_done", "in_progress", "to_be_reviewed"]
 
 export default function TaskPreview({ taskData }) {
-
+  console.log(taskData)
   // Use task's current status from props
   // const [currentStatus, setCurrentStatus] = React.useState(taskData.status)
 

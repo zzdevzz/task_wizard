@@ -3,40 +3,17 @@ import { useDocumentTitle } from "../components/customHook/useDocumentTitle"
 
 import AboutPoint from "../components/AboutInfo/AboutPoint"
 
+import { IMAGESABOUT, IMAGES } from "../assets/images/Image"
+
+import TaskPreviewFake from "../components/Tasks/TaskPreviewFake"
 export default function About(){
   useDocumentTitle("About")
   return (
     <div className="about-us-text py-4">
       <h1 className="text-center display-2">About TaskWizard</h1>
-      <h2>Do things when you feel motivated</h2>
+      <h2>Waiting for motivation to do things.</h2>
       <h2>Feel motivated by doing things.</h2>
-      {/* <div className="py-2">
-        <p> Why use those same old boring to-do apps that make you feel like productivity is a chore? We get it. </p> 
-        <p> That’s why we created TaskWizard – a fun, simple way to tackle your tasks without feeling like you’re slogging through a never-ending list of "stuff to do." </p>
-        <p>Let’s face it: waiting around for motivation is like waiting for a unicorn to show up at your door. Instead of hoping for that magical moment of inspiration, TaskWizard helps you create your own motivation by getting things done, one step at a time. The magic is in the momentum! </p>
-        <p>TaskWizard isn’t just about checking boxes; it’s about making your day feel a little more awesome. We make it easy to focus on what matters and add a little fun along the way. Plus, who doesn’t want to feel like a productivity wizard? </p>
-        <p>
-          So, if you’re ready to stop waiting for motivation and start making it happen, TaskWizard is here to help. No boring task lists, just simple, exciting productivity. Give it a try – your to-dos will thank you!
-        </p>
-        <h3>Upcoming Features!</h3>
-        <ul>
-          <li>
-            <div>
-              <h4>Animation</h4>
-            </div>
-          </li>
-          <li>
-            <div>
-              <h4>Sorting</h4>
-            </div>
-          </li>
-          <li>
-            <div>
-              <h4>Native Mobile App</h4>
-            </div>
-          </li>
-        </ul>
-      </div> */}
+      <h2>It's not magic... But this app is :)</h2>
       <AboutPoint
         title="Easy to Update!"
         text="Sleek UI makes it easy to use!"
@@ -45,14 +22,59 @@ export default function About(){
         title="Urgent Tasks"
         text="Highlighted and pulsating to convey the daunting dread of urgency. Easily able to prioritise these tasks quicker to get the bad vibes away."
       />
+      <ul className="dashboard-list">
+        <li className={`task-preview d-flex align-items-center urgent color-todo`}>
+          <div
+            className={`box text-center gem`}
+            title="Click to change status"
+            >
+            <img src={IMAGES.gemBase} alt="Magic Crystal" style={{transform: "scale(1.1)"}} className="h-100"/>
+          </div>
+          <div className={`overflow-hidden ms-4 w-100 h-100 d-flex flex-column justify-content-center `}>
+            <h2 className="text-truncate">Tasl Name</h2>
+            <p className="text-truncate">Task Description</p>
+          </div>
+        </li>
+      </ul>
       <AboutPoint
         title="Feel like a wizard!"
         text="Highlighted and pulsating to convey the daunting dread of urgency. Easily able to prioritise these tasks quicker to get the bad vibes away."
       />
       <AboutPoint
         title="Easy to Update!"
-        text="Highlighted and pulsating to convey the daunting dread of urgency. Easily able to prioritise these tasks quicker to get the bad vibes away."
+        text="Click on them down below."
       />
+      <div className="dashboard-list border-0">
+        <div className="row">
+          <div className="col-md-6 p-1">
+            <TaskPreviewFake 
+              name="Regular Task" 
+              status="to_be_done"
+              />
+          </div>
+          <div className="col-md-6 p-1">
+            <TaskPreviewFake 
+              name="Task In Progress" 
+              status="in_progress"
+              description="Good job it's in progress and here's more info!"
+              />
+          </div>
+          <div className="col-md-6 p-1">
+            <TaskPreviewFake 
+              name="Completed Task" 
+              status="to_be_reviewed"
+              description="Wooo! You got the beautiful green and can now remove this from your list."
+              />
+          </div>
+          <div className="col-md-6 p-1">
+            <TaskPreviewFake 
+              name="OMG YOU NEED TO DO THIS!" 
+              priority="urgent"
+              description="This is blood magic. PURE EVIL."
+              />
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
