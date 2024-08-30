@@ -13,8 +13,12 @@ $footer-height: 40px;
       color: $brand-light;
     }
 
+    p{
+      font-size: small;
+    }
+
     .icons {
-      max-width: 200px;
+      max-width: 300px;
 
       a:hover{
         color: $brand-highlight;
@@ -26,7 +30,7 @@ $footer-height: 40px;
 @media (min-width: 768px) {
   .footer{
     .icons{
-      max-width: 300px;
+      max-width: 500px;
       font-size: 1.5rem;
     }
   }

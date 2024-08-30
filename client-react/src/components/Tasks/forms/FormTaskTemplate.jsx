@@ -111,8 +111,8 @@ export default function FormTaskTemplate({method, deleteMethod}){
                     // transition={{ duration: 0.2 }}
                     className="extra-detail-section"
                     >
-                        <div className="d-flex">
-                        <div className="w-100 me-2">
+                        <div className="d-flex gap-10">
+                        <div className="w-100">
                             <label htmlFor="priority" className="form-label">Priority</label>
                             <select id="priority" className="form-control" {...register("priority", { required: "Priority is required" })}>
                             <option value="background">Background</option>
@@ -131,7 +131,7 @@ export default function FormTaskTemplate({method, deleteMethod}){
                             {errors.status && <span>{errors.status.message}</span>}
                         </div>
                         </div>
-                        <div className="d-flex gap-10">
+                        <div className="d-flex flex-wrap gap-10">
                             <div className="flex-fill mx-auto">
                                 <label htmlFor="date_created" className="form-label">Date Created</label>
                                 <input id="date_created" type="date" className="form-control" defaultValue={currentDate} {...register("date_created")} readOnly />

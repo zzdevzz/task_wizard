@@ -17,7 +17,7 @@ import { faHatWizard } from '@fortawesome/free-solid-svg-icons'
 export default function Footer() {
     return (
         <footer className='footer layout-stroke-top'>
-            <ul className="footer icons list-unstyled d-flex justify-content-around align-items-center mx-auto">
+            <ul className="icons list-unstyled d-flex justify-content-around align-items-center mx-auto mb-0">
                 <li className=''>
                     <Link to="/">
                         <FontAwesomeIcon icon={faHatWizard} />
@@ -33,7 +33,11 @@ export default function Footer() {
                         <FontAwesomeIcon icon={faLinkedin} />
                     </Link>
                 </li>
+                <li>
+                    <p className='mb-0'>Copyright © 2024 TaskWizard</p>
+                </li>
             </ul>
+            
         </footer>
     )
 }

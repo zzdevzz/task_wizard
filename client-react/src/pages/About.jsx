@@ -13,12 +13,12 @@ export default function About(){
   return (
     <div className="about-us-text py-4">
       <div className="text-center">
-        <h1 className="text-center display-2 my-4">About TaskWizard</h1>
-        <p className="mx-auto" style={{maxWidth: 800}}> It's quite simple. We're tired of those same old boring to-do apps that are just as boring as the tasks. That’s why we created TaskWizard, we believe the magic is in the momentum! TaskWizard isn’t just about checking boxes; it’s about making your day feel a little more awesome.</p>
         <div className="motivation-text mb-1 mt-5 flex-wrap justify-content-center ">
-          <h2 className="text-decoration-line-through text-secondary mx-2 flex-shrink-0">Needing motivation to do things.</h2>
-          <h2 className="mb-4 mx-2 flex-shrink-0"><span style={{color: "#9883ff"}}>Feel motivated</span> by doing things.</h2>
+          <h2 className="text-decoration-line-through text-secondary mx-2 my-0 flex-shrink-0 h3">Needing motivation to do things</h2>
+          <h2 className="mb-4 mx-2 flex-shrink-0 display-4 text-uppercase taskwizard-font fw-bold"><span style={{color: "#9883ff"}}>Feel motivated</span> by doing things</h2>
         </div>
+        <p className="mx-auto" style={{maxWidth: 900}}> 
+          It's quite simple. We're tired of those same old boring to-do apps that are just as boring as the tasks. We believe the magic is in the momentum! TaskWizard isn’t just about checking boxes, it’s about making your day feel a little more awesome.</p>
         {/* <div className="text-brand-purple">
           <h4>It's not magic. But this app is...</h4>
           <p> Gandolf, 2024</p>
@@ -30,8 +30,8 @@ export default function About(){
           text="With a Sleek UI, Taskwizard is both easy and fun to use. Easily identify which tasks are more urgent, prioritise these tasks quicker to get the bad vibes away!"
         />
       </div>
-      <h5 className="text-center mt-4">Tap a gem to update progress. Easy.</h5>
-      <div className="dashboard-list border-0">
+      <h5 className="text-center mt-4"><span style={{color: "#9883ff"}}>Tap a gem</span> to update progress. Easy.</h5>
+      <div className="dashboard-list border-0 mx-auto" style={{maxWidth: 1100}}>
         <div className="row">
           <TaskPreviewFake 
             name="Regular Task" 
