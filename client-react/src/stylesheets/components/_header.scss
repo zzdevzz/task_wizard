@@ -33,12 +33,17 @@ nav{
 }
 
 
+
 @media (max-width: 768px) {
 
   nav{
     .navbar-button{
       width: max-content;
-      margin-left: 0px;
+      margin: 0.5rem 0;
     }
+  }
+
+  .navbar-align{
+    align-items: end;
   }
 }

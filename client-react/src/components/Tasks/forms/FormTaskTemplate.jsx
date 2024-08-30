@@ -7,9 +7,9 @@ import { TaskContext } from "../TasksDashboard"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons"
 
-export default function FormTask({method, deleteMethod}){
+export default function FormTaskTemplate({method, deleteMethod}){
 
-    const { additionalInfo, setAdditionalInfo, selectedTask:data, closeModal } = React.useContext(TaskContext)
+    const { additionalInfo, setAdditionalInfo, selectedTask:data, closeModal } = React.useContext(TaskContext || {})
 
     // Even though component re-renders, data wont change unless form is reset with default values.
 
@@ -85,7 +85,6 @@ export default function FormTask({method, deleteMethod}){
             <form onSubmit={handleSubmit(onSubmit)} className="w-100 dark-form-input">
                 <div className="d-flex additional-info-buttons">
                     { isMobile ? 
-                        // <p className="mb-2 badge rounded-pill text-bg-info" onClick={closeModal}>Close</p>
                         <FontAwesomeIcon icon={faCircleXmark} onClick={closeModal} className="ms-auto fs-1 close-form"/>
                         : <h2>Task Info</h2>
                     }

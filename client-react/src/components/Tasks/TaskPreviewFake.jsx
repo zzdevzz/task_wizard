@@ -38,19 +38,21 @@ export default function TaskPreviewFake({name,description,status, priority }) {
   }
   
   return (
-    <div className={`task-preview d-flex align-items-center ${priority === "urgent" ? "urgent" : ""} ${getStatusColor()}`}>
-      <motion.div
-        className={`box text-center gem ${getStatusColor()}`}
-        onClick={handleStatusChange}
-        title="Click to change status"
-        animate={controls}
-      >
-        <img src={IMAGES.gemBase} alt="Magic Crystal" style={{transform: "scale(1.1)"}} className="px-2 h-100"/>
-      </motion.div>
-      <div className={`overflow-hidden ms-3 w-100 h-100 d-flex flex-column justify-content-center ${status === "to_be_reviewed" ? "task-complete" : ""}`} onClick={() => handleTaskClick(taskData)}>
-        <h2 className="text-truncate">{name}</h2>
-        <p className="text-truncate">{description}</p>
+      <div className="col-md-6 p-1">
+        <div className={`task-preview d-flex align-items-center ${priority === "urgent" ? "urgent" : ""} ${getStatusColor()}`}>
+          <motion.div
+            className={`box text-center gem ${getStatusColor()}`}
+            onClick={handleStatusChange}
+            title="Click to change status"
+            animate={controls}
+          >
+            <img src={IMAGES.gemBase} alt="Magic Crystal" style={{transform: "scale(1.1)"}} className="px-2 h-100"/>
+          </motion.div>
+          <div className={`overflow-hidden ms-3 w-100 h-100 d-flex flex-column justify-content-center ${status === "to_be_reviewed" ? "task-complete" : ""}`} onClick={() => handleTaskClick(taskData)}>
+            <h2 className="text-truncate">{name}</h2>
+            <p className="text-truncate">{description}</p>
+          </div>
+        </div>
       </div>
-    </div>
   )
 }

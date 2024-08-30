@@ -34,14 +34,25 @@
 }
 
 .landing-text {
-    h1, h2{
+    h1, h2, h3{
         color: $brand-light;
-        text-shadow: 2px 2px 5px black;
+        text-shadow: 1px 1px 15px black;
     }
     .welcome-text{
-        font-size: calc(2rem + 5vw);
-        font-weight: 300;
+        .small{
+            font-size: 2rem;
+        }
+
+        h1, h2{
+            font-size: calc(2rem + 4vw);
+            font-weight: bold;
+        }
     }
+}
+
+.taskwizard-font{
+    text-transform: uppercase;
+    font-family: 'Josefin Sans', Arial, Helvetica, sans-serif;
 }
 
 
