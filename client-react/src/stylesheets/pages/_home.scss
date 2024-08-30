@@ -16,9 +16,7 @@
         url("../assets/images/Chatgpt-Wizard-Landing/Wizard-Landing-03.webp");
     background-size: cover; /* Ensure the image covers the whole area */
     background-repeat: no-repeat;
-    background-position: center;
-    padding-bottom: -80px;
-    // background-position-x: right;
+    background-position: 35%;
 }
 
 .cover-image {
@@ -35,10 +33,26 @@
     background-position: center;
 }
 
-.landing-text{
-    // position: absolute;
-    // top: 0;
-    // left: 0;
+.landing-text {
+    h1, h2, h3{
+        color: $brand-light;
+        text-shadow: 1px 1px 15px black;
+    }
+    .welcome-text{
+        .small{
+            font-size: 2rem;
+        }
+
+        h1, h2{
+            font-size: calc(2rem + 4vw);
+            font-weight: bold;
+        }
+    }
+}
+
+.taskwizard-font{
+    text-transform: uppercase;
+    font-family: 'Josefin Sans', Arial, Helvetica, sans-serif;
 }
 
 

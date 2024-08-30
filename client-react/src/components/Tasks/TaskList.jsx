@@ -11,10 +11,10 @@ export default function TaskList() {
     const sortedTasks = [...tasks].sort((a, b) => a.id - b.id)
     const location = useLocation()
 
-    const handleTaskClick = (task) => {
-        setSelectedTask(task)
-        openModal()  // Update selected task in context
-    };
+    // const handleTaskClick = (task) => {
+    //     setSelectedTask(task)
+    //     openModal()  // Update selected task in context
+    // }
 
     return (
         <div className="dashboard-list flex-grow-1 custom-scroll h-100">
@@ -30,7 +30,7 @@ export default function TaskList() {
                     <div 
                         key={task.id}
                         className={`post-container ${location.pathname.includes(`${task.id}`) ? "active" : ""}`}
-                        onClick={() => handleTaskClick(task)}
+                        // onClick={() => handleTaskClick(task)}
                         >
                         <Link to={`${task.id}`} state={{taskData: task}}>
                             <TaskPreview taskData={task}/>

@@ -2,44 +2,58 @@ import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../Authorisation/AuthProvider'
 
-import IMAGES from '../../assets/images/Image'
+import { Navbar, Nav, Container } from 'react-bootstrap';
+
 import BRAND from '../../assets/brand/brand'
 
 import { base } from '../../utils/api'
-import { API_URL } from '../../constants'
 
 export default function Header() {
     const navigate = useNavigate()
     const {isAuthenticated, token, logout} = React.useContext(AuthContext)
 
+    const [expanded, setExpanded] = React.useState(false)
 
-    const signOut = async () => {
-        console.log(token)
+
+    const signOut = () => {
         if (!token) return
 
-        try {
-            const response = await base.delete(`/logout`, {headers: {'Authorization': token}})
-            logout()
-            navigate("..")
-          } catch (error) {
-            console.error('An error occurred during logout:', error)
-          }
-        }
+        logout()
+        setExpanded(false)
+      }
 
-    // Active styling in App.css for Navbar active class.
     return (
-      <>
-        <nav className='d-flex justify-content-around align-items-center navbar layout-stroke-bottom'>
-            <NavLink to="/"><img src={BRAND.logo} style={{width: 50}}/></NavLink>
-            <NavLink to="/about" >About</NavLink>
-            <NavLink to="/tasks">My tasks</NavLink>
-            {!isAuthenticated && <NavLink to="signup">Sign Up</NavLink>}
-            { isAuthenticated ?
-              // <button onClick={signOut} className='btn btn-outline-warning'>Logout</button> :
-              <button onClick={signOut} className='btn btn-outline-warning'>Logout</button> :
-              <NavLink to="login">Login</NavLink>
-            }
-        </nav>
-        </>
+      <Navbar expand="md" className='layout-stroke-bottom' expanded={expanded}>
+        <Container fluid className='mx-3'>
+        <Navbar.Brand href="/" className='d-flex align-items-center'>
+            <img
+              alt=""
+              src={BRAND.logo}
+              width="40"
+              height="40"
+              className="d-inline-block align-top me-1"
+            />
+            <h3 className='mb-0 mt-2 ms-1 taskwizard-font'>Task Wizard</h3>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" className='toggle-icon' onClick={() => setExpanded(!expanded)}/>
+          <Navbar.Collapse id="basic-navbar-nav" className='justify-content-end'>
+            <Nav className="navbar-align">
+              <Nav.Link as={NavLink} onClick={() => setExpanded(false)} to="/">Home</Nav.Link>
+              <Nav.Link as={NavLink} onClick={() => setExpanded(false)} to="/about">About</Nav.Link>
+              <Nav.Link as={NavLink} onClick={() => setExpanded(false)} to="/tasks">Tasks</Nav.Link>
+              {isAuthenticated ? (
+                 <a onClick={signOut} className="btn btn-outline-warning navbar-button">
+                 Logout
+               </a>
+              ) : (
+                <>
+                  <NavLink to="/signup" onClick={() => setExpanded(false)} className='btn btn-outline-info navbar-button'>Sign Up</NavLink>
+                  <NavLink to="/login" onClick={() => setExpanded(false)} className='btn btn-outline-primary navbar-button'>Login</NavLink>
+                </>
+              )}
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     )
 }
