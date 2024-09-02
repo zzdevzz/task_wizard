@@ -1,4 +1,4 @@
-# Recipe Search API https://taskwizard.devcreates.com/
+# TaskWizard To Do List https://taskwizard.devcreates.com/
 #### The purpose of this project was to practice React and build an API from scratch.
 
 #### This website acts as to-do list with a simple belief They should be more fun, hence the exciting theme. Motivate yourself to carry on forward.
