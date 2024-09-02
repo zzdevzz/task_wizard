@@ -7,8 +7,8 @@ import { faHatWizard } from '@fortawesome/free-solid-svg-icons'
 
 export default function Footer() {
     return (
-        <footer className='footer layout-stroke-top'>
-            <ul className="icons list-unstyled d-flex justify-content-around align-items-center mx-auto mb-0">
+        <footer className='footer layout-stroke-top d-flex'>
+            <ul className="icons list-unstyled d-flex justify-content-around align-items-center mx-auto mb-0 flex-grow-1">
                 <li className=''>
                     <Link to="/">
                         <FontAwesomeIcon icon={faHatWizard} />
