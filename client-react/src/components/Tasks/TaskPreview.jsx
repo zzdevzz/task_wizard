@@ -12,9 +12,6 @@ import { IMAGES } from "../../assets/images/Image"
 const statuses = ["to_be_done", "in_progress", "to_be_reviewed"]
 
 export default function TaskPreview({ taskData }) {
-  console.log(taskData)
-  // Use task's current status from props
-  // const [currentStatus, setCurrentStatus] = React.useState(taskData.status)
 
   const { additionalInfo, setAdditionalInfo, 
           selectedTask,  setSelectedTask,
@@ -23,7 +20,7 @@ export default function TaskPreview({ taskData }) {
           openModal } = React.useContext(TaskContext)
 
   // Context to retrieve tasks and auth token
-  // const { retrieveTasks } = useContext(TaskContext)
+
   const { token } = useContext(AuthContext)
 
   const controls = useAnimation()

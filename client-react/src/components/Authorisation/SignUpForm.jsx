@@ -15,7 +15,6 @@ export default function SignUpForm({className=""}){
   const navigate = useNavigate()
   const {login} = React.useContext(AuthContext)
 
-    console.log("BASE URL IN SIGNUP FORM: ", BASE_URL )
     const onSubmit = async (data) => {
         try {
             const response = await base.post(`/signup`, {user: data})

@@ -3,9 +3,6 @@
 }
 
 .dark-form-input {
-  // display: flex;
-  // justify-content: stretch;
-  // flex-direction: column;
   height: max-content;
   label{
     color: white;
@@ -18,30 +15,27 @@
 
 
   :is(input, select, textarea) {
-    // background-color: #343a40; /* Bootstrap's dark background */
     background-color: $brand-background;
-    color: white; /* White text */
-    border-color: $brand-purple; /* Slightly lighter border */
+    color: white;
+    border-color: $brand-purple;
     border-width: 2px;
 
     &::placeholder {
-      color: rgba(255, 255, 255, 0.6); /* Lighten the placeholder text color */
-      opacity: 1; /* Ensure full opacity */
+      color: rgba(255, 255, 255, 0.6); 
+      opacity: 1; 
     }
 
     &:focus {
       background-color: $brand-background;
       color: white;
       border-color: $brand-purple;
-      outline: none; // Consider accessibility implications
+      outline: none; 
     }
   }
 
 }
 
 .glass-form {
-  /* From https://css.glass */
-  // background: rgba(16, 17, 55, 0.226);
   max-width: 650px;
   margin: auto;
   background: rgba(34, 35, 56, 0.486);
@@ -53,7 +47,6 @@
   box-shadow: -3px 3px 10px rgba(0, 0, 0, 0.308);
 
   div{
-    // margin: 1rem 0
     margin-top: 1rem;
   }
 

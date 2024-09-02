@@ -1,24 +1,20 @@
-# README
+# Recipe Search API https://taskwizard.devcreates.com/
+#### The purpose of this project was to practice React and build an API from scratch.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### This website acts as to-do list with a simple belief They should be more fun, hence the exciting theme. Motivate yourself to carry on forward.
 
-Things you may want to cover:
+#### Excuse if the code has a lot of comments, I'm still learning and it helps me remember my thought process.
 
-* Ruby version
+### Familiarized myself with: 
+> - JWT (JSON Web Tokens) for Stateless Authentication.
+> - Building a RESTFUL API from scratch to handle CRUD operations.
+> - Securing database inputs with model validations.
+> - Using Serializers to control JSON data exposed to frontend.
+> - React.js Hooks (State, Effect, Context)
+> - Asynchronous API (async/await)
+> - JSX, components, props, css modules, etc.
+> - Exposed to Framer Motion and CSS animations for smooth responsive transitions.
 
-* System dependencies
+(React.js, JavaScript, HTML, CSS/Bootstrap, Ruby, Rails, deployed with Heroku)
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[![Image from Gyazo](https://i.gyazo.com/f12e7dde3f79cb68ccc4c19dd9268566.gif)](https://gyazo.com/f12e7dde3f79cb68ccc4c19dd9268566)

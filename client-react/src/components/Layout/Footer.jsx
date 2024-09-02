@@ -5,15 +5,6 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { faHatWizard } from '@fortawesome/free-solid-svg-icons'
 
-// import { faHouse } from '@fortawesome/free-solid-svg-icons'
-// import { fa}
-
-
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faGithub } from '@fortawesome/free-solid-svg-icons'
-
-
-
 export default function Footer() {
     return (
         <footer className='footer layout-stroke-top'>

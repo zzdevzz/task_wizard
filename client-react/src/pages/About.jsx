@@ -19,10 +19,6 @@ export default function About(){
         </div>
         <p className="mx-auto" style={{maxWidth: 900}}> 
           It's quite simple. We're tired of those same old boring to-do apps that are just as boring as the tasks. We believe the magic is in the momentum! TaskWizard isn’t just about checking boxes, it’s about making your day feel a little more awesome.</p>
-        {/* <div className="text-brand-purple">
-          <h4>It's not magic. But this app is...</h4>
-          <p> Gandolf, 2024</p>
-        </div> */}
       </div>
       <div className="d-flex flex-column align-items-center text-center">
         <AboutPoint

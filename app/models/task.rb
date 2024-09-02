@@ -12,6 +12,7 @@ class Task < ApplicationRecord
   validates :name, presence: true
   validates :completed, inclusion: { in: [true, false] }
   validates :date_created, presence: true
+  validate :date_completed_by_cannot_be_before_date_created
 
   before_validation :set_default_values
 
@@ -22,6 +23,14 @@ class Task < ApplicationRecord
     self.date_completed_by ||= Time.now.strftime("%Y-%m-%dT%H:%M:%S.%LZ")
     # The if statement is if our form does not have a checkbox or the attribute is forgotten. It means the value can be nil.
     self.completed = false if self.completed.nil?
+  end
+  
+  private
+
+  def date_completed_by_cannot_be_before_date_created
+    if date_completed_by.present? && date_completed_by < date_created
+      errors.add(:date_completed_by, "cannot be before the date the task was created")
+    end
   end
 
 end
