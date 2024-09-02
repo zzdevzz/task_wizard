@@ -1,15 +1,12 @@
 import React from "react"
 import FormTaskTemplate from "./FormTaskTemplate"
-import { useParams, useNavigate, useLocation, Navigate, redirect } from "react-router-dom"
+import { useNavigate, useLocation, Navigate, redirect } from "react-router-dom"
 import { API_URL } from "../../../constants"
 import { api } from "../../../utils/api"
 
-import { toast } from 'react-toastify';
-
-
+import { toast } from 'react-toastify'
 import { TaskContext } from "../TasksDashboard"
 import { AuthContext } from "../../Authorisation/AuthProvider"
-import { Toast } from "bootstrap"
 
 
 export default function FormTask({request = "post"}){
@@ -27,7 +24,6 @@ export default function FormTask({request = "post"}){
   if (location.state !== null) {
     task = location.state.taskData
     taskId = task.id
-    userId = task.user_id
 
   }
 
@@ -50,7 +46,6 @@ export default function FormTask({request = "post"}){
       toast.success('New Task Added')
     } catch (error) {
       console.error('Error creating task:', error);
-      // handleAxiosError(error)
     }
   }
 

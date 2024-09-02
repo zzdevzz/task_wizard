@@ -2,11 +2,10 @@ import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../Authorisation/AuthProvider'
 
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container } from 'react-bootstrap'
 
 import BRAND from '../../assets/brand/brand'
 
-import { base } from '../../utils/api'
 
 export default function Header() {
     const navigate = useNavigate()

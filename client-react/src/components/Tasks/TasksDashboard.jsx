@@ -32,7 +32,7 @@ export default function TasksDashboardHost(){
     const openModal = () => setToggleModal(true)
     const closeModal = () => setToggleModal(false)
     
-    // console.log("tasksdashboard: ", tasks)
+
     const retrieveTasks = async () => {
         const response = await api.get(`${API_URL}/tasks`, {headers: {Authorization: token}})
         const tasksFormatted = response.data.map((task) => ({
@@ -56,7 +56,7 @@ export default function TasksDashboardHost(){
             openModal, closeModal
         }}>
             <div className="dashboard row align-content-start">
-                <ToastContainer autoClose={2000}/>
+                <ToastContainer autoClose={3000}/>
                 <div className={`dashboard-detail col-lg-8 d-flex my-2 order-md-2 mh-100 sliding-modal ${toggleModal ? "open" : ""}`}>
                     <Outlet/>
                 </div>

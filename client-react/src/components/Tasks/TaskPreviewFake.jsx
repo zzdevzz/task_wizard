@@ -2,6 +2,7 @@ import React, { useContext } from "react"
 import { API_URL } from "../../constants"
 import { api } from "../../utils/api"
 
+//USED FOR ABOUT PAGE DUMMY COMPONENT, NEXT TIME MAKE A COMPONENT ALLOW 'EMPTY VALUES'
 
 import { motion, useAnimation } from "framer-motion"
 
